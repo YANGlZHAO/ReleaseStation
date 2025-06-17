@@ -10,7 +10,6 @@
 	import popularGameVue from '@/component/popularGame.vue'
 
 	export default {
-		name: 'UserPage', // ✅ 必须加 name 才能让 ref 访问组件方法
 		components: {
 			popularGameVue
 		},

@@ -118,8 +118,8 @@
 <style scoped>
 	.game-wrapper {
 		background-color: #000;
-		height: 100vh;
-		margin-top: 4rem;
+		height: 100%;
+		margin-top: 5rem;
 	}
 
 	.game-container {
