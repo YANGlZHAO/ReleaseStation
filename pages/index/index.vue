@@ -25,6 +25,7 @@
 	import NavBarVue from '@/component/NavBar.vue'
 
 	export default {
+		name: "HomePage",
 		components: {
 			popularGameVue,
 			FloatButtonVue,

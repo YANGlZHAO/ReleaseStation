@@ -5,8 +5,8 @@
 			duration="300">
 			<swiper-item v-for="(page, index) in pages" :key="index">
 				<view class="page-scroll-wrapper">
-					<UserPage v-show="page.name === 'UserPage'" ref="userPageRef" />
 					<HomePage v-show="page.name === 'HomePage'" ref="homePageRef" />
+					<UserPage v-show="page.name === 'UserPage'" ref="userPageRef" />
 					<ProfilePage v-show="page.name === 'ProfilePage'" ref="profilePageRef" />
 				</view>
 			</swiper-item>
@@ -124,6 +124,7 @@
 			notifyCurrentPage() {
 				this.$nextTick(() => {
 					const comp = this.getCurrentPageComponent()
+					console.log("comp------",comp)
 					if (comp && typeof comp.open === 'function') {
 						comp.open()
 					}

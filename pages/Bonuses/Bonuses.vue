@@ -10,6 +10,7 @@
 	import popularGameVue from '@/component/popularGame.vue'
 
 	export default {
+		name:"ProfilePage",
 		components: {
 			popularGameVue
 		},
