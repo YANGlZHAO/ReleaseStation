@@ -5,30 +5,23 @@
 			duration="300">
 			<swiper-item v-for="(page, index) in pages" :key="index">
 				<view class="page-scroll-wrapper">
-					<template v-if="page.name === 'HomePage'">
-						<HomePage v-show="currentIndex === index" />
-					</template>
-					<template v-else-if="page.name === 'UserPage'">
-						<UserPage v-show="currentIndex === index" />
-					</template>
-					<template v-else-if="page.name === 'ProfilePage'">
-						<ProfilePage v-show="currentIndex === index" />
-					</template>
+					<UserPage v-show="page.name === 'UserPage'" ref="userPageRef" />
+					<HomePage v-show="page.name === 'HomePage'" ref="homePageRef" />
+					<ProfilePage v-show="page.name === 'ProfilePage'" ref="profilePageRef" />
 				</view>
 			</swiper-item>
-
-
 		</swiper>
+
 		<!-- 底部 TabBar -->
 		<div class="tab-bar" ref="tabBar">
 			<div class="tab-item" v-for="(page, index) in pages" :key="index"
 				:class="{ active: currentIndex === index }" @click="goToPage(index)" ref="tabItems">
 				{{ page.title }}
 			</div>
-			<!-- 滑动条 -->
+
+			<!-- 滑动横线条 -->
 			<div class="tab-underline" :style="underlineStyle"></div>
 		</div>
-
 	</div>
 </template>
 
@@ -38,16 +31,11 @@
 	import ProfilePage from '@/pages/Games/Games.vue'
 
 	export default {
-		name: 'BottomTabSwiper',
+		name: 'home',
 		components: {
 			HomePage,
 			UserPage,
 			ProfilePage
-		},
-		watch: {
-		  currentIndex() {
-		    this.updateUnderline()
-		  }
 		},
 		data() {
 			return {
@@ -71,19 +59,30 @@
 				}
 			}
 		},
+		watch: {
+			currentIndex() {
+				this.updateUnderline()
+				this.notifyCurrentPage()
+			}
+		},
+		mounted() {
+			this.scrollTabBarToActive()
+			this.updateUnderline()
+			this.notifyCurrentPage()
+		},
 		methods: {
 			goToPage(index) {
-			  this.currentIndex = index
-			  this.scrollTabBarToActive()
-			  this.updateUnderline()
+				this.currentIndex = index
+				this.scrollTabBarToActive()
+				this.updateUnderline()
+				// notifyCurrentPage 通过 watcher 触发
 			},
-			
 			onSwiperChange(e) {
-			  this.currentIndex = e.detail.current
-			  this.scrollTabBarToActive()
-			  this.updateUnderline()
+				this.currentIndex = e.detail.current
+				this.scrollTabBarToActive()
+				this.updateUnderline()
+				// notifyCurrentPage 通过 watcher 触发
 			},
-
 			scrollTabBarToActive() {
 				this.$nextTick(() => {
 					const tabBar = this.$refs.tabBar
@@ -107,22 +106,38 @@
 				})
 			},
 			updateUnderline() {
-			    this.$nextTick(() => {
-			      const tabItems = this.$refs.tabItems
-			      const activeTab = Array.isArray(tabItems) ? tabItems[this.currentIndex] : tabItems
-			      if (!activeTab) return
-			
-			      const { offsetLeft, offsetWidth } = activeTab
-			      this.underlineStyle = {
-			        width: offsetWidth + 'px',
-			        transform: `translateX(${offsetLeft}px)`,
-			      }
-			    })
-			  }
-		},
-		mounted() {
-			this.scrollTabBarToActive()
-			this.updateUnderline()
+				this.$nextTick(() => {
+					const tabItems = this.$refs.tabItems
+					const activeTab = Array.isArray(tabItems) ? tabItems[this.currentIndex] : tabItems
+					if (!activeTab) return
+
+					const {
+						offsetLeft,
+						offsetWidth
+					} = activeTab
+					this.underlineStyle = {
+						width: offsetWidth + 'px',
+						transform: `translateX(${offsetLeft}px)`
+					}
+				})
+			},
+			notifyCurrentPage() {
+				this.$nextTick(() => {
+					const comp = this.getCurrentPageComponent()
+					if (comp && typeof comp.open === 'function') {
+						comp.open()
+					}
+				})
+			},
+			getCurrentPageComponent() {
+				const name = this.pages[this.currentIndex].name
+				const refName = name.charAt(0).toLowerCase() + name.slice(1) + 'Ref'
+				const ref = this.$refs[refName]
+				if (Array.isArray(ref)) {
+					return ref[this.currentIndex]
+				}
+				return ref
+			}
 		}
 	}
 </script>
@@ -145,7 +160,6 @@
 		overflow-y: auto;
 		-webkit-overflow-scrolling: touch;
 	}
-
 
 	swiper,
 	swiper-item {
@@ -182,7 +196,6 @@
 		font-weight: 600;
 	}
 
-	/* 滑动横线条 */
 	.tab-underline {
 		position: absolute;
 		bottom: 0;

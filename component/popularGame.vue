@@ -83,12 +83,12 @@
 					}
 				}
 				uni.setStorageSync(STARRED_LIST_KEY, starredList)
+				console.log("starredList----", starredList)
 			},
 			loadStarStatus() {
 				const starredList = uni.getStorageSync(STARRED_LIST_KEY) || []
 				const starredMap = new Map()
 
-				// 防止 starredList 内部结构异常
 				starredList.forEach(group => {
 					if (group && Array.isArray(group.gameList)) {
 						group.gameList.forEach(game => {
@@ -111,7 +111,6 @@
 					}
 				})
 			}
-
 		}
 	}
 </script>
@@ -119,11 +118,11 @@
 <style scoped>
 	.game-wrapper {
 		background-color: #000;
-		min-height: 100vh;
+		height: 100vh;
+		margin-top: 4rem;
 	}
 
 	.game-container {
-		margin: 1rem 0 2rem 0;
 		background-color: #000;
 	}
 

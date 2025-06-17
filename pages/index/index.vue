@@ -438,6 +438,9 @@
 				} else {
 					window.open(url, '_blank')
 				}
+			},
+			open() {
+				
 			}
 		}
 	}
@@ -447,7 +450,6 @@
 	.page {
 		display: flex;
 		flex-direction: column;
-		height:300px;
 		background-color: #000;
 	}
 

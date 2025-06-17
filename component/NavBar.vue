@@ -9,8 +9,9 @@
 					</div>
 
 					<div class="top-right">
-						<button class="btn login-btn" @click="handleLogin">Login</button>
-						<button class="btn register-btn" @click="handleRegister">Register</button>
+						<!-- <button class="btn login-btn" @click="handleLogin">Login</button>
+						<button class="btn register-btn" @click="handleRegister">Register</button> -->
+						<text class="title">发布站</text>
 					</div>
 				</div>
 			</div>
@@ -42,7 +43,7 @@
 						bgcolor: "#ff7f00"
 					},
 					{
-						title: "其他",
+						title: "我的",
 						icon: "orange",
 						url: "/pages/Games/Games",
 						bgcolor: "#5bac5c"
@@ -139,14 +140,18 @@
 
 <style scoped>
 	.nav-bar {
-		position: relative;
+		padding:0 1rem;
 		display: flex;
 		flex-direction: column;
-		z-index: 10000;
-		background: url('@/static/all-casinos.png') no-repeat center center;
-		background-size: 115% auto;
 		height: 4rem;
-		transition: background-position 0.1s linear;
+		background: url('@/static/nav_bg.png') no-repeat center center;
+		background-size: 100% 100%;
+		/* width: 100%; */
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 999;
 	}
 
 	.container-large {
@@ -190,19 +195,6 @@
 		background-color: #cc6600;
 	}
 
-	.top-nav {
-		/* background-color: rgba(0, 0, 0, 0.5); */
-	}
-
-	/* 直接用后代选择器，避免嵌套 */
-	.top-nav .container-large {
-		padding: 0 1rem;
-		display: flex;
-		flex-flow: row nowrap;
-		justify-content: space-between;
-		align-items: center;
-	}
-
 	.top-nav .d-flex {
 		display: flex !important;
 	}
@@ -213,11 +205,16 @@
 	}
 
 	.top-nav .logo {
-		width: 2rem !important;
-		height: 2rem !important;
+		width: 4rem;
+		height: 4rem;
 		display: block;
-		background: url('@/static/logo_365bets.png') no-repeat center;
+		background: url('@/static/titleLogo.png') no-repeat center;
 		background-size: 100%;
+	}
+
+	.title {
+		color: #fff;
+		font-size: 1rem;
 	}
 
 	.side-nav {
