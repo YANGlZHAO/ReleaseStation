@@ -1,5 +1,5 @@
 <template>
-	<div class="game-wrapper">
+	<scroll-view class="game-wrapper" scroll-y :scroll-top="scrollTop" ref="scrollView" @scroll="onScroll">
 		<div class="game-container" v-for="(companyGroup, cIndex) in localList" :key="cIndex">
 			<div class="company-title">{{ companyGroup.conpany }}</div>
 			<div class="game-grid">
@@ -12,7 +12,20 @@
 				</div>
 			</div>
 		</div>
-	</div>
+		<!-- <view class="footer" v-if="showBackToTop">
+			<view class="disclaimer">
+				<view class="link-list">
+					<view v-for="(link, index) in links" :key="index" class="link-item" @click="openLink(link.url)">
+						{{ link.text }}
+					</view>
+				</view>
+			</view>
+		</view> -->
+		<!-- 添加返回顶部按钮（可选） -->
+		<div class="back-to-top" v-if="showBackToTop" @click="scrollToTop">
+			↑
+		</div>
+	</scroll-view>
 </template>
 
 <script>
@@ -28,7 +41,30 @@
 		},
 		data() {
 			return {
-				localList: []
+				localList: [],
+				scrollTop: 0,
+				showBackToTop: false,
+				links: [{
+						text: 'Disclaimer',
+						url: 'https://leitegame.com'
+					},
+					{
+						text: 'Privacy',
+						url: 'https://leitegame.com'
+					},
+					{
+						text: 'Gambling Help',
+						url: 'https://leitegame.com'
+					},
+					{
+						text: 'Site Map',
+						url: 'https://leitegame.com'
+					},
+					{
+						text: 'Research',
+						url: 'https://leitegame.com'
+					}
+				]
 			}
 		},
 		watch: {
@@ -110,6 +146,17 @@
 						})
 					}
 				})
+			},
+			// 滚动到顶部
+			scrollToTop() {
+				this.scrollTop = 0;
+				this.$nextTick(() => {
+					this.scrollTop = 0.01; // 强制触发滚动（某些平台需微小变化）
+				});
+			},
+			// 监听滚动显示按钮
+			onScroll(e) {
+				this.showBackToTop = e.detail.scrollTop > 300;
 			}
 		}
 	}
@@ -118,7 +165,23 @@
 <style scoped>
 	.game-wrapper {
 		background-color: #000;
-		height: 100%;
+		height: calc(100vh - 8rem);
+	}
+
+	.back-to-top {
+		position: fixed;
+		right: 20px;
+		bottom: 20px;
+		width: 40px;
+		height: 40px;
+		background-color: rgba(0, 0, 0, 0.7);
+		color: white;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 20px;
+		z-index: 100;
 	}
 
 	.game-container {
@@ -185,5 +248,30 @@
 		width: 20px;
 		height: 20px;
 		z-index: 10;
+	}
+	.footer {
+		width: 100%;
+		background-color: transparent;
+		padding: 0.5rem 0;
+	}
+	.link-list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+	}
+	.link-item {
+		color: #fff;
+		border-right: 1rpx solid #fff;
+		font-family: 'AvenirMedium', Arial, sans-serif;
+		font-size: 14rpx;
+		padding: 0 18rpx;
+		line-height: 28rpx;
+		cursor: pointer;
+		user-select: none;
+		
+		&:last-child {
+			border-right: none;
+		}
 	}
 </style>

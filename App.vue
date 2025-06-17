@@ -11,3 +11,17 @@
 		},
 	}
 </script>
+
+
+<style>
+	/* 全局覆盖 uni-scroll-view 高度 */
+	uni-scroll-view {
+	  height: auto !important;
+	}
+	
+	.uni-scroll-view-content {
+	  height: auto !important;
+	  min-height: 100% !important; /* 确保内容能撑开 */
+	}
+	
+</style>

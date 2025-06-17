@@ -34,8 +34,8 @@
 	.page {
 		display: flex;
 		flex-direction: column;
-		height: 100%;
 		background-color: #000;
+		height: calc(100vh - 5.5rem);
 	}
 
 	.content {

@@ -1,23 +1,21 @@
 <template>
 	<view class="page">
 		<NavBarVue></NavBarVue>
-		<view class="content">
-			<popularGameVue :list="data" />
-		</view>
-
-		<view class="footer">
-			<view class="disclaimer">
-				<view class="link-list">
-					<view v-for="(link, index) in links" :key="index" class="link-item" @click="openLink(link.url)">
-						{{ link.text }}
-					</view>
-				</view>
-			</view>
-		</view>
-
+		<popularGameVue :list="data" />
+		<!-- <view class="footer">
+	      <view class="disclaimer">
+	      	<view class="link-list">
+	      		<view v-for="(link, index) in links" :key="index" class="link-item" @click="openLink(link.url)">
+	      			{{ link.text }}
+	      		</view>
+	      	</view>
+	      </view>
+	    </view> -->
 		<FloatButtonVue email="support@365bets.top" />
 	</view>
 </template>
+
+
 
 <script>
 	import popularGameVue from '@/component/popularGame.vue'
@@ -441,7 +439,7 @@
 				}
 			},
 			open() {
-				
+
 			}
 		}
 	}
@@ -456,13 +454,12 @@
 	}
 
 	.content {
-		flex: 1;
 	}
 
 	.footer {
 		width: 100%;
 		background-color: #fdbe00;
-		padding: 20rpx 0;
+		padding: 0.5rem 0;
 	}
 
 	.disclaimer {
