@@ -5,9 +5,9 @@
 			duration="300">
 			<swiper-item v-for="(page, index) in pages" :key="index">
 				<view class="page-scroll-wrapper">
-					<HomePage v-show="page.name === 'HomePage'" ref="homePageRef" />
-					<UserPage v-show="page.name === 'UserPage'" ref="userPageRef" />
-					<ProfilePage v-show="page.name === 'ProfilePage'" ref="profilePageRef" />
+					<HomePage v-if="page.name === 'HomePage'" ref="homePageRef" :key="'home-' + index" />
+					<UserPage v-if="page.name === 'UserPage'" ref="userPageRef" :key="'home-' + index" />
+					<ProfilePage v-if="page.name === 'ProfilePage'" ref="profilePageRef" :key="'home-' + index" />
 				</view>
 			</swiper-item>
 		</swiper>
@@ -78,10 +78,12 @@
 				// notifyCurrentPage 通过 watcher 触发
 			},
 			onSwiperChange(e) {
-				this.currentIndex = e.detail.current
-				this.scrollTabBarToActive()
-				this.updateUnderline()
-				// notifyCurrentPage 通过 watcher 触发
+			  this.currentIndex = e.detail.current;
+			  setTimeout(() => { // 确保 swiper 动画完成
+			    this.scrollTabBarToActive();
+			    this.updateUnderline();
+			    this.notifyCurrentPage();
+			  }, 350); // 略大于 swiper 的 duration（300ms）
 			},
 			scrollTabBarToActive() {
 				this.$nextTick(() => {
@@ -124,20 +126,23 @@
 			notifyCurrentPage() {
 				this.$nextTick(() => {
 					const comp = this.getCurrentPageComponent()
-					console.log("comp------",comp)
+					console.log("Current component ref:", comp)
 					if (comp && typeof comp.open === 'function') {
 						comp.open()
+					} else {
+						console.error("Component or open method not found:", comp)
 					}
 				})
 			},
 			getCurrentPageComponent() {
-				const name = this.pages[this.currentIndex].name
-				const refName = name.charAt(0).toLowerCase() + name.slice(1) + 'Ref'
-				const ref = this.$refs[refName]
-				if (Array.isArray(ref)) {
-					return ref[this.currentIndex]
-				}
-				return ref
+			  const currentPageName = this.pages[this.currentIndex].name;
+			  const refMap = {
+			    HomePage: 'homePageRef',
+			    UserPage: 'userPageRef',
+			    ProfilePage: 'profilePageRef'
+			  };
+			  const refName = refMap[currentPageName];
+			  return this.$refs[refName]?.[0] || this.$refs[refName]; // 兼容数组/对象
 			}
 		}
 	}

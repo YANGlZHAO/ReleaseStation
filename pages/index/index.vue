@@ -452,6 +452,7 @@
 		display: flex;
 		flex-direction: column;
 		background-color: #000;
+		margin-top: 4rem;
 	}
 
 	.content {

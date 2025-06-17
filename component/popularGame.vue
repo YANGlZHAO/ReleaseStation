@@ -119,7 +119,6 @@
 	.game-wrapper {
 		background-color: #000;
 		height: 100%;
-		margin-top: 5rem;
 	}
 
 	.game-container {
