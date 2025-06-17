@@ -11,7 +11,7 @@
 	      	</view>
 	      </view>
 	    </view> -->
-		<FloatButtonVue email="support@365bets.top" />
+		<!-- <FloatButtonVue email="support@365bets.top" /> -->
 	</view>
 </template>
 

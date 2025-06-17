@@ -35,7 +35,7 @@
 <style scoped>
 	.float-button {
 		position: fixed;
-		right: 0.5rem;
+		right: 1rem;
 		bottom: 3rem;
 		width: 1.5rem;
 		height: 1.5rem;

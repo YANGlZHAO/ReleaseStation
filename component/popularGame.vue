@@ -170,18 +170,20 @@
 
 	.back-to-top {
 		position: fixed;
-		right: 20px;
-		bottom: 20px;
-		width: 40px;
-		height: 40px;
-		background-color: rgba(0, 0, 0, 0.7);
-		color: white;
+		right: 40px;
+		bottom: 40px;
+		width: 2rem;
+		height: 2rem;
+		background-color: beige;
+		color: #000;
+		font-weight: bold;
 		border-radius: 50%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		font-size: 20px;
 		z-index: 100;
+		
 	}
 
 	.game-container {
