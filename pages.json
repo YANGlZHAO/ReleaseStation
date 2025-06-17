@@ -1,0 +1,68 @@
+{
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+		}
+	},
+	"pages": [{
+			"path": "pages/home",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "white",
+				"app-plus": {
+					"statusbar": {
+						"hidden": true
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "white",
+				"app-plus": {
+					"statusbar": {
+						"hidden": true
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/Bonuses/Bonuses",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/Games/Games",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/webview/webview",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "white",
+				"app-plus": {
+					"statusbar": {
+						"hidden": true
+					}
+				}
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {}
+}

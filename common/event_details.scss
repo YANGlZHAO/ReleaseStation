@@ -1,0 +1,777 @@
+.event_details_url_content {
+	 html,body,div,h1,h2,h3,h4,h5,h6,dl,dt,dd,p,blockquote,pre,form,fieldset,table,th,td {
+		font-family: "微软雅黑","黑体","宋体";
+		font-size: 15px;
+		margin: 0;
+		padding: 0;
+		line-height: 1.8;
+		color: #e3f3ff
+	}
+
+	html,body {
+		width: 100%;
+		word-break: break-all
+	}
+
+	a {
+		text-decoration: none
+	}
+
+	a:link {
+		color: #666
+	}
+
+	a:visited {
+		color: #666
+	}
+
+	a:hover {
+		color: #666
+	}
+
+	a:active {
+		color: #666
+	}
+
+	input::-ms-clear {
+		display: none
+	}
+
+	input::-ms-reveal {
+		display: none
+	}
+
+	input {
+		-webkit-appearance: none;
+		margin: 0;
+		outline: 0;
+		padding: 0
+	}
+
+	input::-webkit-input-placeholder {
+		color: #ccc
+	}
+
+	input::-ms-input-placeholder {
+		color: #ccc
+	}
+
+	input::-moz-placeholder {
+		color: #ccc
+	}
+
+	input[type=submit],input[type=button] {
+		cursor: pointer
+	}
+
+	button[disabled],input[disabled] {
+		cursor: default
+	}
+
+	img {
+		border: none
+	}
+
+	ul {
+		list-style-type: none
+	}
+
+	table,th,td {
+		line-height: 1.4;
+		border-collapse: collapse
+	}
+
+	tr {
+		text-align: center
+	}
+
+	p img {
+		max-width: 100%
+	}
+
+	.person_looksubcont {
+		font-size: 14px;
+		padding: 0 15px 15px 15px;
+		word-break: break-word
+	}
+
+	.person_looksubcont img {
+		display: inline-block;
+		max-width: 100%;
+		height: auto;
+		margin-top: -2px
+	}
+
+	.person_looksubcont p {
+		padding: 3px 0
+	}
+
+	.person_looksubcont table {
+		margin: 10px 0;
+		border-spacing: 0;
+		border-collapse: collapse;
+		width: 100% !important
+	}
+
+	.person_looksubcont table td {
+		padding: 4px 5px
+	}
+
+	[id^=person_temp] * {
+		color: inherit
+	}
+
+	#person_head {
+		padding-top: 20px;
+		background-repeat: no-repeat;
+		background-size: 100% auto;
+		background-position: top center
+	}
+
+	#person_foot {
+		height: 60px;
+		background-repeat: no-repeat;
+		background-size: 100% auto;
+		background-position: bottom center
+	}
+
+	#person_temp2_1,#person_temp2_2,#person_temp2_3,#person_temp2_4,#person_temp2_5,#person_temp2_6,#person_temp3_1,#person_temp3_2,#person_temp3_3,#person_temp3_4,#person_temp3_5 {
+		background-repeat: repeat-y;
+		background-size: 100% auto
+	}
+
+	#person_temp2_1 {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20200725173739-173082.jpg)
+	}
+
+	#person_temp2_1 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20200725173818-123695.jpg)
+	}
+
+	#person_temp2_1 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20200725173844-163872.png)
+	}
+
+	#person_temp2_1 .person_looksubcont {
+		color: #fff
+	}
+
+	#person_temp2_1 .person_looksubcont table tr {
+		background-color: #052459;
+		border-width: 1px;
+		border-color: #2885c6
+	}
+
+	#person_temp2_1 .person_looksubcont table tr:first-child {
+		background-color: #11479d
+	}
+
+	#person_temp2_1 .person_looksubcont table tr:first-child td {
+		color: #12dbff
+	}
+
+	#person_temp2_1 .active_net_title {
+		color: #ffd612
+	}
+
+	#person_temp2_2 {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317223709-567127.jpg)
+	}
+
+	#person_temp2_2 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317223754-734717.jpg)
+	}
+
+	#person_temp2_2 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317223823-976918.png)
+	}
+
+	#person_temp2_2 .person_looksubcont {
+		color: #f2daf3
+	}
+
+	#person_temp2_2 .person_looksubcont .active_fir_title {
+		color: #fff
+	}
+
+	#person_temp2_2 .person_looksubcont table tr {
+		background-color: #3c154d;
+		border-width: 1px;
+		border-color: #c976b4
+	}
+
+	#person_temp2_2 .person_looksubcont table tr td {
+		color: #fff
+	}
+
+	#person_temp2_2 .person_looksubcont table tr:first-child {
+		background-color: #4c1b5c
+	}
+
+	#person_temp2_2 .person_looksubcont table tr:first-child td {
+		color: #d8b6d5
+	}
+
+	#person_temp2_2 .active_net_title {
+		color: #ffd612
+	}
+
+	#person_temp2_3 {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224029-846018.jpg)
+	}
+
+	#person_temp2_3 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224050-220924.jpg)
+	}
+
+	#person_temp2_3 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224104-950083.png)
+	}
+
+	#person_temp2_3 .person_looksubcont {
+		color: #b6cee5
+	}
+
+	#person_temp2_3 .person_looksubcont .active_fir_title {
+		color: #fff
+	}
+
+	#person_temp2_3 .person_looksubcont table tr {
+		background-color: #020b1b;
+		border-width: 1px;
+		border-color: #5682a7
+	}
+
+	#person_temp2_3 .person_looksubcont table tr td {
+		color: #fff
+	}
+
+	#person_temp2_3 .person_looksubcont table tr:first-child {
+		background-color: #012447
+	}
+
+	#person_temp2_3 .person_looksubcont table tr:first-child td {
+		color: #9ab9d6
+	}
+
+	#person_temp2_3 .active_net_title {
+		color: #11a5ea
+	}
+
+	#person_temp2_4 {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224136-858381.jpg)
+	}
+
+	#person_temp2_4 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224200-866057.jpg)
+	}
+
+	#person_temp2_4 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224216-739825.png)
+	}
+
+	#person_temp2_4 .person_looksubcont {
+		color: #b3ccec
+	}
+
+	#person_temp2_4 .person_looksubcont .active_fir_title {
+		color: #fff
+	}
+
+	#person_temp2_4 .person_looksubcont table tr {
+		background-color: #081756;
+		border-width: 1px;
+		border-color: #566e94
+	}
+
+	#person_temp2_4 .person_looksubcont table tr td {
+		color: #fff
+	}
+
+	#person_temp2_4 .person_looksubcont table tr:first-child {
+		background-color: #10428e
+	}
+
+	#person_temp2_4 .person_looksubcont table tr:first-child td {
+		color: #36baff
+	}
+
+	#person_temp2_4 .active_net_title {
+		color: #fff
+	}
+
+	#person_temp2_5 {
+		background-color: #efbe61
+	}
+
+	#person_temp2_5 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224257-596404.jpg)
+	}
+
+	#person_temp2_5 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224315-324267.png)
+	}
+
+	#person_temp2_5 .person_looksubcont p {
+		color: #734b0e
+	}
+
+	#person_temp2_5 .active_fir_title {
+		color: #4d3210
+	}
+
+	#person_temp2_5 .person_looksubcont table tr {
+		background-color: #f5d8a0;
+		border-width: 1px;
+		border-color: #caa557
+	}
+
+	#person_temp2_5 .person_looksubcont table tr td {
+		color: #5e3f17
+	}
+
+	#person_temp2_5 .person_looksubcont table tr:first-child {
+		background-color: #f4ce81
+	}
+
+	#person_temp2_5 .person_looksubcont table tr:first-child td {
+		color: #674a18
+	}
+
+	#person_temp2_5 .active_net_title {
+		color: #100800
+	}
+
+	#person_temp2_6 {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224348-727758.jpg)
+	}
+
+	#person_temp2_6 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224412-568091.jpg)
+	}
+
+	#person_temp2_6 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224427-897867.png)
+	}
+
+	#person_temp2_6 .person_looksubcont {
+		color: #ecdbb3
+	}
+
+	#person_temp2_6 .person_looksubcont .active_fir_title {
+		color: #fff
+	}
+
+	#person_temp2_6 .person_looksubcont table tr {
+		background-color: #88050b;
+		border-width: 1px;
+		border-color: #cd7376
+	}
+
+	#person_temp2_6 .person_looksubcont table tr td {
+		color: #fff
+	}
+
+	#person_temp2_6 .person_looksubcont table tr:first-child {
+		background-color: #bc2a2f
+	}
+
+	#person_temp2_6 .person_looksubcont table tr:first-child td {
+		color: #ffcac0
+	}
+
+	#person_temp2_6 .active_net_title {
+		color: #fc0
+	}
+
+	#person_temp2_7 #person_head,#person_temp2_8 #person_head,#person_temp2_9 #person_head,#person_temp2_10 #person_head,#person_temp2_11 #person_head,#person_temp2_12 #person_head,#person_temp2_13 #person_head,#person_temp2_14 #person_head,#person_temp2_15 #person_head,#person_temp2_16 #person_head,#person_temp2_17 #person_head {
+		padding-top: 60px
+	}
+
+	#person_temp2_7 #person_foot,#person_temp2_8 #person_foot,#person_temp2_9 #person_foot,#person_temp2_10 #person_foot,#person_temp2_11 #person_foot,#person_temp2_12 #person_foot,#person_temp2_13 #person_foot,#person_temp2_14 #person_foot,#person_temp2_15 #person_foot,#person_temp2_16 #person_foot,#person_temp2_17 #person_foot {
+		height: 200px
+	}
+
+	#person_temp2_7,#person_temp2_8,#person_temp2_9,#person_temp2_10,#person_temp2_11,#person_temp2_12,#person_temp2_13,#person_temp2_14,#person_temp2_15,#person_temp2_16 {
+		color: #fff
+	}
+
+	#person_temp2_7 .person_looksubcont table tr,#person_temp2_8 .person_looksubcont table tr,#person_temp2_9 .person_looksubcont table tr,#person_temp2_10 .person_looksubcont table tr,#person_temp2_11 .person_looksubcont table tr,#person_temp2_12 .person_looksubcont table tr,#person_temp2_13 .person_looksubcont table tr,#person_temp2_14 .person_looksubcont table tr,#person_temp2_15 .person_looksubcont table tr,#person_temp2_16 .person_looksubcont table tr {
+		border-width: 1px;
+		border-color: #fff
+	}
+
+	#person_temp2_17 {
+		color: #000
+	}
+
+	#person_temp2_17 .active_fir_title {
+		color: #000
+	}
+
+	#person_temp2_17 .person_looksubcont table tr {
+		border-width: 1px;
+		border-color: #000
+	}
+
+	#person_temp2_7 {
+		background-color: #aa120d
+	}
+
+	#person_temp2_7 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_7_head.jpg)
+	}
+
+	#person_temp2_7 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_7_foot.jpg)
+	}
+
+	#person_temp2_8 {
+		background-color: #a44b07
+	}
+
+	#person_temp2_8 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_8_head.jpg)
+	}
+
+	#person_temp2_8 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_8_foot.jpg)
+	}
+
+	#person_temp2_9 {
+		background-color: #faa20c
+	}
+
+	#person_temp2_9 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_9_head.jpg)
+	}
+
+	#person_temp2_9 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_9_foot.jpg)
+	}
+
+	#person_temp2_10 {
+		background-color: #39aa1c
+	}
+
+	#person_temp2_10 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_10_head.jpg)
+	}
+
+	#person_temp2_10 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_10_foot.jpg)
+	}
+
+	#person_temp2_11 {
+		background-color: #1678ff
+	}
+
+	#person_temp2_11 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_11_head.jpg)
+	}
+
+	#person_temp2_11 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_11_foot.jpg)
+	}
+
+	#person_temp2_12 {
+		background-color: #4614ab
+	}
+
+	#person_temp2_12 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_12_head.jpg)
+	}
+
+	#person_temp2_12 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_12_foot.jpg)
+	}
+
+	#person_temp2_13 {
+		background-color: #adb2b8
+	}
+
+	#person_temp2_13 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_13_head.jpg)
+	}
+
+	#person_temp2_13 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_13_foot.jpg)
+	}
+
+	#person_temp2_14 {
+		background-color: #0c0b07
+	}
+
+	#person_temp2_14 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_14_head.jpg)
+	}
+
+	#person_temp2_14 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_14_foot.jpg)
+	}
+
+	#person_temp2_15 {
+		background-color: #27a17c
+	}
+
+	#person_temp2_15 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_15_head.jpg)
+	}
+
+	#person_temp2_15 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_15_foot.jpg)
+	}
+
+	#person_temp2_16 {
+		background-color: #866538
+	}
+
+	#person_temp2_16 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_16_head.jpg)
+	}
+
+	#person_temp2_16 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_16_foot.jpg)
+	}
+
+	#person_temp2_17 {
+		background-color: #f4e7bb
+	}
+
+	#person_temp2_17 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_17_head.jpg)
+	}
+
+	#person_temp2_17 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_17_foot.jpg)
+	}
+
+	#person_temp2_18 .person_looksubcont {
+		background-color: #fff
+	}
+
+	#person_temp2_18 {
+		color: #333
+	}
+
+	#person_temp2_18 .active_net_title,#person_temp2_18 .active_fir_title {
+		color: #000
+	}
+
+	#person_temp2_19 {
+		background-color: #00352f
+	}
+
+	#person_temp2_19 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_19_head.jpg)
+	}
+
+	#person_temp2_19 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_19_foot.jpg)
+	}
+
+	#person_temp2_19 .person_looksubcont {
+		background-color: #00352f
+	}
+
+	#person_temp2_20 {
+		background-color: #0c5f2b
+	}
+
+	#person_temp2_20 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_20_head.jpg)
+	}
+
+	#person_temp2_20 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_20_foot.jpg)
+	}
+
+	#person_temp2_20 .person_looksubcont {
+		background-color: #0c5f2b
+	}
+
+	#person_temp2_21 {
+		background-color: var(--theme-bg-color)
+	}
+
+	#person_temp2_21 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_21_head.png)
+	}
+
+	#person_temp2_21 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_21_foot.png)
+	}
+
+	#person_temp2_21 .person_looksubcont {
+		background-color: var(--theme-bg-color)
+	}
+
+	#person_temp2_22 {
+		background-color: #054146
+	}
+
+	#person_temp2_22 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_22_head.png)
+	}
+
+	#person_temp2_22 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_22_foot.png)
+	}
+
+	#person_temp2_22 .person_looksubcont {
+		background-color: #054146
+	}
+
+	#person_temp2_23 {
+		background-color: #43281C
+	}
+
+	#person_temp2_23 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_23_head.png)
+	}
+
+	#person_temp2_23 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_23_foot.png)
+	}
+
+	#person_temp2_23 .person_looksubcont {
+		background-color: #43281C
+	}
+
+	.active_fir_title {
+		color: #fff
+	}
+
+	#person_temp2_24 {
+		background-color: #013D74
+	}
+
+	#person_temp2_24 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_24_head.png)
+	}
+
+	#person_temp2_24 #person_foot {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/activeh5_temp2_24_foot.png)
+	}
+
+	#person_temp2_24 .person_looksubcont {
+		background-color: #013D74
+	}
+
+	.active_fir_title {
+		color: #fff
+	}
+
+	.person_looksubcont .active_main {
+		color: #a1a3bc
+	}
+
+	#person_temp3_3 .person_looksubcont .active_main {
+		color: #fff
+	}
+
+	#person_temp3_4 .person_looksubcont .active_main {
+		color: #734b0e
+	}
+
+	#person_temp3_5 .person_looksubcont .active_main {
+		color: #734b0e
+	}
+
+	#person_temp3_6 .person_looksubcont .active_main {
+		color: #333
+	}
+
+	#person_temp3_6 .person_looksubcont .active_fir_title {
+		color: #000
+	}
+
+	#person_temp3_6 .person_looksubcont {
+		background-color: #fff
+	}
+
+	#person_temp3_7 .person_looksubcont .active_main {
+		color: #fff
+	}
+
+	#person_temp3_7 .person_looksubcont .active_fir_title {
+		color: #fff
+	}
+
+	#person_temp3_7 .person_looksubcont {
+		background-color: #000
+	}
+
+	.active_main table td {
+		text-align: left
+	}
+
+	.active_main .active_tb_title {
+		font-size: 15px;
+		font-weight: 700
+	}
+
+	#person_temp3_1 {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224521-159272.jpg)
+	}
+
+	#person_temp3_1 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224556-173512.jpg)
+	}
+
+	#person_temp3_2 {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224627-329378.jpg)
+	}
+
+	#person_temp3_2 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224651-326281.jpg)
+	}
+
+	#person_temp3_3 {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224723-882772.jpg)
+	}
+
+	#person_temp3_3 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224744-368862.jpg)
+	}
+
+	#person_temp3_3 .active_main {
+		color: #fff
+	}
+
+	#person_temp3_3 .active_main .active_tb_title {
+		color: #e3f3ff
+	}
+
+	#person_temp3_4 {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224813-959203.jpg)
+	}
+
+	#person_temp3_4 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224831-669364.jpg)
+	}
+
+	#person_temp3_4 .active_fir_title {
+		color: #4d3210
+	}
+
+	#person_temp3_4 .active_main .active_tb_title {
+		color: #4d3210
+	}
+
+	#person_temp3_5 {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224855-644570.jpg)
+	}
+
+	#person_temp3_5 #person_head {
+		background-image: url(https://k42x0l-5059-ppp.s3.sa-east-1.amazonaws.com/siteadmin/activity/20210317224913-459300.jpg)
+	}
+
+	#person_temp3_5 .active_fir_title {
+		color: #4d3210
+	}
+
+	#person_temp3_5 .active_main .active_tb_title {
+		color: #4d3210
+	}
+}

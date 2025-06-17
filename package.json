@@ -1,0 +1,36 @@
+{
+  "name": "uniapp-project",
+  "version": "1.0.0",
+  "description": "A UniApp project",
+  "main": "main.js",
+  "scripts": {
+    "dev:%PLATFORM%": "cross-env NODE_ENV=development UNI_PLATFORM=%PLATFORM% vue-cli-service uni-build --watch",
+    "build:%PLATFORM%": "cross-env NODE_ENV=production UNI_PLATFORM=%PLATFORM% vue-cli-service uni-build",
+    "serve": "npm run dev:h5",
+    "build": "npm run build:h5",
+    "build:app-plus": "vue-cli-service uni-build --platform app-plus && node renameApk.js"
+  },
+  "dependencies": {
+    "uview-ui": "^2.0.38",
+    "vue": "^2.6.14",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@dcloudio/types": "*",
+    "@dcloudio/uni-app-plus": "2.0.2-4060620250520001",
+    "@dcloudio/uni-cli-shared": "2.0.2-4060620250520001",
+    "@dcloudio/uni-h5": "2.0.2-4060620250520001",
+    "@dcloudio/uni-mp-vue": "2.0.2-4060620250520001",
+    "@dcloudio/uni-template-compiler": "2.0.2-4060620250520001",
+    "@dcloudio/vue-cli-plugin-uni": "2.0.2-4060620250520001",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-plugin-import": "^1.13.5",
+    "cross-env": "^7.0.3",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "browserslist": [
+    "Android >= 4",
+    "ios >= 9"
+  ]
+}
