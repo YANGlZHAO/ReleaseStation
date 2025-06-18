@@ -142,6 +142,7 @@
 	.nav-bar {
 		padding:0 1rem;
 		display: flex;
+		justify-content: center;
 		flex-direction: column;
 		height: 4rem;
 		background: url('@/static/nav_bg.png') no-repeat center center;
@@ -155,7 +156,7 @@
 	}
 
 	.container-large {
-		padding: 0 1rem;
+		padding: 0 1rem 0.5rem 1rem;
 		display: flex;
 		flex-flow: row nowrap;
 		justify-content: space-between;
@@ -205,8 +206,8 @@
 	}
 
 	.top-nav .logo {
-		width: 3rem;
-		height: 3rem;
+		width: 2rem;
+		height: 2rem;
 		display: block;
 		background: url('@/static/APP/img_logo.png') no-repeat center;
 		background-size: 100%;
@@ -214,7 +215,7 @@
 
 	.title {
 		color: #fff;
-		font-size: 1rem;
+		font-size: 0.8rem;
 	}
 
 	.side-nav {

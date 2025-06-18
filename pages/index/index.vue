@@ -442,43 +442,12 @@
 	}
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 	.page {
 		display: flex;
 		flex-direction: column;
 		background-color: #000;
 		margin-top: 4rem;
-	}
-
-	.content {}
-
-	.footer {
-		width: 100%;
-		background-color: #fdbe00;
-		padding: 0.5rem 0;
-	}
-
-	.disclaimer {
-		.link-list {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			align-items: center;
-		}
-
-		.link-item {
-			color: #fff;
-			border-right: 1rpx solid #fff;
-			font-family: 'AvenirMedium', Arial, sans-serif;
-			font-size: 14rpx;
-			padding: 0 18rpx;
-			line-height: 28rpx;
-			cursor: pointer;
-			user-select: none;
-
-			&:last-child {
-				border-right: none;
-			}
-		}
+		height: 100vh;
 	}
 </style>

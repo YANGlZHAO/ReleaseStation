@@ -23,8 +23,7 @@
 
 <style scoped>
 	.home-page {
-		height: calc(100vh - 5.5rem);
-		padding: 20px;
+		height: calc(100vh - 2.2rem);
 		background-color: aliceblue;
 	}
 </style>

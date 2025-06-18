@@ -148,17 +148,17 @@
 	.tab-bar {
 		display: flex;
 		position: relative;
-		height: 50px;
+		height: 2.5rem;
 		background-color: #fff;
 		border-top: 1px solid #eee;
-		box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.05);
+		box-shadow: 0 -1px 0.2rem rgba(0, 0, 0, 0.05);
 	}
 
 	.tab-item {
 		flex: 1;
 		text-align: center;
-		line-height: 50px;
-		font-size: 14px;
+		line-height: 2.5rem;
+		font-size: 0.8rem;
 		color: #666;
 		position: relative;
 	}
@@ -171,7 +171,7 @@
 	.tab-underline {
 		position: absolute;
 		bottom: 0;
-		height: 2px;
+		height: 0.1rem;
 		background-color: #409eff;
 		transition: all 0.3s ease;
 		will-change: transform, width;

@@ -159,8 +159,8 @@
 
 	.back-to-top {
 		position: fixed;
-		right: 40px;
-		bottom: 40px;
+		right: 2rem;
+		bottom: 2rem;
 		width: 2rem;
 		height: 2rem;
 		background-color: beige;
@@ -170,7 +170,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 20px;
+		font-size: 1rem;
 		z-index: 100;
 		
 	}
@@ -180,7 +180,7 @@
 	}
 
 	.company-title {
-		font-size: 16px;
+		font-size: 1rem;
 		font-weight: bold;
 		color: #ffffff;
 		padding: 0 1rem;
@@ -199,10 +199,10 @@
 	.game-card {
 		position: relative;
 		background-color: #1f1f1f;
-		border-radius: 12px;
+		border-radius: 0.6rem;
 		overflow: hidden;
 		text-align: center;
-		padding: 10px 8px;
+		padding: 0.5rem;
 		transition: transform 0.2s;
 		display: flex;
 		flex-direction: column;
@@ -217,52 +217,26 @@
 	}
 
 	.game-image {
-		width: 100%;
-		height: 100px;
-		border-radius: 8px;
+		width: calc(100% - 0.2rem);
+		border-radius: 0.4rem;
 	}
 
 	.game-title {
-		margin-top: 8px;
+		height: 2rem;
+		margin-top: 0.4rem;
 		color: #fff;
-		font-size: 13px;
+		font-size: 0.8rem;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		width: 100%;
 	}
 
 	.star-icon {
 		position: absolute;
-		top: 6px;
-		right: 6px;
-		width: 20px;
-		height: 20px;
+		top: 0.3rem;
+		right: 0.3rem;
+		width: 1.5rem;
+		height: 1.5rem;
 		z-index: 10;
-	}
-	.footer {
-		width: 100%;
-		background-color: transparent;
-		padding: 0.5rem 0;
-	}
-	.link-list {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		align-items: center;
-	}
-	.link-item {
-		color: #fff;
-		border-right: 1rpx solid #fff;
-		font-family: 'AvenirMedium', Arial, sans-serif;
-		font-size: 14rpx;
-		padding: 0 18rpx;
-		line-height: 28rpx;
-		cursor: pointer;
-		user-select: none;
-		
-		&:last-child {
-			border-right: none;
-		}
 	}
 </style>
