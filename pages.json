@@ -56,6 +56,13 @@
 					}
 				}
 			}
+		},
+		{
+			"path" : "component/MyCarousel",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
 		}
 	],
 	"globalStyle": {

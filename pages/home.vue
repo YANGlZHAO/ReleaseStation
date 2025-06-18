@@ -1,8 +1,7 @@
 <template>
 	<div class="bottom-tab-swiper">
-		<!-- 页面部分 -->
 		<swiper class="swiper-container" :current="currentIndex" @change="onSwiperChange" circular="false"
-			duration="300">
+			duration="300" :touchable="false">
 			<swiper-item v-for="(page, index) in pages" :key="index">
 				<view class="page-scroll-wrapper">
 					<HomePage v-if="page.name === 'HomePage'" ref="homePageRef" :key="'home-' + index" />
@@ -11,15 +10,11 @@
 				</view>
 			</swiper-item>
 		</swiper>
-
-		<!-- 底部 TabBar -->
 		<div class="tab-bar" ref="tabBar">
 			<div class="tab-item" v-for="(page, index) in pages" :key="index"
 				:class="{ active: currentIndex === index }" @click="goToPage(index)" ref="tabItems">
 				{{ page.title }}
 			</div>
-
-			<!-- 滑动横线条 -->
 			<div class="tab-underline" :style="underlineStyle"></div>
 		</div>
 	</div>
@@ -75,15 +70,14 @@
 				this.currentIndex = index
 				this.scrollTabBarToActive()
 				this.updateUnderline()
-				// notifyCurrentPage 通过 watcher 触发
 			},
 			onSwiperChange(e) {
-			  this.currentIndex = e.detail.current;
-			  setTimeout(() => { // 确保 swiper 动画完成
-			    this.scrollTabBarToActive();
-			    this.updateUnderline();
-			    this.notifyCurrentPage();
-			  }, 350); // 略大于 swiper 的 duration（300ms）
+				this.currentIndex = e.detail.current;
+				setTimeout(() => { // 确保 swiper 动画完成
+					this.scrollTabBarToActive();
+					this.updateUnderline();
+					this.notifyCurrentPage();
+				}, 350); // 略大于 swiper 的 duration（300ms）
 			},
 			scrollTabBarToActive() {
 				this.$nextTick(() => {
@@ -126,23 +120,22 @@
 			notifyCurrentPage() {
 				this.$nextTick(() => {
 					const comp = this.getCurrentPageComponent()
-					console.log("Current component ref:", comp)
 					if (comp && typeof comp.open === 'function') {
 						comp.open()
 					} else {
-						console.error("Component or open method not found:", comp)
+						console.error("error comp:", comp)
 					}
 				})
 			},
 			getCurrentPageComponent() {
-			  const currentPageName = this.pages[this.currentIndex].name;
-			  const refMap = {
-			    HomePage: 'homePageRef',
-			    UserPage: 'userPageRef',
-			    ProfilePage: 'profilePageRef'
-			  };
-			  const refName = refMap[currentPageName];
-			  return this.$refs[refName]?.[0] || this.$refs[refName]; // 兼容数组/对象
+				const currentPageName = this.pages[this.currentIndex].name;
+				const refMap = {
+					HomePage: 'homePageRef',
+					UserPage: 'userPageRef',
+					ProfilePage: 'profilePageRef'
+				};
+				const refName = refMap[currentPageName];
+				return this.$refs[refName]?.[0] || this.$refs[refName]; // 兼容数组/对象
 			}
 		}
 	}

@@ -5,7 +5,7 @@
 			<div class="top-nav-inner">
 				<div class="container-large">
 					<div class="d-flex">
-						<a class="logo" href="/" aria-label="Latest Casino Bonuses" @click.prevent="handleClick"></a>
+						<a class="logo" href="/" @click.prevent="handleClick"></a>
 					</div>
 
 					<div class="top-right">
@@ -205,10 +205,10 @@
 	}
 
 	.top-nav .logo {
-		width: 4rem;
-		height: 4rem;
+		width: 3rem;
+		height: 3rem;
 		display: block;
-		background: url('@/static/titleLogo.png') no-repeat center;
+		background: url('@/static/APP/photo_2025-06-18_00-36-39.png') no-repeat center;
 		background-size: 100%;
 	}
 

@@ -1,17 +1,8 @@
 <template>
 	<view class="page">
 		<NavBarVue></NavBarVue>
+		<MyCarousel :images="imageList" />
 		<popularGameVue :list="data" />
-		<!-- <view class="footer">
-	      <view class="disclaimer">
-	      	<view class="link-list">
-	      		<view v-for="(link, index) in links" :key="index" class="link-item" @click="openLink(link.url)">
-	      			{{ link.text }}
-	      		</view>
-	      	</view>
-	      </view>
-	    </view> -->
-		<!-- <FloatButtonVue email="support@365bets.top" /> -->
 	</view>
 </template>
 
@@ -21,16 +12,22 @@
 	import popularGameVue from '@/component/popularGame.vue'
 	import FloatButtonVue from '@/component/FloatButton.vue'
 	import NavBarVue from '@/component/NavBar.vue'
-
+	import MyCarousel from "@/component/MyCarousel.vue";
 	export default {
 		name: "HomePage",
 		components: {
 			popularGameVue,
 			FloatButtonVue,
-			NavBarVue
+			NavBarVue,
+			MyCarousel
 		},
 		data() {
 			return {
+				imageList: [
+					"/static/img_Carousel.jpg",
+					"/static/img_Carousel.jpg",
+					"/static/img_Carousel.jpg",
+				],
 				data: [{
 					conpany: 'TY',
 					gameList: [{
@@ -453,8 +450,7 @@
 		margin-top: 4rem;
 	}
 
-	.content {
-	}
+	.content {}
 
 	.footer {
 		width: 100%;
