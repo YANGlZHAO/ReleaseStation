@@ -1,7 +1,7 @@
 <template>
 	<div class="home-page">
-		<h2>首页内容</h2>
-		<p>{{ message }}</p>
+		<!-- <h2>首页内容</h2>
+		<p>{{ message }}</p> -->
 	</div>
 </template>
 
@@ -15,8 +15,6 @@
 		},
 		methods: {
 			open() {
-				// 这里写你切换到该页面时想做的操作，比如刷新数据，启动动画等
-				console.log('HomePage open 被调用了')
 				this.message = '首页已刷新时间: ' + new Date().toLocaleTimeString()
 			},
 		},

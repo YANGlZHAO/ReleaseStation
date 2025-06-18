@@ -35,7 +35,7 @@
 		display: flex;
 		flex-direction: column;
 		background-color: #000;
-		height: calc(100vh - 5.5rem);
+		height: calc(100vh - 8rem);
 	}
 
 	.content {

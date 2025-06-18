@@ -165,7 +165,7 @@
 <style scoped>
 	.game-wrapper {
 		background-color: #000;
-		height: calc(100vh - 8rem);
+		/* height: calc(100vh - 8rem); */
 	}
 
 	.back-to-top {
