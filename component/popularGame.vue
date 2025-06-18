@@ -12,16 +12,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- <view class="footer" v-if="showBackToTop">
-			<view class="disclaimer">
-				<view class="link-list">
-					<view v-for="(link, index) in links" :key="index" class="link-item" @click="openLink(link.url)">
-						{{ link.text }}
-					</view>
-				</view>
-			</view>
-		</view> -->
-		<!-- 添加返回顶部按钮（可选） -->
 		<div class="back-to-top" v-if="showBackToTop" @click="scrollToTop">
 			↑
 		</div>
@@ -119,7 +109,6 @@
 					}
 				}
 				uni.setStorageSync(STARRED_LIST_KEY, starredList)
-				console.log("starredList----", starredList)
 			},
 			loadStarStatus() {
 				const starredList = uni.getStorageSync(STARRED_LIST_KEY) || []
@@ -219,7 +208,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-between;
-		height: 160px;
+		height: 10rem;
 		box-sizing: border-box;
 	}
 
