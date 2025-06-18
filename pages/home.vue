@@ -1,15 +1,20 @@
 <template>
 	<div class="bottom-tab-swiper">
+		<!-- 使用自定义滑动控制的swiper -->
 		<swiper class="swiper-container" :current="currentIndex" @change="onSwiperChange" circular="false"
-			duration="300" :touchable="false">
+			duration="300" :disable-touch="true" @touchstart="handleTouchStart" @touchmove="handleTouchMove"
+			@touchend="handleTouchEnd">
 			<swiper-item v-for="(page, index) in pages" :key="index">
-				<view class="page-scroll-wrapper">
-					<HomePage v-if="page.name === 'HomePage'" ref="homePageRef" :key="'home-' + index" />
-					<UserPage v-if="page.name === 'UserPage'" ref="userPageRef" :key="'home-' + index" />
-					<ProfilePage v-if="page.name === 'ProfilePage'" ref="profilePageRef" :key="'home-' + index" />
-				</view>
+				<scroll-view class="page-scroll-wrapper" scroll-y :scroll-with-animation="true"
+					@touchstart="handleScrollStart" @touchmove="handleScrollMove">
+					<HomePage v-if="page.name === 'HomePage'" ref="homePageRef" @touchmove.native.stop />
+					<UserPage v-if="page.name === 'UserPage'" ref="userPageRef" @touchmove.native.stop />
+					<ProfilePage v-if="page.name === 'ProfilePage'" ref="profilePageRef" @touchmove.native.stop />
+				</scroll-view>
 			</swiper-item>
 		</swiper>
+
+		<!-- 底部 TabBar -->
 		<div class="tab-bar" ref="tabBar">
 			<div class="tab-item" v-for="(page, index) in pages" :key="index"
 				:class="{ active: currentIndex === index }" @click="goToPage(index)" ref="tabItems">
@@ -51,7 +56,10 @@
 				underlineStyle: {
 					width: '0px',
 					transform: 'translateX(0)'
-				}
+				},
+				touchStartX: 0,
+				touchStartY: 0,
+				isVerticalScroll: false
 			}
 		},
 		watch: {
@@ -66,19 +74,60 @@
 			this.notifyCurrentPage()
 		},
 		methods: {
+			// 禁止父级swiper的所有触摸事件
+			handleTouchStart(e) {
+				e.preventDefault()
+				return false
+			},
+			handleTouchMove(e) {
+				e.preventDefault()
+				return false
+			},
+			handleTouchEnd(e) {
+				e.preventDefault()
+				return false
+			},
+
+			// 处理子页面滚动
+			handleScrollStart(e) {
+				this.touchStartX = e.touches[0].pageX
+				this.touchStartY = e.touches[0].pageY
+				this.isVerticalScroll = false
+			},
+
+			handleScrollMove(e) {
+				if (this.isVerticalScroll) return
+
+				const touchX = e.touches[0].pageX
+				const touchY = e.touches[0].pageY
+				const dx = Math.abs(touchX - this.touchStartX)
+				const dy = Math.abs(touchY - this.touchStartY)
+
+				// 判断滑动方向
+				if (dy > dx && dy > 5) {
+					this.isVerticalScroll = true // 垂直滚动
+				} else if (dx > dy && dx > 5) {
+					e.preventDefault() // 阻止水平滑动
+					return false
+				}
+			},
+
+			// 原有方法保持不变
 			goToPage(index) {
 				this.currentIndex = index
 				this.scrollTabBarToActive()
 				this.updateUnderline()
 			},
+
 			onSwiperChange(e) {
-				this.currentIndex = e.detail.current;
-				setTimeout(() => { // 确保 swiper 动画完成
-					this.scrollTabBarToActive();
-					this.updateUnderline();
-					this.notifyCurrentPage();
-				}, 350); // 略大于 swiper 的 duration（300ms）
+				this.currentIndex = e.detail.current
+				setTimeout(() => {
+					this.scrollTabBarToActive()
+					this.updateUnderline()
+					this.notifyCurrentPage()
+				}, 350)
 			},
+
 			scrollTabBarToActive() {
 				this.$nextTick(() => {
 					const tabBar = this.$refs.tabBar
@@ -101,6 +150,7 @@
 					}
 				})
 			},
+
 			updateUnderline() {
 				this.$nextTick(() => {
 					const tabItems = this.$refs.tabItems
@@ -117,25 +167,25 @@
 					}
 				})
 			},
+
 			notifyCurrentPage() {
 				this.$nextTick(() => {
 					const comp = this.getCurrentPageComponent()
 					if (comp && typeof comp.open === 'function') {
 						comp.open()
-					} else {
-						console.error("error comp:", comp)
 					}
 				})
 			},
+
 			getCurrentPageComponent() {
-				const currentPageName = this.pages[this.currentIndex].name;
+				const currentPageName = this.pages[this.currentIndex].name
 				const refMap = {
 					HomePage: 'homePageRef',
 					UserPage: 'userPageRef',
 					ProfilePage: 'profilePageRef'
-				};
-				const refName = refMap[currentPageName];
-				return this.$refs[refName]?.[0] || this.$refs[refName]; // 兼容数组/对象
+				}
+				const refName = refMap[currentPageName]
+				return this.$refs[refName]?.[0] || this.$refs[refName]
 			}
 		}
 	}
@@ -153,17 +203,18 @@
 	.swiper-container {
 		flex: 1;
 		height: 100%;
+		touch-action: none;
+		/* 完全禁用默认触摸行为 */
 	}
 
 	.page-scroll-wrapper {
 		height: 100%;
+		width: 100%;
 		overflow-y: auto;
 		-webkit-overflow-scrolling: touch;
-	}
-
-	swiper,
-	swiper-item {
-		height: 100%;
+		/* iOS弹性滚动 */
+		overflow-x: hidden;
+		box-sizing: border-box;
 	}
 
 	.tab-bar {
@@ -177,10 +228,17 @@
 		box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.05);
 		z-index: 999;
 		position: relative;
+		overflow-x: auto;
+		scrollbar-width: none;
+	}
+
+	.tab-bar::-webkit-scrollbar {
+		display: none;
 	}
 
 	.tab-item {
 		flex: 1;
+		min-width: 80px;
 		text-align: center;
 		line-height: 50px;
 		font-size: 14px;
@@ -188,6 +246,7 @@
 		font-weight: 500;
 		position: relative;
 		transition: color 0.3s;
+		white-space: nowrap;
 	}
 
 	.tab-item.active {
@@ -200,6 +259,7 @@
 		bottom: 0;
 		height: 2px;
 		background-color: #409eff;
-		transition: transform 0.3s ease, width 0.3s ease;
+		transition: all 0.3s ease;
+		will-change: transform, width;
 	}
 </style>

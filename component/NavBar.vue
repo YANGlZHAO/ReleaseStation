@@ -208,7 +208,7 @@
 		width: 3rem;
 		height: 3rem;
 		display: block;
-		background: url('@/static/APP/photo_2025-06-18_00-36-39.png') no-repeat center;
+		background: url('@/static/APP/img_logo.png') no-repeat center;
 		background-size: 100%;
 	}
 
