@@ -163,7 +163,7 @@
 							url: 'https://pgvip777.bet'
 						}
 					],
-				},{
+				}, {
 					conpany: 'TY',
 					gameList: [{
 							name: 'sailormoonty',
@@ -529,28 +529,7 @@
 							url: 'https://leitegame.com'
 						}
 					],
-				}],
-				links: [{
-						text: 'Disclaimer',
-						url: 'https://leitegame.com'
-					},
-					{
-						text: 'Privacy',
-						url: 'https://leitegame.com'
-					},
-					{
-						text: 'Gambling Help',
-						url: 'https://leitegame.com'
-					},
-					{
-						text: 'Site Map',
-						url: 'https://leitegame.com'
-					},
-					{
-						text: 'Research',
-						url: 'https://leitegame.com'
-					}
-				]
+				}]
 			}
 		},
 		mounted() {

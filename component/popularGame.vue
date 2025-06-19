@@ -151,7 +151,7 @@
 		justify-content: center;
 		font-size: 1rem;
 		z-index: 100;
-		
+
 	}
 
 	.game-container {
@@ -168,9 +168,9 @@
 
 	.game-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
-		gap: 1rem;
-		padding: 1rem;
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+		gap: 5px;
+		padding: 10px;
 		background-color: #121212;
 		box-sizing: border-box;
 	}
@@ -187,7 +187,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-between;
-		height: 10rem;
+		height: 200px;
 		box-sizing: border-box;
 	}
 
@@ -204,7 +204,7 @@
 		height: 2rem;
 		margin-top: 0.4rem;
 		color: #fff;
-		font-size: 0.8rem;
+		font-size: 16px;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -212,10 +212,10 @@
 
 	.star-icon {
 		position: absolute;
-		top: 0.3rem;
-		right: 0.3rem;
-		width: 1.5rem;
-		height: 1.5rem;
+		top: 3px;
+		right: 3px;
+		width: 30px;
+		height: 30px;
 		z-index: 10;
 	}
 </style>
