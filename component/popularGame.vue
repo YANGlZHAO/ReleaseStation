@@ -33,28 +33,7 @@
 			return {
 				localList: [],
 				scrollTop: 0,
-				showBackToTop: false,
-				links: [{
-						text: 'Disclaimer',
-						url: 'https://leitegame.com'
-					},
-					{
-						text: 'Privacy',
-						url: 'https://leitegame.com'
-					},
-					{
-						text: 'Gambling Help',
-						url: 'https://leitegame.com'
-					},
-					{
-						text: 'Site Map',
-						url: 'https://leitegame.com'
-					},
-					{
-						text: 'Research',
-						url: 'https://leitegame.com'
-					}
-				]
+				showBackToTop: false
 			}
 		},
 		watch: {

@@ -29,6 +29,141 @@
 					"/static/img_Carousel.jpg",
 				],
 				data: [{
+					conpany: 'FC',
+					gameList: [{
+							name: 'bbrcc',
+							image: '/static/APP/1.png',
+							isStarred: false,
+							url: 'https://bbrcc.net'
+						},
+						{
+							name: 'betcc',
+							image: '/static/APP/2.png',
+							isStarred: false,
+							url: 'https://www.betcc.win'
+						},
+						{
+							name: 'brlccc',
+							image: '/static/APP/3.png',
+							isStarred: false,
+							url: 'https://brlccc.com'
+						},
+						{
+							name: 'diamondbet777',
+							image: '/static/APP/4.png',
+							isStarred: false,
+							url: 'https://diamondbet777.net'
+						},
+						{
+							name: 'brncc',
+							image: '/static/APP/5.png',
+							isStarred: false,
+							url: 'https://brncc.com'
+						},
+						{
+							name: 'brtccc',
+							image: '/static/APP/6.png',
+							isStarred: false,
+							url: 'https://brtccc.com'
+						},
+						{
+							name: 'bmwccc',
+							image: '/static/APP/7.png',
+							isStarred: false,
+							url: 'https://bmwccc.com'
+						},
+						{
+							name: 'closet',
+							image: '/static/APP/8.png',
+							isStarred: false,
+							url: 'https://closet.bet'
+						},
+						{
+							name: 'vsopccc',
+							image: '/static/APP/9.png',
+							isStarred: false,
+							url: 'https://vsopccc.com'
+						},
+						{
+							name: ' bmpg',
+							image: '/static/APP/10.png',
+							isStarred: false,
+							url: 'https://bmpg.bet'
+						},
+						{
+							name: 'mochila',
+							image: '/static/APP/11.png',
+							isStarred: false,
+							url: 'https://mochila.bet'
+						},
+						{
+							name: 'motocicleta',
+							image: '/static/APP/12.png',
+							isStarred: false,
+							url: 'https://motocicleta.bet'
+						},
+						{
+							name: 'watchccc',
+							image: '/static/APP/13.png',
+							isStarred: false,
+							url: 'https://watchccc.bet'
+						},
+						{
+							name: 'furiouscc',
+							image: '/static/APP/14.png',
+							isStarred: false,
+							url: 'https://furiouscc.bet'
+						},
+						{
+							name: 'cocacolacc',
+							image: '/static/APP/15.png',
+							isStarred: false,
+							url: 'https://cocacolacc.bet'
+						},
+						{
+							name: '8k8k',
+							image: '/static/APP/16.png',
+							isStarred: false,
+							url: 'https://8k8k.bet'
+						},
+						{
+							name: 'touro777',
+							image: '/static/APP/17.png',
+							isStarred: false,
+							url: 'https://touro777.bet'
+						},
+						{
+							name: 'escapeplan',
+							image: '/static/APP/18.png',
+							isStarred: false,
+							url: 'https://escapeplan.bet'
+						},
+						{
+							name: 'iphone17',
+							image: '/static/APP/19.png',
+							isStarred: false,
+							url: 'https://iphone17.bet'
+						},
+						{
+							name: 'kkuupg',
+							image: '/static/APP/21.png',
+							isStarred: false,
+							url: 'https://kkuupg.bet'
+						},
+						{
+							name: 'tiktok777',
+							image: '/static/APP/22.png',
+							isStarred: false,
+							url: 'https://tiktok777.bet'
+						},
+						{
+							name: 'pgvip777',
+							image: '/static/APP/23.png',
+							isStarred: false,
+							url: 'https://pgvip777.bet'
+						}
+					],
+				},{
 					conpany: 'TY',
 					gameList: [{
 							name: 'sailormoonty',
