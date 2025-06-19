@@ -13,9 +13,9 @@
         "nvueStyleCompiler" : "uni-app",
         "compilerVersion" : 3,
         "splashscreen" : {
-            "alwaysShowBeforeRender" : true,
+            "alwaysShowBeforeRender" : false,
             "waiting" : false,
-            "autoclose" : true,
+            "autoclose" : false, // 不自动关闭，交给代码控制
             "delay" : 0
         },
         "modules" : {},
