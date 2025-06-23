@@ -29,7 +29,16 @@
 					"/static/img_Carousel.jpg",
 				],
 				data: [{
-					conpany: 'FC',
+					conpany: {
+						name: 'FC',
+						imageList: [
+							"../static/svg/telegram.svg",
+							"../static/svg/telegram-flat.svg",
+							"../static/svg/whatsapp.svg",
+							"../static/svg/whatsapp-flat.svg",
+							"../static/svg/instagram.svg"
+						]
+					},
 					gameList: [{
 							name: 'bbrcc',
 							image: '/static/APP/1.png',
@@ -164,7 +173,11 @@
 						}
 					],
 				}, {
-					conpany: 'TY',
+					conpany: {
+						name: 'TY',
+						imageList: [
+						]
+					},
 					gameList: [{
 							name: 'sailormoonty',
 							image: '/static/all-casinos.png',
@@ -257,7 +270,11 @@
 						}
 					],
 				}, {
-					conpany: 'PU',
+					conpany: {
+						name: 'PU',
+						imageList: [
+						]
+					},
 					gameList: [{
 							name: '5558slot',
 							image: '/static/all-casinos.png',
@@ -320,7 +337,11 @@
 						}
 					],
 				}, {
-					conpany: 'FP',
+					conpany: {
+						name: 'FP',
+						imageList: [
+						]
+					},
 					gameList: [{
 							name: 'vasopg',
 							image: '/static/all-casinos.png',
@@ -425,7 +446,11 @@
 						}
 					],
 				}, {
-					conpany: 'KF',
+					conpany: {
+						name: 'KF',
+						imageList: [
+						]
+					},
 					gameList: [{
 							name: '4qwin',
 							image: '/static/all-casinos.png',

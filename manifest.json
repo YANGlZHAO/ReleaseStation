@@ -15,7 +15,7 @@
         "splashscreen" : {
             "alwaysShowBeforeRender" : false,
             "waiting" : false,
-            "autoclose" : false, // 不自动关闭，交给代码控制
+            "autoclose" : false,
             "delay" : 0
         },
         "modules" : {},
