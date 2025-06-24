@@ -683,23 +683,66 @@ var render = function () {
                 staticClass: _vm._$g("2-" + $30, "sc"),
                 attrs: { _i: "2-" + $30 },
               },
-              [_vm._v(_vm._$g("2-" + $30, "t0-0"))]
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: _vm._$g("3-" + $30, "sc"),
+                    attrs: { _i: "3-" + $30 },
+                  },
+                  [_vm._v(_vm._$g("3-" + $30, "t0-0"))]
+                ),
+                _vm._l(
+                  _vm._$g(4 + "-" + $30, "f"),
+                  function (item, i, $21, $31) {
+                    return _vm._$g("4-" + $30 + "-" + $31, "i")
+                      ? _c(
+                          "div",
+                          {
+                            key: item,
+                            staticClass: _vm._$g("4-" + $30 + "-" + $31, "sc"),
+                            attrs: { _i: "4-" + $30 + "-" + $31 },
+                          },
+                          [
+                            _c("v-uni-image", {
+                              staticClass: _vm._$g(
+                                "5-" + $30 + "-" + $31,
+                                "sc"
+                              ),
+                              attrs: {
+                                src: _vm._$g("5-" + $30 + "-" + $31, "a-src"),
+                                _i: "5-" + $30 + "-" + $31,
+                              },
+                              on: {
+                                click: function ($event) {
+                                  return _vm.$handleViewEvent($event)
+                                },
+                              },
+                            }),
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  }
+                ),
+              ],
+              2
             ),
             _c(
               "div",
               {
-                staticClass: _vm._$g("3-" + $30, "sc"),
-                attrs: { _i: "3-" + $30 },
+                staticClass: _vm._$g("6-" + $30, "sc"),
+                attrs: { _i: "6-" + $30 },
               },
               _vm._l(
-                _vm._$g(4 + "-" + $30, "f"),
-                function (game, index, $21, $31) {
+                _vm._$g(7 + "-" + $30, "f"),
+                function (game, index, $22, $32) {
                   return _c(
                     "div",
                     {
                       key: game,
-                      staticClass: _vm._$g("4-" + $30 + "-" + $31, "sc"),
-                      attrs: { _i: "4-" + $30 + "-" + $31 },
+                      staticClass: _vm._$g("7-" + $30 + "-" + $32, "sc"),
+                      attrs: { _i: "7-" + $30 + "-" + $32 },
                       on: {
                         click: function ($event) {
                           return _vm.$handleViewEvent($event)
@@ -708,27 +751,27 @@ var render = function () {
                     },
                     [
                       _c("v-uni-image", {
-                        staticClass: _vm._$g("5-" + $30 + "-" + $31, "sc"),
+                        staticClass: _vm._$g("8-" + $30 + "-" + $32, "sc"),
                         attrs: {
-                          src: _vm._$g("5-" + $30 + "-" + $31, "a-src"),
-                          mode: "aspectFill",
-                          _i: "5-" + $30 + "-" + $31,
+                          src: _vm._$g("8-" + $30 + "-" + $32, "a-src"),
+                          mode: "aspectFit",
+                          _i: "8-" + $30 + "-" + $32,
                         },
                       }),
                       _c(
                         "div",
                         {
-                          staticClass: _vm._$g("6-" + $30 + "-" + $31, "sc"),
-                          attrs: { _i: "6-" + $30 + "-" + $31 },
+                          staticClass: _vm._$g("9-" + $30 + "-" + $32, "sc"),
+                          attrs: { _i: "9-" + $30 + "-" + $32 },
                         },
-                        [_vm._v(_vm._$g("6-" + $30 + "-" + $31, "t0-0"))]
+                        [_vm._v(_vm._$g("9-" + $30 + "-" + $32, "t0-0"))]
                       ),
                       _c("v-uni-image", {
-                        staticClass: _vm._$g("7-" + $30 + "-" + $31, "sc"),
+                        staticClass: _vm._$g("10-" + $30 + "-" + $32, "sc"),
                         attrs: {
-                          src: _vm._$g("7-" + $30 + "-" + $31, "a-src"),
+                          src: _vm._$g("10-" + $30 + "-" + $32, "a-src"),
                           mode: "widthFix",
-                          _i: "7-" + $30 + "-" + $31,
+                          _i: "10-" + $30 + "-" + $32,
                         },
                         on: {
                           click: function ($event) {
@@ -747,12 +790,12 @@ var render = function () {
           1
         )
       }),
-      _vm._$g(8, "i")
+      _vm._$g(11, "i")
         ? _c(
             "div",
             {
-              staticClass: _vm._$g(8, "sc"),
-              attrs: { _i: 8 },
+              staticClass: _vm._$g(11, "sc"),
+              attrs: { _i: 11 },
               on: {
                 click: function ($event) {
                   return _vm.$handleViewEvent($event)
@@ -862,7 +905,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../hbuilderx/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 21);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.game-wrapper[data-v-5747d18a] {\n\tbackground-color: #000;\n\t/* height: calc(100vh - 8rem); */\n}\n.back-to-top[data-v-5747d18a] {\n\tposition: fixed;\n\tright: 2rem;\n\tbottom: 2rem;\n\twidth: 2rem;\n\theight: 2rem;\n\tbackground-color: beige;\n\tcolor: #000;\n\tfont-weight: bold;\n\tborder-radius: 50%;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tfont-size: 1rem;\n\tz-index: 100;\n}\n.game-container[data-v-5747d18a] {\n\tbackground-color: #000;\n}\n.company-title[data-v-5747d18a] {\n\tfont-size: 1rem;\n\tfont-weight: bold;\n\tcolor: #ffffff;\n\tpadding: 0 1rem;\n\tmargin-bottom: 0.5rem;\n}\n.game-grid[data-v-5747d18a] {\n\tdisplay: grid;\n\tgrid-template-columns: repeat(auto-fill, minmax(150px, 1fr));\n\tgap: 5px;\n\tpadding: 10px;\n\tbackground-color: #121212;\n\tbox-sizing: border-box;\n}\n.game-card[data-v-5747d18a] {\n\tposition: relative;\n\tbackground-color: #1f1f1f;\n\tborder-radius: 0.6rem;\n\toverflow: hidden;\n\ttext-align: center;\n\tpadding: 0.5rem;\n\ttransition: -webkit-transform 0.2s;\n\ttransition: transform 0.2s;\n\ttransition: transform 0.2s, -webkit-transform 0.2s;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: space-between;\n\theight: 200px;\n\tbox-sizing: border-box;\n}\n.game-card[data-v-5747d18a]:active {\n\t-webkit-transform: scale(0.98);\n\t        transform: scale(0.98);\n}\n.game-image[data-v-5747d18a] {\n\twidth: calc(100% - 0.2rem);\n\tborder-radius: 0.4rem;\n}\n.game-title[data-v-5747d18a] {\n\theight: 2rem;\n\tmargin-top: 0.4rem;\n\tcolor: #fff;\n\tfont-size: 16px;\n\twhite-space: nowrap;\n\toverflow: hidden;\n\ttext-overflow: ellipsis;\n}\n.star-icon[data-v-5747d18a] {\n\tposition: absolute;\n\ttop: 3px;\n\tright: 3px;\n\twidth: 30px;\n\theight: 30px;\n\tz-index: 10;\n}\n", ""]);
+exports.push([module.i, "\n.game-wrapper[data-v-5747d18a] {\n\tbackground-color: #000;\n\t/* height: calc(100vh - 4rem); */\n}\n.back-to-top[data-v-5747d18a] {\n\tposition: fixed;\n\tright: 2rem;\n\tbottom: 2rem;\n\twidth: 2rem;\n\theight: 2rem;\n\tbackground-color: beige;\n\tcolor: #000;\n\tfont-weight: bold;\n\tborder-radius: 50%;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tfont-size: 1rem;\n\tz-index: 100;\n}\n.companyBox[data-v-5747d18a] {\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tmargin-bottom: 0.3rem;\n}\n.game-container[data-v-5747d18a] {\n\tbackground-color: #000;\n\tmargin-bottom: 0.5rem;\n}\n.company-title[data-v-5747d18a] {\n\tline-height: 1;\n\tfont-size: 1rem;\n\tfont-weight: bold;\n\tcolor: #ffffff;\n\tpadding: 0 1rem;\n}\n.svgIconList[data-v-5747d18a] {\n\tdisplay: flex;\n\talign-items: center;\n}\n.svgIcon[data-v-5747d18a] {\n\twidth: 1rem;\n\theight: 1rem;\n\tmargin: 0 0.3rem;\n}\n.game-grid[data-v-5747d18a] {\n\tdisplay: grid;\n\tgrid-template-columns: repeat(auto-fill, minmax(150px, 1fr));\n\tgap: 5px;\n\tpadding: 10px;\n\tbackground-color: #121212;\n\tbox-sizing: border-box;\n}\n.game-card[data-v-5747d18a] {\n\tposition: relative;\n\tbackground-color: #1f1f1f;\n\tborder-radius: 0.4rem;\n\toverflow: hidden;\n\ttext-align: center;\n\ttransition: -webkit-transform 0.2s;\n\ttransition: transform 0.2s;\n\ttransition: transform 0.2s, -webkit-transform 0.2s;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: space-between;\n\theight: 200px;\n\tbox-sizing: border-box;\n}\n.game-card[data-v-5747d18a]:active {\n\t-webkit-transform: scale(0.98);\n\t        transform: scale(0.98);\n}\n.game-image[data-v-5747d18a] {\n\twidth: 90%;\n}\n.game-title[data-v-5747d18a] {\n\tcolor: #fff;\n\tfont-size: 0.5rem;\n}\n.star-icon[data-v-5747d18a] {\n\tposition: absolute;\n\ttop: 3px;\n\tright: 3px;\n\twidth: 30px;\n\theight: 30px;\n\tz-index: 10;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -3535,7 +3578,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../hbuilderx/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 21);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.page[data-v-57280228] {\n\tdisplay: flex;\n\tflex-direction: column;\n\tbackground-color: #000;\n\tmargin-top: 4rem;\n\theight: 100vh;\n}\n", ""]);
+exports.push([module.i, "\n.page[data-v-57280228] {\n\tdisplay: flex;\n\tflex-direction: column;\n\tbackground-color: #000;\n\tmargin-top: 4rem;\n\t/* height: 100vh; */\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -4169,7 +4212,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../hbuilderx/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 21);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.page[data-v-2be84a3c] {\n\tdisplay: flex;\n\tflex-direction: column;\n\tbackground-color: #000;\n\tmargin-top: 4rem;\n\theight: 100vh;\n}\n", ""]);
+exports.push([module.i, "\n.page[data-v-2be84a3c] {\n\tdisplay: flex;\n\tflex-direction: column;\n\tbackground-color: #000;\n\tmargin-top: 4rem;\n\t/* height: 100vh; */\n}\n", ""]);
 // Exports
 module.exports = exports;
 

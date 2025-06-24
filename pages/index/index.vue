@@ -31,12 +31,26 @@
 				data: [{
 					conpany: {
 						name: 'FC',
-						imageList: [
-							"../static/svg/telegram.svg",
-							"../static/svg/telegram-flat.svg",
-							"../static/svg/whatsapp.svg",
-							"../static/svg/whatsapp-flat.svg",
-							"../static/svg/instagram.svg"
+						imageList: [{
+								img: require('@/static/svg/telegram.svg'),
+								url: 'https://t.me/FCPG_GRUPO01',
+							},
+							{
+								img: require('@/static/svg/telegram-flat.svg'),
+								url: 'https://t.me/FCPG_GRUPO',
+							},
+							{
+								img: require('@/static/svg/whatsapp.svg'),
+								url: 'https://chat.whatsapp.com/IlmHXDdFZcgCmKvnnQZ7j4',
+							},
+							{
+								img: require('@/static/svg/whatsapp-flat.svg'),
+								url: 'https://wa.me/85268462577',
+							},
+							{
+								img: require('@/static/svg/instagram.svg'),
+								url: 'https://www.instagram.com/fc_grupo777/',
+							},
 						]
 					},
 					gameList: [{
@@ -272,8 +286,7 @@
 				}, {
 					conpany: {
 						name: 'PU',
-						imageList: [
-						]
+						imageList: []
 					},
 					gameList: [{
 							name: '5558slot',
@@ -339,8 +352,7 @@
 				}, {
 					conpany: {
 						name: 'FP',
-						imageList: [
-						]
+						imageList: []
 					},
 					gameList: [{
 							name: 'vasopg',
@@ -448,8 +460,7 @@
 				}, {
 					conpany: {
 						name: 'KF',
-						imageList: [
-						]
+						imageList: []
 					},
 					gameList: [{
 							name: '4qwin',
@@ -567,13 +578,6 @@
 			}
 		},
 		methods: {
-			openLink(url) {
-				if (typeof plus !== 'undefined') {
-					plus.runtime.openURL(url)
-				} else {
-					window.open(url, '_blank')
-				}
-			},
 			open() {
 
 			}
@@ -587,6 +591,6 @@
 		flex-direction: column;
 		background-color: #000;
 		margin-top: 4rem;
-		height: 100vh;
+		/* height: 100vh; */
 	}
 </style>

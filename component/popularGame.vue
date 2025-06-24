@@ -1,11 +1,17 @@
 <template>
 	<scroll-view class="game-wrapper" scroll-y :scroll-top="scrollTop" ref="scrollView" @scroll="onScroll">
 		<div class="game-container" v-for="(companyGroup, cIndex) in localList" :key="cIndex">
-			<div class="company-title">{{ companyGroup.conpany }}</div>
+			<div class="companyBox">
+				<div class="company-title">{{ companyGroup.conpany.name }}</div>
+				<div v-if="companyGroup.conpany.imageList != []" class="svgIconList" v-for="(item, i) in companyGroup.conpany.imageList" :key="i">
+				  <image class="svgIcon" :src = "item.img" @click="openExternalLink(item.url)">
+				</div>
+			</div>
+			
 			<div class="game-grid">
 				<div class="game-card" v-for="(game, index) in companyGroup.gameList" :key="index"
 					@click="goToWebView(game.url)">
-					<image class="game-image" :src="game.image" mode="aspectFill"></image>
+					<image class="game-image" :src="game.image" mode="aspectFit"></image>
 					<div class="game-title">{{ game.name }}</div>
 					<image class="star-icon" :src="game.isStarred ? '/static/star-on.png' : '/static/star-off.png'"
 						mode="widthFix" @click.stop="toggleStar(cIndex, index)"></image>
@@ -115,17 +121,29 @@
 					}
 				})
 			},
-			// 滚动到顶部
 			scrollToTop() {
 				this.scrollTop = 0;
 				this.$nextTick(() => {
-					this.scrollTop = 0.01; // 强制触发滚动（某些平台需微小变化）
+					this.scrollTop = 0.01;
 				});
 			},
-			// 监听滚动显示按钮
 			onScroll(e) {
 				this.showBackToTop = e.detail.scrollTop > 300;
+			},
+			openExternalLink(url) {
+			  // #ifdef APP-PLUS
+			  if (typeof plus !== 'undefined' && plus.runtime) {
+			    plus.runtime.openURL(url);
+			  }
+			  // #endif
+			
+			  // #ifdef H5
+			  window.open(url, '_blank');
+			  // #endif
 			}
+
+
+
 		}
 	}
 </script>
@@ -133,7 +151,7 @@
 <style scoped>
 	.game-wrapper {
 		background-color: #000;
-		/* height: calc(100vh - 8rem); */
+		/* height: calc(100vh - 4rem); */
 	}
 
 	.back-to-top {
@@ -151,19 +169,37 @@
 		justify-content: center;
 		font-size: 1rem;
 		z-index: 100;
-
+	}
+	
+	.companyBox {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-bottom: 0.3rem;
 	}
 
 	.game-container {
 		background-color: #000;
+		margin-bottom: 0.5rem;
 	}
 
 	.company-title {
+		line-height: 1;
 		font-size: 1rem;
 		font-weight: bold;
 		color: #ffffff;
 		padding: 0 1rem;
-		margin-bottom: 0.5rem;
+	}
+	
+	.svgIconList {
+		display: flex;
+		align-items: center;
+	}
+	
+	.svgIcon {
+		width: 1rem;
+		height: 1rem;
+		margin: 0 0.3rem;
 	}
 
 	.game-grid {
@@ -178,10 +214,9 @@
 	.game-card {
 		position: relative;
 		background-color: #1f1f1f;
-		border-radius: 0.6rem;
+		border-radius: 0.4rem;
 		overflow: hidden;
 		text-align: center;
-		padding: 0.5rem;
 		transition: transform 0.2s;
 		display: flex;
 		flex-direction: column;
@@ -196,18 +231,12 @@
 	}
 
 	.game-image {
-		width: calc(100% - 0.2rem);
-		border-radius: 0.4rem;
+		width: 90%;
 	}
 
 	.game-title {
-		height: 2rem;
-		margin-top: 0.4rem;
 		color: #fff;
-		font-size: 16px;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
+		font-size: 0.5rem;
 	}
 
 	.star-icon {
