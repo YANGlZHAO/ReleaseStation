@@ -23,36 +23,19 @@
 		},
 		data() {
 			return {
+				// imageList: [
+				// 	"/static/img_Carousel.jpg",
+				// 	"/static/img_Carousel.jpg",
+				// 	"/static/img_Carousel.jpg",
+				// ],
 				imageList: [
-					"/static/img_Carousel.jpg",
-					"/static/img_Carousel.jpg",
-					"/static/img_Carousel.jpg",
+					"/static/img_Carousel1.png",
+					"/static/img_Carousel2.png",
+					"/static/img_Carousel3.png",
+					"/static/img_Carousel4.png",
 				],
 				data: [{
-					conpany: {
-						name: 'FC',
-						imageList: [{
-								img: require('@/static/svg/telegram.svg'),
-								url: 'https://t.me/FCPG_GRUPO01',
-							},
-							{
-								img: require('@/static/svg/telegram-flat.svg'),
-								url: 'https://t.me/FCPG_GRUPO',
-							},
-							{
-								img: require('@/static/svg/whatsapp.svg'),
-								url: 'https://chat.whatsapp.com/IlmHXDdFZcgCmKvnnQZ7j4',
-							},
-							{
-								img: require('@/static/svg/whatsapp-flat.svg'),
-								url: 'https://wa.me/85268462577',
-							},
-							{
-								img: require('@/static/svg/instagram.svg'),
-								url: 'https://www.instagram.com/fc_grupo777/',
-							},
-						]
-					},
+					conpany: 'FC',
 					gameList: [{
 							name: 'pgvip777',
 							image: '/static/APP/23.png',
@@ -187,10 +170,7 @@
 						}
 					],
 				}, {
-					conpany: {
-						name: 'TY',
-						imageList: []
-					},
+					conpany: 'TY',
 					gameList: [{
 							name: 'sailormoonty',
 							image: '/static/all-casinos.png',
@@ -283,10 +263,7 @@
 						}
 					],
 				}, {
-					conpany: {
-						name: 'PU',
-						imageList: []
-					},
+					conpany: 'PU',
 					gameList: [{
 							name: '5558slot',
 							image: '/static/all-casinos.png',
@@ -349,10 +326,7 @@
 						}
 					],
 				}, {
-					conpany: {
-						name: 'FP',
-						imageList: []
-					},
+					conpany: 'FP',
 					gameList: [{
 							name: 'vasopg',
 							image: '/static/all-casinos.png',
@@ -457,10 +431,7 @@
 						}
 					],
 				}, {
-					conpany: {
-						name: 'KF',
-						imageList: []
-					},
+					conpany: 'KF',
 					gameList: [{
 							name: '4qwin',
 							image: '/static/all-casinos.png',
@@ -590,6 +561,5 @@
 		flex-direction: column;
 		background-color: #000;
 		margin-top: 4rem;
-		/* height: 100vh; */
 	}
 </style>

@@ -2,9 +2,9 @@
 	<scroll-view class="game-wrapper" scroll-y :scroll-top="scrollTop" ref="scrollView" @scroll="onScroll">
 		<div class="game-container" v-for="(companyGroup, cIndex) in localList" :key="cIndex">
 			<div class="companyBox">
-				<div class="company-title">{{ companyGroup.conpany.name }}</div>
-				<div class="svgIconList" v-if="companyGroup.conpany.imageList.length">
-					<image class="svgIcon" v-for="(item, i) in companyGroup.conpany.imageList" :key="i" :src="item.img"
+				<div class="company-title">{{ companyGroup.conpany }}</div>
+				<div class="svgIconList" v-if="companyGroup.conpany == 'FC'">
+					<image class="svgIcon" v-for="(item, i) in imageList" :key="i" :src="item.img"
 						@click="openExternalLink(item.url)" />
 				</div>
 			</div>
@@ -38,6 +38,27 @@
 		data() {
 			return {
 				localList: [],
+				imageList: [{
+						img: require('@/static/svg/telegram.svg'),
+						url: 'https://t.me/FCPG_GRUPO01',
+					},
+					{
+						img: require('@/static/svg/telegram-flat.svg'),
+						url: 'https://t.me/FCPG_GRUPO',
+					},
+					{
+						img: require('@/static/svg/whatsapp.svg'),
+						url: 'https://chat.whatsapp.com/IlmHXDdFZcgCmKvnnQZ7j4',
+					},
+					{
+						img: require('@/static/svg/whatsapp-flat.svg'),
+						url: 'https://wa.me/85268462577',
+					},
+					{
+						img: require('@/static/svg/instagram.svg'),
+						url: 'https://www.instagram.com/fc_grupo777/',
+					},
+				],
 				scrollTop: 0,
 				showBackToTop: false
 			}
@@ -177,8 +198,9 @@
 	.companyBox {
 		display: flex;
 		align-items: center;
-		margin-bottom: 0.5rem;
+		margin: 1rem 0;
 	}
+
 	.game-container {
 		background-color: #000;
 		margin-bottom: 0.5rem;
@@ -186,7 +208,7 @@
 
 	.company-title {
 		line-height: 1;
-		font-size: 1rem;
+		font-size: 1.8rem;
 		font-weight: bold;
 		color: #ffffff;
 		padding: 0 1rem;
@@ -196,16 +218,16 @@
 		display: flex;
 		gap: 0.4rem;
 	}
-	
+
 	.svgIcon {
-		width: 1.5rem;
-		height: 1.5rem;
+		width: 2.2rem;
+		height: 2.2rem;
 		cursor: pointer;
 	}
 
 	.game-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 		gap: 10px;
 		padding: 0 10px 10px;
 		box-sizing: border-box;
@@ -220,22 +242,21 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: flex-start;
-		height: 150px;
-		padding: 10px;
+		justify-content: center;
+		height: 140px;
+		padding: 0 10px;
 		position: relative;
 		transition: transform 0.2s;
 	}
-	
+
 	.game-card:active {
 		transform: scale(0.98);
 	}
-	
+
 	.game-image {
-		width: 100%;
-		height: 90%;
+		width: 100px;
+		height: 100px;
 		object-fit: contain;
-		margin-bottom: 5px;
 	}
 
 
@@ -248,11 +269,10 @@
 
 	.star-icon {
 		position: absolute;
-		top: 6px;
-		right: 6px;
+		top: 3px;
+		right: 3px;
 		width: 20px;
 		height: 20px;
-		z-index: 10;
+		z-index: 999;
 	}
-
 </style>

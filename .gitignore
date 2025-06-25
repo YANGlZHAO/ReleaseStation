@@ -1,3 +1,6 @@
 node_modules/
 uni_modules/
 unpackage/release/
+unpackage/resources/
+unpackage/dist/
+unpackage/cache/

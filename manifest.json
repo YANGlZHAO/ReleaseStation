@@ -112,5 +112,8 @@
     "vueVersion" : "2",
     "devDependencies" : {
         "@dcloudio/vue-cli-plugin-uni" : "^2.0.2-4060620250520001"
+    },
+    "h5" : {
+        "title" : "发布站"
     }
 }

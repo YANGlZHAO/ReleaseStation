@@ -35,10 +35,10 @@
 		display: flex;
 		flex-direction: column;
 		background-color: #000;
-		height: calc(100vh - 8rem);
 	}
 
 	.content {
+		background-color: #000;
 		flex: 1;
 	}
 </style>

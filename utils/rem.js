@@ -1,28 +1,25 @@
-// rem.js
+// utils/rem.js
 
-// #ifdef H5
-(function flexible(window, document) {
-	var docEl = document.documentElement;
-	var dpr = window.devicePixelRatio || 1;
+export function initRem() {
+	if (typeof document === 'undefined') return // 确保 App 环境不出错
 
-	function setRemUnit() {
-		var width = docEl.clientWidth;
-		if (width > 750) width = 750;
-		var rem = width / 20;
-		docEl.style.fontSize = rem + 'px';
+	const docEl = document.documentElement
+
+	function setRem() {
+		let width = docEl.clientWidth
+		if (width > 375) width = 375 // 设计稿最大宽度限制
+		const rem = width / 20 // 设计稿等比换算
+		docEl.style.fontSize = rem + 'px'
 	}
 
-	setRemUnit();
+	setRem()
 
-	window.addEventListener('resize', setRemUnit);
-	window.addEventListener('pageshow', function(e) {
-		if (e.persisted) {
-			setRemUnit();
-		}
-	});
+	window.addEventListener('resize', setRem)
+	window.addEventListener('pageshow', e => {
+		if (e.persisted) setRem()
+	})
 
 	document.addEventListener('DOMContentLoaded', function() {
-		document.body.style.fontSize = 12 * dpr + 'px';
-	});
-})(window, document);
-// #endif
+		document.body.style.fontSize = 20 * (window.devicePixelRatio || 1) + 'px'
+	})
+}

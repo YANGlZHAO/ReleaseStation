@@ -1,6 +1,7 @@
 import App from './App'
 
-import './utils/rem.js'
+import { initRem } from './utils/rem'
+initRem()
 
 // #ifndef VUE3
 import Vue from 'vue'

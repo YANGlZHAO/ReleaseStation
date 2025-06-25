@@ -1,29 +1,41 @@
 <template>
-	<div class="home-page">
-		<!-- <h2>首页内容</h2>
-		<p>{{ message }}</p> -->
-	</div>
+	<view class="page">
+		<view class="content">
+		</view>
+	</view>
 </template>
 
 <script>
 	export default {
-		name: 'HomePage',
+		name:"ProfilePage",
+		components: {
+			
+		},
 		data() {
 			return {
-				message: '欢迎访问首页',
+				
 			}
+		},
+		mounted() {
+			
 		},
 		methods: {
 			open() {
-				this.message = '首页已刷新时间: ' + new Date().toLocaleTimeString()
-			},
-		},
+				
+			}
+		}
 	}
 </script>
 
-<style scoped>
-	.home-page {
-		height: calc(100vh - 2.2rem);
-		background-color: aliceblue;
+<style scoped lang="scss">
+	.page {
+		display: flex;
+		flex-direction: column;
+		background-color: #000;
+	}
+
+	.content {
+		background-color: #000;
+		flex: 1;
 	}
 </style>
