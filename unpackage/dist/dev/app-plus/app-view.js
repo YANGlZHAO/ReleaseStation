@@ -692,41 +692,36 @@ var render = function () {
                   },
                   [_vm._v(_vm._$g("3-" + $30, "t0-0"))]
                 ),
-                _vm._l(
-                  _vm._$g(4 + "-" + $30, "f"),
-                  function (item, i, $21, $31) {
-                    return _vm._$g("4-" + $30 + "-" + $31, "i")
-                      ? _c(
-                          "div",
-                          {
+                _vm._$g("4-" + $30, "i")
+                  ? _c(
+                      "div",
+                      {
+                        staticClass: _vm._$g("4-" + $30, "sc"),
+                        attrs: { _i: "4-" + $30 },
+                      },
+                      _vm._l(
+                        _vm._$g(5 + "-" + $30, "f"),
+                        function (item, i, $21, $31) {
+                          return _c("v-uni-image", {
                             key: item,
-                            staticClass: _vm._$g("4-" + $30 + "-" + $31, "sc"),
-                            attrs: { _i: "4-" + $30 + "-" + $31 },
-                          },
-                          [
-                            _c("v-uni-image", {
-                              staticClass: _vm._$g(
-                                "5-" + $30 + "-" + $31,
-                                "sc"
-                              ),
-                              attrs: {
-                                src: _vm._$g("5-" + $30 + "-" + $31, "a-src"),
-                                _i: "5-" + $30 + "-" + $31,
+                            staticClass: _vm._$g("5-" + $30 + "-" + $31, "sc"),
+                            attrs: {
+                              src: _vm._$g("5-" + $30 + "-" + $31, "a-src"),
+                              _i: "5-" + $30 + "-" + $31,
+                            },
+                            on: {
+                              click: function ($event) {
+                                return _vm.$handleViewEvent($event)
                               },
-                              on: {
-                                click: function ($event) {
-                                  return _vm.$handleViewEvent($event)
-                                },
-                              },
-                            }),
-                          ],
-                          1
-                        )
-                      : _vm._e()
-                  }
-                ),
+                            },
+                          })
+                        }
+                      ),
+                      1
+                    )
+                  : _vm._e(),
               ],
-              2
+              1
             ),
             _c(
               "div",
@@ -905,7 +900,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../hbuilderx/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 21);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.game-wrapper[data-v-5747d18a] {\n\tbackground-color: #000;\n\t/* height: calc(100vh - 4rem); */\n}\n.back-to-top[data-v-5747d18a] {\n\tposition: fixed;\n\tright: 2rem;\n\tbottom: 2rem;\n\twidth: 2rem;\n\theight: 2rem;\n\tbackground-color: beige;\n\tcolor: #000;\n\tfont-weight: bold;\n\tborder-radius: 50%;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tfont-size: 1rem;\n\tz-index: 100;\n}\n.companyBox[data-v-5747d18a] {\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tmargin-bottom: 0.3rem;\n}\n.game-container[data-v-5747d18a] {\n\tbackground-color: #000;\n\tmargin-bottom: 0.5rem;\n}\n.company-title[data-v-5747d18a] {\n\tline-height: 1;\n\tfont-size: 1rem;\n\tfont-weight: bold;\n\tcolor: #ffffff;\n\tpadding: 0 1rem;\n}\n.svgIconList[data-v-5747d18a] {\n\tdisplay: flex;\n\talign-items: center;\n}\n.svgIcon[data-v-5747d18a] {\n\twidth: 1rem;\n\theight: 1rem;\n\tmargin: 0 0.3rem;\n}\n.game-grid[data-v-5747d18a] {\n\tdisplay: grid;\n\tgrid-template-columns: repeat(auto-fill, minmax(150px, 1fr));\n\tgap: 5px;\n\tpadding: 10px;\n\tbackground-color: #121212;\n\tbox-sizing: border-box;\n}\n.game-card[data-v-5747d18a] {\n\tposition: relative;\n\tbackground-color: #1f1f1f;\n\tborder-radius: 0.4rem;\n\toverflow: hidden;\n\ttext-align: center;\n\ttransition: -webkit-transform 0.2s;\n\ttransition: transform 0.2s;\n\ttransition: transform 0.2s, -webkit-transform 0.2s;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: space-between;\n\theight: 200px;\n\tbox-sizing: border-box;\n}\n.game-card[data-v-5747d18a]:active {\n\t-webkit-transform: scale(0.98);\n\t        transform: scale(0.98);\n}\n.game-image[data-v-5747d18a] {\n\twidth: 90%;\n}\n.game-title[data-v-5747d18a] {\n\tcolor: #fff;\n\tfont-size: 0.5rem;\n}\n.star-icon[data-v-5747d18a] {\n\tposition: absolute;\n\ttop: 3px;\n\tright: 3px;\n\twidth: 30px;\n\theight: 30px;\n\tz-index: 10;\n}\n", ""]);
+exports.push([module.i, "\n.game-wrapper[data-v-5747d18a] {\n\tbackground-color: #000;\n\t/* height: calc(100vh - 4rem); */\n}\n.back-to-top[data-v-5747d18a] {\n\tposition: fixed;\n\tright: 1rem;\n\tbottom: 4rem;\n\twidth: 2.5rem;\n\theight: 2.5rem;\n\tbackground-color: rgba(255, 255, 255, 0.9);\n\tcolor: #000;\n\tfont-weight: bold;\n\tborder-radius: 50%;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tfont-size: 1.2rem;\n\tz-index: 999;\n\tcursor: pointer;\n\tbox-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);\n}\n.companyBox[data-v-5747d18a] {\n\tdisplay: flex;\n\talign-items: center;\n\tmargin-bottom: 0.5rem;\n}\n.game-container[data-v-5747d18a] {\n\tbackground-color: #000;\n\tmargin-bottom: 0.5rem;\n}\n.company-title[data-v-5747d18a] {\n\tline-height: 1;\n\tfont-size: 1rem;\n\tfont-weight: bold;\n\tcolor: #ffffff;\n\tpadding: 0 1rem;\n}\n.svgIconList[data-v-5747d18a] {\n\tdisplay: flex;\n\tgap: 0.4rem;\n}\n.svgIcon[data-v-5747d18a] {\n\twidth: 1.5rem;\n\theight: 1.5rem;\n\tcursor: pointer;\n}\n.game-grid[data-v-5747d18a] {\n\tdisplay: grid;\n\tgrid-template-columns: repeat(auto-fill, minmax(120px, 1fr));\n\tgap: 10px;\n\tpadding: 0 10px 10px;\n\tbox-sizing: border-box;\n}\n.game-card[data-v-5747d18a] {\n\tbackground-color: #1f1f1f;\n\tborder-radius: 0.6rem;\n\toverflow: hidden;\n\ttext-align: center;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: flex-start;\n\theight: 150px;\n\tpadding: 10px;\n\tposition: relative;\n\ttransition: -webkit-transform 0.2s;\n\ttransition: transform 0.2s;\n\ttransition: transform 0.2s, -webkit-transform 0.2s;\n}\n.game-card[data-v-5747d18a]:active {\n\t-webkit-transform: scale(0.98);\n\t        transform: scale(0.98);\n}\n.game-image[data-v-5747d18a] {\n\twidth: 100%;\n\theight: 90%;\n\tobject-fit: contain;\n\tmargin-bottom: 5px;\n}\n.game-title[data-v-5747d18a] {\n\tcolor: #fff;\n\tfont-size: 0.6rem;\n\tmargin: 5px 0;\n}\n.star-icon[data-v-5747d18a] {\n\tposition: absolute;\n\ttop: 6px;\n\tright: 6px;\n\twidth: 20px;\n\theight: 20px;\n\tz-index: 10;\n}\n\n", ""]);
 // Exports
 module.exports = exports;
 

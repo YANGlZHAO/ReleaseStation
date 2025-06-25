@@ -3,11 +3,11 @@
 		<div class="game-container" v-for="(companyGroup, cIndex) in localList" :key="cIndex">
 			<div class="companyBox">
 				<div class="company-title">{{ companyGroup.conpany.name }}</div>
-				<div v-if="companyGroup.conpany.imageList != []" class="svgIconList" v-for="(item, i) in companyGroup.conpany.imageList" :key="i">
-				  <image class="svgIcon" :src = "item.img" @click="openExternalLink(item.url)">
+				<div class="svgIconList" v-if="companyGroup.conpany.imageList.length">
+					<image class="svgIcon" v-for="(item, i) in companyGroup.conpany.imageList" :key="i" :src="item.img"
+						@click="openExternalLink(item.url)" />
 				</div>
 			</div>
-			
 			<div class="game-grid">
 				<div class="game-card" v-for="(game, index) in companyGroup.gameList" :key="index"
 					@click="goToWebView(game.url)">
@@ -131,15 +131,15 @@
 				this.showBackToTop = e.detail.scrollTop > 300;
 			},
 			openExternalLink(url) {
-			  // #ifdef APP-PLUS
-			  if (typeof plus !== 'undefined' && plus.runtime) {
-			    plus.runtime.openURL(url);
-			  }
-			  // #endif
-			
-			  // #ifdef H5
-			  window.open(url, '_blank');
-			  // #endif
+				// #ifdef APP-PLUS
+				if (typeof plus !== 'undefined' && plus.runtime) {
+					plus.runtime.openURL(url);
+				}
+				// #endif
+
+				// #ifdef H5
+				window.open(url, '_blank');
+				// #endif
 			}
 
 
@@ -156,28 +156,29 @@
 
 	.back-to-top {
 		position: fixed;
-		right: 2rem;
-		bottom: 2rem;
-		width: 2rem;
-		height: 2rem;
-		background-color: beige;
+		right: 1rem;
+		bottom: 4rem;
+		width: 2.5rem;
+		height: 2.5rem;
+		background-color: rgba(255, 255, 255, 0.9);
 		color: #000;
 		font-weight: bold;
 		border-radius: 50%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 1rem;
-		z-index: 100;
-	}
-	
-	.companyBox {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		margin-bottom: 0.3rem;
+		font-size: 1.2rem;
+		z-index: 999;
+		cursor: pointer;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 	}
 
+
+	.companyBox {
+		display: flex;
+		align-items: center;
+		margin-bottom: 0.5rem;
+	}
 	.game-container {
 		background-color: #000;
 		margin-bottom: 0.5rem;
@@ -190,61 +191,68 @@
 		color: #ffffff;
 		padding: 0 1rem;
 	}
-	
+
 	.svgIconList {
 		display: flex;
-		align-items: center;
+		gap: 0.4rem;
 	}
 	
 	.svgIcon {
-		width: 1rem;
-		height: 1rem;
-		margin: 0 0.3rem;
+		width: 1.5rem;
+		height: 1.5rem;
+		cursor: pointer;
 	}
 
 	.game-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-		gap: 5px;
-		padding: 10px;
-		background-color: #121212;
+		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+		gap: 10px;
+		padding: 0 10px 10px;
 		box-sizing: border-box;
 	}
 
+
 	.game-card {
-		position: relative;
 		background-color: #1f1f1f;
-		border-radius: 0.4rem;
+		border-radius: 0.6rem;
 		overflow: hidden;
 		text-align: center;
-		transition: transform 0.2s;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: space-between;
-		height: 200px;
-		box-sizing: border-box;
+		justify-content: flex-start;
+		height: 150px;
+		padding: 10px;
+		position: relative;
+		transition: transform 0.2s;
 	}
-
+	
 	.game-card:active {
 		transform: scale(0.98);
 	}
-
+	
 	.game-image {
-		width: 90%;
+		width: 100%;
+		height: 90%;
+		object-fit: contain;
+		margin-bottom: 5px;
 	}
+
 
 	.game-title {
 		color: #fff;
-		font-size: 0.5rem;
+		font-size: 0.6rem;
+		margin: 5px 0;
 	}
+
 
 	.star-icon {
 		position: absolute;
-		top: 3px;
-		right: 3px;
-		width: 30px;
-		height: 30px;
+		top: 6px;
+		right: 6px;
+		width: 20px;
+		height: 20px;
 		z-index: 10;
 	}
+
 </style>
