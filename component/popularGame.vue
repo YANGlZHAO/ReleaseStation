@@ -162,9 +162,6 @@
 				window.open(url, '_blank');
 				// #endif
 			}
-
-
-
 		}
 	}
 </script>
