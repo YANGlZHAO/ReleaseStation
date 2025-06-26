@@ -7,7 +7,8 @@
 				<scroll-view class="page-scroll-wrapper" scroll-y>
 					<HomePage v-if="page.name === 'HomePage'" ref="homePageRef" />
 					<UserPage v-if="page.name === 'UserPage'" ref="userPageRef" />
-					<ProfilePage v-if="page.name === 'ProfilePage'" ref="profilePageRef" />
+					<ProfilePage v-if="page.name === 'ProfilePage'" ref="profilePageRef" url="https://bbpgapp.com/307/"
+						title="XXVVJOGO" />
 				</scroll-view>
 			</swiper-item>
 		</swiper>
@@ -147,17 +148,26 @@
 
 	.tab-bar {
 		display: flex;
-		position: relative;
-		height: 2.5rem;
-		background-color: #fff;
-		border-top: 1px solid #eee;
-		box-shadow: 0 -1px 0.2rem rgba(0, 0, 0, 0.05);
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 3rem;
+		background: rgba(255, 255, 255, 0.6); /* 半透明白色背景 */
+		backdrop-filter: blur(12px);         /* 更自然的磨砂强度 */
+		-webkit-backdrop-filter: blur(12px);
+		border-top: 1px solid rgba(255, 255, 255, 0.3); /* 柔和边框 */
+		box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.08);      /* 顶部轻微阴影 */
+		color: #000; /* 白色背景下用深色文字更清晰 */
+		z-index: 9999;
 	}
+
+
 
 	.tab-item {
 		flex: 1;
 		text-align: center;
-		line-height: 2.5rem;
+		line-height: 3rem;
 		font-size: 0.8rem;
 		color: #666;
 		position: relative;

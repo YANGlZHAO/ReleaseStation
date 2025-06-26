@@ -1,86 +1,101 @@
 <template>
 	<view class="page">
-		<view class="content">
-			<view v-for="(item, i) in downloadUrlList" :key="i">
-				<text class="link-text" @click="openLink(item.url)">
-					{{item.title}}
-				</text>
-			</view>
+		<view class="top-bar">
+			<text class="title">XXVVJOGO</text>
+			<view class="menu-btn" @click="openLink()">⋯</view>
+		</view>
+
+		<!-- Web 端内嵌 iframe 显示 -->
+		<view class="web-main">
+			<iframe :src="downloadUrl" class="web-iframe"></iframe>
 		</view>
 	</view>
 </template>
 
 <script>
 	export default {
-		name: "ProfilePage",
-		components: {
-
-		},
 		data() {
 			return {
-				downloadUrlList: [{
-						title: "下载链接 https://fcpg.app",
-						url: "https://fcpg.app"
-					},
-					{
-						title: "备用链接1 fcpg.win",
-						url: "fcpg.win"
-					},
-					{
-						title: "备用链接2 fcpg.net",
-						url: "fcpg.net"
-					},
-				],
+				downloadUrl: 'https://bbpgapp.com/307/',
 			}
-		},
-		mounted() {
-
 		},
 		methods: {
 			open() {
 
 			},
-			
 			openLink(url) {
 				// #ifdef APP-PLUS
 				if (typeof plus !== 'undefined' && plus.runtime) {
-					plus.runtime.openURL(url);
+					plus.runtime.openURL(this.downloadUrl);
 				}
 				// #endif
-			
+
 				// #ifdef H5
-				window.open(url, '_blank');
+				window.open(this.downloadUrl, '_blank');
 				// #endif
 			}
 		}
 	}
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 	.page {
-		width: 100vw;
 		height: calc(100vh - 2.5rem);
 		display: flex;
-		text-align: center;
-		align-items: center;
-		justify-content: center;
 		flex-direction: column;
-		background-color: #fff;
+		position: relative;
 	}
 
-	.content {
+	.web-main {
+		flex: 1;
+		display: flex;
+		margin-top: 3rem;
+	}
+
+	.top-bar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 1000;
+		height: 3rem;
+		background: rgba(255, 255, 255, 0.8);
+		color: #fff;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 2rem;
+		backdrop-filter: blur(6px);
+		-webkit-backdrop-filter: blur(10px);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.title {
+		font-size: 16px;
+	}
+
+	.menu-btn {
+		font-size: 24px;
+		color: #fff;
+	}
+
+	.main {
 		background-color: #fff;
 		flex: 1;
 		display: flex;
-		text-align: center;
 		align-items: center;
 		justify-content: center;
-		flex-direction: column;
 	}
 
-	.link-text {
-		color: #007AFF;
-		font-size: 1rem;
-		text-decoration: underline;
+	.tip-text {
+		color: #999;
+		font-size: 14px;
+	}
+
+	.web-iframe {
+		background-color: #fff;
+		width: 100%;
+		height: 100%;
+		border: none;
 	}
 </style>
