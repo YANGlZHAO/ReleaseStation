@@ -270,6 +270,6 @@
 		right: 3px;
 		width: 20px;
 		height: 20px;
-		z-index: 999;
+		z-index: 99;
 	}
 </style>
