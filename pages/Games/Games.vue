@@ -1,77 +1,87 @@
 <template>
 	<view class="container">
-		<view class="menu-btn" @click="openLink()">⋯</view>
+		<view class="menu-btn" @click="openLink">⋯</view>
 
 		<view class="header">
 			<view class="header-top">
-				<text class="title">BBPG 应用二维码</text>
+				<text class="title">FC发布站二维码</text>
 			</view>
-			<text class="url">{{ shareUrl }}</text>
 		</view>
 
+		<view class="tips"><text>Android</text></view>
 		<view class="qrcode-box">
-			<canvas canvas-id="qrcode" class="qrcode-canvas" style="width: 200px; height: 200px;"></canvas>
+			<canvas canvas-id="apkDownLoadUrl" class="qrcode-canvas"></canvas>
 		</view>
+		<button class="save-btn" @click="saveQRCode('apkDownLoadUrl')">保存二维码</button>
 
-		<button class="save-btn" @click="saveQRCode">保存二维码</button>
+		<view class="tips"><text>iOS</text></view>
+		<view class="qrcode-box">
+			<canvas canvas-id="iosUrl" class="qrcode-canvas"></canvas>
+		</view>
+		<button class="save-btn" @click="saveQRCode('iosUrl')">保存二维码</button>
 
 		<view class="tips">
-			<text>扫描上方二维码访问 BBPG 应用</text>
+			<text>扫描上方二维码访问 FC 应用</text>
 		</view>
 	</view>
 </template>
 
+
+
 <script>
 	import UQRCode from 'uqrcodejs'
+
 	export default {
 		data() {
 			return {
-				shareUrl: 'https://bbpgapp.com/307/'
+				apkDownLoadUrl: "https://cdnupload.pg-gub.com/uploads/h5_box/20250530/091a52d9a5ea788819938e2ac821bb8f.apk",
+				iosUrl: "https://bbpgapp.com/307/",
+				shareUrl: '',
+				platform: ''
 			}
+		},
+		onReady() {
+			this.open()
 		},
 		methods: {
 			open() {
-				this.generateQR()
-			},
-			generateQR() {
-				if (!this.shareUrl) {
-					uni.showToast({
-						title: '请输入URL',
-						icon: 'none'
-					})
-					return
-				}
+				const systemInfo = uni.getSystemInfoSync()
+				this.platform = systemInfo.platform
+				this.shareUrl = this.platform === 'android' ? this.apkDownLoadUrl : this.iosUrl
 
+				this.generateQRCode(this.apkDownLoadUrl, 'apkDownLoadUrl')
+				this.generateQRCode(this.iosUrl, 'iosUrl')
+			},
+			generateQRCode(url, canvasId) {
+				if (!url) return
 				try {
 					const qr = new UQRCode()
-
-					// 设置参数
-					qr.data = this.shareUrl
+					qr.data = url
 					qr.size = 200
 					qr.margin = 10
 					qr.colorDark = "#000000"
 					qr.colorLight = "#ffffff"
 					qr.make()
-					// 获取canvas上下文
-					const ctx = uni.createCanvasContext('qrcode', this)
+
+					const ctx = uni.createCanvasContext(canvasId, this)
 					qr.canvasContext = ctx
 					qr.drawCanvas()
-				} catch (err) {
-					console.error('生成二维码失败:', err)
+				} catch (e) {
+					console.error(`二维码生成失败:`, e)
 					uni.showToast({
 						title: '生成失败',
 						icon: 'none'
 					})
 				}
 			},
-			saveQRCode() {
+			saveQRCode(canvasId) {
 				uni.showLoading({
 					title: '处理中...',
 					mask: true
 				})
 				uni.canvasToTempFilePath({
-					canvasId: 'qrcode',
-					success: (res) => {
+					canvasId,
+					success: res => {
 						uni.saveImageToPhotosAlbum({
 							filePath: res.tempFilePath,
 							success: () => {
@@ -81,30 +91,13 @@
 									icon: 'success'
 								})
 							},
-							fail: (err) => {
+							fail: err => {
 								uni.hideLoading()
-								console.error('保存失败:', err)
-								// 处理权限问题
-								if (err.errMsg.includes('auth')) {
-									uni.showModal({
-										title: '提示',
-										content: '需要相册权限才能保存图片',
-										success: (res) => {
-											if (res.confirm) {
-												uni.openSetting()
-											}
-										}
-									})
-								} else {
-									uni.showToast({
-										title: '保存失败',
-										icon: 'none'
-									})
-								}
+								this.handleSaveFail(err)
 							}
 						})
 					},
-					fail: (err) => {
+					fail: err => {
 						uni.hideLoading()
 						console.error('canvas转图片失败:', err)
 						uni.showToast({
@@ -114,20 +107,37 @@
 					}
 				}, this)
 			},
+			handleSaveFail(err) {
+				console.error('保存失败:', err)
+				if (err.errMsg.includes('auth')) {
+					uni.showModal({
+						title: '提示',
+						content: '需要相册权限才能保存图片',
+						success: res => {
+							if (res.confirm) uni.openSetting()
+						}
+					})
+				} else {
+					uni.showToast({
+						title: '保存失败',
+						icon: 'none'
+					})
+				}
+			},
 			openLink() {
 				// #ifdef APP-PLUS
-				if (typeof plus !== 'undefined' && plus.runtime) {
-					plus.runtime.openURL(this.shareUrl);
-				}
+				plus.runtime.openURL(this.shareUrl)
 				// #endif
 
 				// #ifdef H5
-				window.open(this.shareUrl, '_blank');
+				window.open(this.shareUrl, '_blank')
 				// #endif
 			}
-		},
+		}
 	}
 </script>
+
+
 
 <style>
 	.container {
@@ -136,7 +146,7 @@
 		flex-direction: column;
 		align-items: center;
 		padding: 1rem;
-		height: 100vh;
+		height: calc(100vh - 2rem);
 		background-color: #f5f5f5;
 	}
 
@@ -144,7 +154,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-bottom: 40rpx;
+		margin-bottom: 2rem;
 	}
 
 	.header-top {
@@ -152,11 +162,10 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-bottom: 15rpx;
 	}
 
 	.title {
-		font-size: 36rpx;
+		font-size: 1rem;
 		font-weight: bold;
 		color: #333;
 	}
@@ -165,53 +174,42 @@
 		position: fixed;
 		right: 0.5rem;
 		top: 0.5rem;
-		font-size: 50rpx;
+		font-size: 1rem;
 		line-height: 1;
-		padding: 10rpx 20rpx;
+		padding: 0.5rem 1rem;
 		color: #333;
 		z-index: 999;
 	}
 
-	.url {
-		font-size: 26rpx;
-		color: #666;
-		word-break: break-all;
-		text-align: center;
-		max-width: 80%;
-	}
-
 	.qrcode-box {
-		width: 270px;
-		height: 270px;
+		width: 220px;
+		height: 220px;
 		background-color: #fff;
 		border-radius: 20rpx;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
-		margin-bottom: 40rpx;
+		box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.1);
+		margin-bottom: 1rem;
 	}
 
 	.qrcode-canvas {
-		width: 250px;
-		height: 250px;
+		width: 200px;
+		height: 200px;
 	}
 
 	.save-btn {
-		width: 80%;
-		height: 80rpx;
-		line-height: 80rpx;
+		width: 10rem;
 		background-color: #1a73e8;
 		color: white;
-		border-radius: 40rpx;
-		font-size: 32rpx;
-		margin-bottom: 30rpx;
-		box-shadow: 0 4rpx 12rpx rgba(26, 115, 232, 0.3);
+		border-radius: 2rem;
+		font-size: 1rem;
+		margin-bottom: 1.5rem;
+		box-shadow: 0 0.2rem 0.6rem rgba(26, 115, 232, 0.3);
 	}
 
 	.tips {
-		font-size: 26rpx;
+		font-size: 1rem;
 		color: #999;
-		margin-top: 20rpx;
 	}
 </style>

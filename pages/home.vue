@@ -7,8 +7,7 @@
 				<scroll-view class="page-scroll-wrapper" scroll-y>
 					<HomePage v-if="page.name === 'HomePage'" ref="homePageRef" />
 					<UserPage v-if="page.name === 'UserPage'" ref="userPageRef" />
-					<ProfilePage v-if="page.name === 'ProfilePage'" ref="profilePageRef" url="https://bbpgapp.com/307/"
-						title="XXVVJOGO" />
+					<ProfilePage v-if="page.name === 'ProfilePage'" ref="profilePageRef"/>
 				</scroll-view>
 			</swiper-item>
 		</swiper>
