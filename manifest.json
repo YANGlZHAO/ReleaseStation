@@ -1,5 +1,5 @@
 {
-	"name": "发布站",
+	"name": "FC发布站",
 	"appid": "__UNI__2BD90B9",
 	"description": "FC站点发布站",
 	"versionName": "1.0.0",
@@ -52,6 +52,7 @@
 				]
 			},
 			"ios": {
+				"bundleIdentifier": "com.tsx.fcStation",
 				"fullscreen": true,
 				"dSYMs": false,
 				"privacyDescription": {
