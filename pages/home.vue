@@ -1,13 +1,13 @@
 <template>
 	<view class="bottom-tab-swiper">
 		<!-- 内容区域 -->
-		<swiper class="swiper-container" :current="currentIndex" @change="onSwiperChange" circular="false"
-			:disable-touch="true">
+		<swiper class="swiper-container" :current="currentIndex" @change="onSwiperChange" :circular="false"
+			:disable-touch="true" :previous-margin="previousMargin" :next-margin="nextMargin">
 			<swiper-item v-for="(page, index) in pages" :key="index">
 				<scroll-view class="page-scroll-wrapper" scroll-y>
 					<HomePage v-if="page.name === 'HomePage'" ref="homePageRef" />
 					<UserPage v-if="page.name === 'UserPage'" ref="userPageRef" />
-					<ProfilePage v-if="page.name === 'ProfilePage'" ref="profilePageRef"/>
+					<ProfilePage v-if="page.name === 'ProfilePage'" ref="profilePageRef" />
 				</scroll-view>
 			</swiper-item>
 		</swiper>
@@ -54,11 +54,25 @@
 				underlineStyle: {
 					width: '0px',
 					transform: 'translateX(0)'
-				}
+				},
+				previousMargin: '0px',
+				nextMargin: '0px'
 			}
 		},
 		watch: {
-			currentIndex(newVal) {
+			currentIndex(newVal, oldVal) {
+				// 当从最后一页切换到第一页时，添加特殊处理
+				if (oldVal === this.pages.length - 1 && newVal === 0) {
+					this.previousMargin = '100%';
+					this.nextMargin = '0px';
+					setTimeout(() => {
+						this.previousMargin = '0px';
+					}, 50);
+				} else {
+					this.previousMargin = '0px';
+					this.nextMargin = '0px';
+				}
+
 				this.updateUnderline()
 				// 延迟调用 open，确保 swiper 切换完成
 				setTimeout(() => {
@@ -72,7 +86,17 @@
 		},
 		methods: {
 			goToPage(index) {
-				this.currentIndex = index
+				// 当从最后一页切换到第一页时，添加特殊处理
+				if (this.currentIndex === this.pages.length - 1 && index === 0) {
+					this.previousMargin = '100%';
+					this.nextMargin = '0px';
+					setTimeout(() => {
+						this.currentIndex = index;
+						this.previousMargin = '0px';
+					}, 50);
+				} else {
+					this.currentIndex = index;
+				}
 			},
 			onSwiperChange(e) {
 				this.currentIndex = e.detail.current
@@ -152,12 +176,17 @@
 		left: 0;
 		right: 0;
 		height: 3rem;
-		background: rgba(255, 255, 255, 0.6); /* 半透明白色背景 */
-		backdrop-filter: blur(12px);         /* 更自然的磨砂强度 */
+		background: rgba(255, 255, 255, 0.6);
+		/* 半透明白色背景 */
+		backdrop-filter: blur(12px);
+		/* 更自然的磨砂强度 */
 		-webkit-backdrop-filter: blur(12px);
-		border-top: 1px solid rgba(255, 255, 255, 0.3); /* 柔和边框 */
-		box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.08);      /* 顶部轻微阴影 */
-		color: #000; /* 白色背景下用深色文字更清晰 */
+		border-top: 1px solid rgba(255, 255, 255, 0.3);
+		/* 柔和边框 */
+		box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.08);
+		/* 顶部轻微阴影 */
+		color: #000;
+		/* 白色背景下用深色文字更清晰 */
 		z-index: 9999;
 	}
 
