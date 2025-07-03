@@ -62,7 +62,7 @@
 						this.$refs.webView.evalJS('window.location.href', (url) => {
 							this.currentUrl = url;
 							this.canGoBack = url !== this.initialUrl;
-
+							
 						});
 					}, 300);
 					return;
@@ -71,12 +71,12 @@
 			},
 
 			handlePageLoad() {
-				console.log("WebView loaded");
+				console.log("handlePageLoad------");
 				setTimeout(() => {
 					this.$refs.webView.evalJS('window.location.href', (url) => {
 						this.currentUrl = url;
 						this.canGoBack = url !== this.initialUrl;
-
+						
 					});
 				}, 300);
 
