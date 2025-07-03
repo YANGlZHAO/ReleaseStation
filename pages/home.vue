@@ -47,7 +47,7 @@
 						name: 'UserPage'
 					},
 					{
-						title: '下载链接',
+						title: '分享链接',
 						name: 'ProfilePage'
 					}
 				],
