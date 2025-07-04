@@ -119,7 +119,6 @@
 					// #endif
 
 					// #ifndef H5
-					// App 端使用等宽下划线
 					const widthPercent = (100 / this.pages.length).toFixed(2)
 					this.underlineStyle = {
 						width: `${widthPercent}%`,

