@@ -1,0 +1,8 @@
+node_modules/
+unpackage/
+resources/
+*.zip
+*.psd
+*.ai
+.DS_Store
+Thumbs.db

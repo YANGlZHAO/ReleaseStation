@@ -13,7 +13,7 @@
 		</swiper>
 
 		<!-- 底部导航栏 -->
-		<view class="tab-bar" ref="tabBar">
+		<view class="tab-bar" ref="tabBar" :style="{ paddingBottom: $bottomSafeHeight + 'px' }">
 			<view class="tab-item" v-for="(page, index) in pages" :key="index"
 				:class="{ active: currentIndex === index }" @click="goToPage(index)" ref="tabItems">
 				{{ page.title }}

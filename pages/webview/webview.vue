@@ -71,7 +71,6 @@
 			},
 
 			handlePageLoad() {
-				console.log("handlePageLoad------");
 				setTimeout(() => {
 					this.$refs.webView.evalJS('window.location.href', (url) => {
 						this.currentUrl = url;

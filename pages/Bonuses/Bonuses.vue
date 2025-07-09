@@ -1,5 +1,5 @@
 <template>
-	<view class="page">
+	<view class="page" :style="{ paddingTop: $topSafeHeight + 'px' }">
 		<view class="content">
 			<popularGameVue :list="starredList" />
 			<view v-if="starredList.length == 0" class="empty-tip">Collection is empty</view>
@@ -21,7 +21,7 @@
 			}
 		},
 		mounted() {
-
+			
 		},
 		methods: {
 			open() {

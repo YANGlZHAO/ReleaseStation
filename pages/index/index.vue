@@ -23,16 +23,10 @@
 		},
 		data() {
 			return {
-				// imageList: [
-				// 	"/static/img_Carousel.jpg",
-				// 	"/static/img_Carousel.jpg",
-				// 	"/static/img_Carousel.jpg",
-				// ],
 				imageList: [
-					"/static/img_Carousel1.png",
-					"/static/img_Carousel2.png",
-					"/static/img_Carousel3.png",
-					"/static/img_Carousel4.png",
+					"/static/img_Carousel1.jpg",
+					"/static/img_Carousel2.jpg",
+					"/static/img_Carousel3.jpg",
 				],
 				data: [{
 					conpany: 'FC',

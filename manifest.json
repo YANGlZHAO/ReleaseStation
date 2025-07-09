@@ -27,7 +27,10 @@
             "autoclose" : false,
             "delay" : 0
         },
-        "modules" : {},
+        "modules" : {
+            "gallery" : {},
+            "Camera" : {}
+        },
         "distribute" : {
             "android" : {
                 "name" : "FC发布站",
@@ -55,6 +58,11 @@
                 "bundleIdentifier" : "com.tsx.fcStation",
                 "fullscreen" : true,
                 "dSYMs" : false,
+                "permissions" : {
+                    "PhotoLibrary" : {
+                        "description" : "需要访问相册以保存图片"
+                    }
+                },
                 "privacyDescription" : {
                     "NSPhotoLibraryAddUsageDescription" : "App需要保存二维码到您的相册"
                 }
@@ -62,44 +70,68 @@
             "sdkConfigs" : {},
             "icons" : {
                 "android" : {
-                    "hdpi" : "unpackage/res/icons_android/app_icon_72x72.png",
-                    "xhdpi" : "unpackage/res/icons_android/app_icon_96x96.png",
-                    "xxhdpi" : "unpackage/res/icons_android/app_icon_144x144.png",
-                    "xxxhdpi" : "unpackage/res/icons_android/app_icon_192x192.png"
+                    "hdpi" : "static/launch/icons_android/app_icon_72x72.png",
+                    "xhdpi" : "static/launch/icons_android/app_icon_96x96.png",
+                    "xxhdpi" : "static/launch/icons_android/app_icon_144x144.png",
+                    "xxxhdpi" : "static/launch/icons_android/app_icon_192x192.png"
                 },
                 "ios" : {
-                    "appstore" : "unpackage/res/icons_android/app_icon_1024x1024.png",
+                    "appstore" : "static/launch/icons_android/app_icon_1024x1024.png",
                     "ipad" : {
-                        "app" : "unpackage/res/icons_ipad/ipad_icon_iPadApp@1x_76x76.png",
-                        "app@2x" : "unpackage/res/icons_ipad/ipad_icon_iPadApp@2x_152x152.png",
-                        "notification" : "unpackage/res/icons_ipad/ipad_icon_iPadNotification@1x_20x20.png",
-                        "notification@2x" : "unpackage/res/icons_ipad/ipad_icon_iPadNotification@2x_40x40.png",
-                        "proapp@2x" : "unpackage/res/icons_ipad/ipad_icon_iPadProApp@2x_167x167.png",
-                        "settings" : "unpackage/res/icons_ipad/ipad_icon_iPadSettings@1x_29x29.png",
-                        "settings@2x" : "unpackage/res/icons_ipad/ipad_icon_iPadSettings@2x_58x58.png",
-                        "spotlight" : "unpackage/res/icons_ipad/ipad_icon_iPadSpotlight@1x_40x40.png",
-                        "spotlight@2x" : "unpackage/res/icons_ipad/ipad_icon_iPadSpotlight@2x_80x80.png"
+                        "app" : "static/launch/icons_ipad/ipad_icon_iPadApp@1x_76x76.png",
+                        "app@2x" : "static/launch/icons_ipad/ipad_icon_iPadApp@2x_152x152.png",
+                        "notification" : "static/launch/icons_ipad/ipad_icon_iPadNotification@1x_20x20.png",
+                        "notification@2x" : "static/launch/icons_ipad/ipad_icon_iPadNotification@2x_40x40.png",
+                        "proapp@2x" : "static/launch/icons_ipad/ipad_icon_iPadProApp@2x_167x167.png",
+                        "settings" : "static/launch/icons_ipad/ipad_icon_iPadSettings@1x_29x29.png",
+                        "settings@2x" : "static/launch/icons_ipad/ipad_icon_iPadSettings@2x_58x58.png",
+                        "spotlight" : "static/launch/icons_ipad/ipad_icon_iPadSpotlight@1x_40x40.png",
+                        "spotlight@2x" : "static/launch/icons_ipad/ipad_icon_iPadSpotlight@2x_80x80.png"
                     },
                     "iphone" : {
-                        "app@2x" : "unpackage/res/icon_ios/ios_icon_App@2x_120x120.png",
-                        "app@3x" : "unpackage/res/icon_ios/ios_icon_App@3x_180x180.png",
-                        "notification@2x" : "unpackage/res/icon_ios/ios_icon_Notification@2x_40x40.png",
-                        "notification@3x" : "unpackage/res/icon_ios/ios_icon_Notification@3x_60x60.png",
-                        "settings@2x" : "unpackage/res/icon_ios/ios_icon_Settings@2x_58x58.png",
-                        "settings@3x" : "unpackage/res/icon_ios/ios_icon_Settings@3x_87x87.png",
-                        "spotlight@2x" : "unpackage/res/icon_ios/ios_icon_Spotlight@2x_80x80.png",
-                        "spotlight@3x" : "unpackage/res/icon_ios/ios_icon_Spotlight@3x_120x120.png"
+                        "app@2x" : "static/launch/icon_ios/ios_icon_App@2x_120x120.png",
+                        "app@3x" : "static/launch/icon_ios/ios_icon_App@3x_180x180.png",
+                        "notification@2x" : "static/launch/icon_ios/ios_icon_Notification@2x_40x40.png",
+                        "notification@3x" : "static/launch/icon_ios/ios_icon_Notification@3x_60x60.png",
+                        "settings@2x" : "static/launch/icon_ios/ios_icon_Settings@2x_58x58.png",
+                        "settings@3x" : "static/launch/icon_ios/ios_icon_Settings@3x_87x87.png",
+                        "spotlight@2x" : "static/launch/icon_ios/ios_icon_Spotlight@2x_80x80.png",
+                        "spotlight@3x" : "static/launch/icon_ios/ios_icon_Spotlight@3x_120x120.png"
                     }
                 }
             },
             "splashscreen" : {
                 "androidStyle" : "default",
                 "android" : {
-                    "hdpi" : "unpackage/res/splash/splash.png",
-                    "xhdpi" : "unpackage/res/splash/splash.png",
-                    "xxhdpi" : "unpackage/res/splash/splash.png"
+                    "hdpi" : "static/launch/splash/splash.png",
+                    "xhdpi" : "static/launch/splash/splash.png",
+                    "xxhdpi" : "static/launch/splash/splash.png"
                 },
-                "iosStyle" : "common"
+                "iosStyle" : "storyboard",
+                "ios" : {
+                    "iphone" : {
+                        "portrait-896h@3x" : "unpackage/res/splash_ios/iPhone_XSMax_11ProMax_1242x2688.png",
+                        "portrait-896h@2x" : "unpackage/res/splash_ios/iPhone_XR_11_828x1792.png",
+                        "iphonex" : "unpackage/res/splash_ios/iPhone_X_XS_11Pro_1125x2436.png",
+                        "retina55" : "unpackage/res/splash_ios/iPhone_6P_6SP_7P_8P_1242x2208.png",
+                        "retina47" : "unpackage/res/splash_ios/iPhone_6_6S_7_8_750x1334.png",
+                        "retina40" : "unpackage/res/splash_ios/iPhone_5_5S_SE_640x1136.png",
+                        "landscape-896h@3x" : "unpackage/res/splash_ios/iPhone_XSMax_Landscape_2688x1242.png",
+                        "landscape-896h@2x" : "unpackage/res/splash_ios/iPhone_XR_Landscape_1792x828.png",
+                        "iphonexl" : "unpackage/res/splash_ios/iPhone_X_XS_Landscape_2436x1125.png",
+                        "retina55l" : "unpackage/res/splash_ios/iPhone_6P_6SP_7P_8P_Landscape_2208x1242.png",
+                        "retina47l" : "unpackage/res/splash_ios/iPhone_6_6S_7_8_Landscape_1334x750.png",
+                        "retina40l" : "unpackage/res/splash_ios/iPhone_5_5S_SE_Landscape_1136x640.png",
+                        "retina35" : "unpackage/res/splash_ios/iPhone_4_4S_640x960.png"
+                    },
+                    "ipad" : {
+                        "portrait-1194h@2x" : "unpackage/res/splash_ios/iPad_11_Pro_1668x2388.png",
+                        "portrait-1112h@2x" : "unpackage/res/splash_ios/iPad_10.5_1668x2224.png",
+                        "portrait-1366h@2x" : "unpackage/res/splash_ios/iPad_12.9_Pro_2048x2732.png",
+                        "portrait-retina7" : "unpackage/res/splash_ios/iPad_Mini_Air_1536x2048.png"
+                    },
+                    "storyboard" : "resources/Storyboard.zip"
+                }
             }
         }
     },

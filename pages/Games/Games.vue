@@ -1,5 +1,5 @@
 <template>
-	<view class="container">
+	<view class="container" :style="{ paddingTop: $topSafeHeight + 'px' }">
 		<view class="header">
 			<text class="title">fcpg</text>
 			<button class="download-btn" @click="openLink()">Baixar Agora</button>
@@ -15,7 +15,6 @@
 				<view class="link-box">
 					<text class="link-text">{{ shareUrl }}</text>
 					<image class="btn_copy" src="/static/copy.png" @click="copyToClipboard(shareUrl)"></image>
-
 				</view>
 			</view>
 		</view>
@@ -30,10 +29,11 @@
 			return {
 				apkDownLoadUrl: "https://cdnupload.pg-gub.com/uploads/h5_box/20250530/091a52d9a5ea788819938e2ac821bb8f.apk",
 				// iosUrl: "https://bbpgapp.com/307/",
-				iosUrl: "https://fcpg.app",
+				// iosUrl: "https://fcpg.app",
+				iosUrl: "https://slot.ccfly.cc/ios2/iosindex.html",
 				downloadUrl: '',
 				platform: '',
-				shareUrl: 'https://fcpg.app'
+				shareUrl: 'https://slot.ccfly.cc/ios2/iosindex.html'
 			}
 		},
 		onReady() {
@@ -293,13 +293,11 @@
 	}
 	
 	.link-text {
-	  color: #ccc;
-	  font-size: 14px;
-	  overflow: hidden;
-	  text-overflow: ellipsis;
-	  white-space: nowrap;
-	  flex: 1;
-	  line-height: 20px;
+	    color: #ccc;
+	    font-size: 14px;
+	    word-break: break-all;
+	    white-space: normal;
+	    line-height: 20px;
 	}
 	
 	.btn_copy {
