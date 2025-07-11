@@ -2,7 +2,8 @@
 	<scroll-view class="game-wrapper" scroll-y :scroll-top="scrollTop" ref="scrollView" @scroll="onScroll">
 		<div class="game-container" v-for="(companyGroup, cIndex) in localList" :key="cIndex">
 			<div class="companyBox">
-				<div class="company-title">{{ companyGroup.conpany }}</div>
+				<!-- <div class="company-title">{{ companyGroup.conpany }}</div> -->
+				<image class="svgIcon" style="margin-right: 1rem;" src="@/static/APP/img_logo.png" @click="openExternalLink(item.url)" />
 				<div class="svgIconList" v-if="companyGroup.conpany == 'FC'">
 					<image class="svgIcon" v-for="(item, i) in imageList" :key="i" :src="item.img"
 						@click="openExternalLink(item.url)" />
@@ -195,7 +196,7 @@
 	.companyBox {
 		display: flex;
 		align-items: center;
-		margin: 1rem 0;
+		margin: 1rem;
 	}
 
 	.game-container {
