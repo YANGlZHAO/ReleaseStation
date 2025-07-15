@@ -45,11 +45,13 @@
 				getPcdownload().then(data => {
 					if (data.meta.code == 0) {
 						this.apkDownLoadUrl = data.data.apk_url
+						// 重新赋值downloadUrl，确保url正确
+						const systemInfo = uni.getSystemInfoSync()
+						this.platform = systemInfo.platform
+						this.downloadUrl = this.platform === 'android' ? this.apkDownLoadUrl : this.iosUrl
 					}
 				})
-				const systemInfo = uni.getSystemInfoSync()
-				this.platform = systemInfo.platform
-				this.downloadUrl = this.platform === 'android' ? this.apkDownLoadUrl : this.iosUrl
+				// 生成二维码
 				this.generateQRCode(this.qrCodeUrl, 'qrCodeUrl')
 			},
 			generateQRCode(url, canvasId) {
@@ -79,60 +81,56 @@
 					mask: true
 				});
 
-				// #ifdef H5
-				const canvas = document.getElementById(canvasId);
-				if (!canvas) {
-					uni.hideLoading();
-					uni.showToast({
-						title: '未找到二维码画布',
-						icon: 'none'
-					});
-					return;
-				}
-				const dataURL = canvas.toDataURL('image/png');
-				const link = document.createElement('a');
-				link.href = dataURL;
-				link.download = 'fcShare.png';
-				document.body.appendChild(link);
-				link.click();
-				document.body.removeChild(link);
-
-				uni.hideLoading();
-				uni.showToast({
-					title: '已下载图片',
-					icon: 'success'
-				});
-				// #endif
-
-				// #ifndef H5
 				uni.canvasToTempFilePath({
 					canvasId,
 					success: res => {
+						const tempFilePath = res.tempFilePath || ''
+
+						// H5端处理下载
+						// #ifdef H5
+						if (tempFilePath.startsWith('data:image')) {
+							const link = document.createElement('a')
+							link.href = tempFilePath
+							link.download = 'fcShare.png'
+							document.body.appendChild(link)
+							link.click()
+							document.body.removeChild(link)
+							uni.hideLoading()
+							uni.showToast({
+								title: '已下载图片',
+								icon: 'success'
+							})
+							return
+						}
+						// #endif
+
+						// 非H5端保存到相册
+						// #ifndef H5
 						uni.saveImageToPhotosAlbum({
-							filePath: res.tempFilePath,
+							filePath: tempFilePath,
 							success: () => {
-								uni.hideLoading();
+								uni.hideLoading()
 								uni.showToast({
 									title: '保存成功',
 									icon: 'success'
-								});
+								})
 							},
 							fail: err => {
-								uni.hideLoading();
-								this.handleSaveFail(err);
+								uni.hideLoading()
+								this.handleSaveFail(err)
 							}
-						});
+						})
+						// #endif
 					},
 					fail: err => {
-						uni.hideLoading();
-						console.error('canvas转图片失败:', err);
+						uni.hideLoading()
+						console.error('canvas转图片失败:', err)
 						uni.showToast({
 							title: '保存失败，请先生成二维码',
 							icon: 'none'
-						});
+						})
 					}
-				}, this);
-				// #endif
+				}, this)
 			},
 			handleSaveFail(err) {
 				console.error('保存失败:', err)
