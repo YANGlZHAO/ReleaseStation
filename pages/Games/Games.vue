@@ -7,14 +7,14 @@
 		<view class="content">
 			<view class="content_left">
 				<view class="qrcode-box">
-					<canvas canvas-id="shareUrl" class="qrcode-canvas"></canvas>
+					<canvas id="qrCodeUrl" canvas-id="qrCodeUrl" class="qrcode-canvas"></canvas>
 				</view>
-				<button class="save-btn" @click="saveQRCode('shareUrl')">Clique para Salvar</button>
+				<button class="save-btn" @click="saveQRCode('qrCodeUrl')">Clique para Salvar</button>
 			</view>
 			<view class="content_right">
 				<view class="link-box">
-					<text class="link-text">{{ shareUrl }}</text>
-					<image class="btn_copy" src="/static/copy.png" @click="copyToClipboard(shareUrl)"></image>
+					<text class="link-text">{{ qrCodeUrl }}</text>
+					<image class="btn_copy" src="/static/copy.png" @click="copyToClipboard(qrCodeUrl)"></image>
 				</view>
 			</view>
 		</view>
@@ -23,17 +23,18 @@
 
 <script>
 	import UQRCode from 'uqrcodejs'
+	import {
+		getPcdownload
+	} from "@/api/pcDownload.js"
 
 	export default {
 		data() {
 			return {
-				apkDownLoadUrl: "https://cdnupload.pg-gub.com/uploads/h5_box/20250530/091a52d9a5ea788819938e2ac821bb8f.apk",
-				// iosUrl: "https://bbpgapp.com/307/",
-				// iosUrl: "https://fcpg.app",
-				iosUrl: "https://slot.ccfly.cc/ios2/iosindex.html",
+				apkDownLoadUrl: "",
+				iosUrl: "http://18.231.202.26:30000/iosdownload/iosindex.html",
 				downloadUrl: '',
 				platform: '',
-				shareUrl: 'https://slot.ccfly.cc/ios2/iosindex.html'
+				qrCodeUrl: 'https://fcpg.app'
 			}
 		},
 		onReady() {
@@ -41,10 +42,15 @@
 		},
 		methods: {
 			open() {
+				getPcdownload().then(data => {
+					if (data.meta.code == 0) {
+						this.apkDownLoadUrl = data.data.apk_url
+					}
+				})
 				const systemInfo = uni.getSystemInfoSync()
 				this.platform = systemInfo.platform
 				this.downloadUrl = this.platform === 'android' ? this.apkDownLoadUrl : this.iosUrl
-				this.generateQRCode(this.shareUrl, 'shareUrl')
+				this.generateQRCode(this.qrCodeUrl, 'qrCodeUrl')
 			},
 			generateQRCode(url, canvasId) {
 				if (!url) return
@@ -71,34 +77,62 @@
 				uni.showLoading({
 					title: '处理中...',
 					mask: true
-				})
+				});
+
+				// #ifdef H5
+				const canvas = document.getElementById(canvasId);
+				if (!canvas) {
+					uni.hideLoading();
+					uni.showToast({
+						title: '未找到二维码画布',
+						icon: 'none'
+					});
+					return;
+				}
+				const dataURL = canvas.toDataURL('image/png');
+				const link = document.createElement('a');
+				link.href = dataURL;
+				link.download = 'fcShare.png';
+				document.body.appendChild(link);
+				link.click();
+				document.body.removeChild(link);
+
+				uni.hideLoading();
+				uni.showToast({
+					title: '已下载图片',
+					icon: 'success'
+				});
+				// #endif
+
+				// #ifndef H5
 				uni.canvasToTempFilePath({
 					canvasId,
 					success: res => {
 						uni.saveImageToPhotosAlbum({
 							filePath: res.tempFilePath,
 							success: () => {
-								uni.hideLoading()
+								uni.hideLoading();
 								uni.showToast({
 									title: '保存成功',
 									icon: 'success'
-								})
+								});
 							},
 							fail: err => {
-								uni.hideLoading()
-								this.handleSaveFail(err)
+								uni.hideLoading();
+								this.handleSaveFail(err);
 							}
-						})
+						});
 					},
 					fail: err => {
-						uni.hideLoading()
-						console.error('canvas转图片失败:', err)
+						uni.hideLoading();
+						console.error('canvas转图片失败:', err);
 						uni.showToast({
 							title: '保存失败，请先生成二维码',
 							icon: 'none'
-						})
+						});
 					}
-				}, this)
+				}, this);
+				// #endif
 			},
 			handleSaveFail(err) {
 				console.error('保存失败:', err)
@@ -272,37 +306,36 @@
 		width: auto;
 		padding: 5px 15px;
 	}
-	
-	.content_left {
-		
-	}
+
+	.content_left {}
+
 	.content_right {
 		width: 100%;
 	}
 
 	.link-box {
-	  background-color: #1e1e2f;
-	  border-radius: 10px;
-	  padding: 10px 14px;
-	  display: flex;
-	  align-items: center;
-	  justify-content: space-between;
-	  margin: 10px 16px;
-	  min-height: 40px;
-	  border: 1px solid #2c2c3c;
+		background-color: #1e1e2f;
+		border-radius: 10px;
+		padding: 10px 14px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin: 10px 16px;
+		min-height: 40px;
+		border: 1px solid #2c2c3c;
 	}
-	
+
 	.link-text {
-	    color: #ccc;
-	    font-size: 14px;
-	    word-break: break-all;
-	    white-space: normal;
-	    line-height: 20px;
+		color: #ccc;
+		font-size: 14px;
+		word-break: break-all;
+		white-space: normal;
+		line-height: 20px;
 	}
-	
+
 	.btn_copy {
-	  width: 18px;
-	  height: 18px;
-	  margin-left: 12px;
+		width: 18px;
+		height: 18px;
+		margin-left: 12px;
 	}
 </style>
