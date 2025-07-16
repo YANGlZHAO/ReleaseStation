@@ -45,14 +45,36 @@
 				getPcdownload().then(data => {
 					if (data.meta.code == 0) {
 						this.apkDownLoadUrl = data.data.apk_url
-						// 重新赋值downloadUrl，确保url正确
-						const systemInfo = uni.getSystemInfoSync()
-						this.platform = systemInfo.platform
-						this.downloadUrl = this.platform === 'android' ? this.apkDownLoadUrl : this.iosUrl
+			
+						// 获取成功后再判断平台
+						this.setDownloadUrl()
 					}
 				})
-				// 生成二维码
+				
 				this.generateQRCode(this.qrCodeUrl, 'qrCodeUrl')
+			},
+			setDownloadUrl() {
+				// #ifdef APP-PLUS
+				const systemInfo = uni.getSystemInfoSync()
+				this.platform = systemInfo.platform
+				this.downloadUrl = this.platform === 'android' ? this.apkDownLoadUrl : this.iosUrl
+				// #endif
+			
+				// #ifdef H5
+				const ua = navigator.userAgent.toLowerCase()
+			
+				if (ua.includes('iphone') || ua.includes('ipad') || (ua.includes('macintosh') && 'ontouchend' in document)) {
+					this.downloadUrl = this.iosUrl
+				} else if (ua.includes('android')) {
+					this.downloadUrl = this.apkDownLoadUrl
+				} else if (ua.includes('windows') || ua.includes('win')) {
+					this.downloadUrl = this.apkDownLoadUrl
+				} else {
+					this.downloadUrl = this.apkDownLoadUrl // fallback
+				}
+			
+				console.log('平台识别结果 downloadUrl:', this.downloadUrl)
+				// #endif
 			},
 			generateQRCode(url, canvasId) {
 				if (!url) return
@@ -86,7 +108,6 @@
 					success: res => {
 						const tempFilePath = res.tempFilePath || ''
 
-						// H5端处理下载
 						// #ifdef H5
 						if (tempFilePath.startsWith('data:image')) {
 							const link = document.createElement('a')
@@ -104,7 +125,6 @@
 						}
 						// #endif
 
-						// 非H5端保存到相册
 						// #ifndef H5
 						uni.saveImageToPhotosAlbum({
 							filePath: tempFilePath,
