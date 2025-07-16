@@ -1,15 +1,15 @@
 <template>
 	<view class="container" :style="{ paddingTop: $topSafeHeight + 'px' }">
 		<view class="header">
-			<text class="title">fcpg</text>
-			<button class="download-btn" @click="openLink()">Baixar Agora</button>
+			<text class="title">{{$t('appTitle')}}</text>
+			<button class="download-btn" @click="openLink()">{{$t('share.downloadNow')}}</button>
 		</view>
 		<view class="content">
 			<view class="content_left">
 				<view class="qrcode-box">
 					<canvas id="qrCodeUrl" canvas-id="qrCodeUrl" class="qrcode-canvas"></canvas>
 				</view>
-				<button class="save-btn" @click="saveQRCode('qrCodeUrl')">Clique para Salvar</button>
+				<button class="save-btn" @click="saveQRCode('qrCodeUrl')">{{$t('share.clickToSave')}}</button>
 			</view>
 			<view class="content_right">
 				<view class="link-box">
@@ -45,8 +45,6 @@
 				getPcdownload().then(data => {
 					if (data.meta.code == 0) {
 						this.apkDownLoadUrl = data.data.apk_url
-			
-						// 获取成功后再判断平台
 						this.setDownloadUrl()
 					}
 				})
@@ -70,10 +68,8 @@
 				} else if (ua.includes('windows') || ua.includes('win')) {
 					this.downloadUrl = this.apkDownLoadUrl
 				} else {
-					this.downloadUrl = this.apkDownLoadUrl // fallback
+					this.downloadUrl = this.apkDownLoadUrl
 				}
-			
-				console.log('平台识别结果 downloadUrl:', this.downloadUrl)
 				// #endif
 			},
 			generateQRCode(url, canvasId) {
@@ -90,16 +86,15 @@
 					qr.canvasContext = ctx
 					qr.drawCanvas()
 				} catch (e) {
-					console.error(`二维码生成失败:`, e)
 					uni.showToast({
-						title: '生成失败',
+						title: this.$t('buildFailure'),
 						icon: 'none'
 					})
 				}
 			},
 			saveQRCode(canvasId) {
 				uni.showLoading({
-					title: '处理中...',
+					title: this.$t('processing'),
 					mask: true
 				});
 
@@ -118,8 +113,8 @@
 							document.body.removeChild(link)
 							uni.hideLoading()
 							uni.showToast({
-								title: '已下载图片',
-								icon: 'success'
+								title: this.$t('imageDownloaded'),
+								icon: 'none'
 							})
 							return
 						}
@@ -131,8 +126,8 @@
 							success: () => {
 								uni.hideLoading()
 								uni.showToast({
-									title: '保存成功',
-									icon: 'success'
+									title: this.$t('savedSuccessfully'),
+									icon: 'none'
 								})
 							},
 							fail: err => {
@@ -144,27 +139,25 @@
 					},
 					fail: err => {
 						uni.hideLoading()
-						console.error('canvas转图片失败:', err)
 						uni.showToast({
-							title: '保存失败，请先生成二维码',
+							title: this.$t('share.pleaseGenerateQRCodeFirst'),
 							icon: 'none'
 						})
 					}
 				}, this)
 			},
 			handleSaveFail(err) {
-				console.error('保存失败:', err)
 				if (err.errMsg.includes('auth')) {
 					uni.showModal({
-						title: '提示',
-						content: '需要相册权限才能保存图片',
+						title: this.$t('hint'),
+						content: this.$t('share.AlbumPermissionRequiredSavePictures'),
 						success: res => {
 							if (res.confirm) uni.openSetting()
 						}
 					})
 				} else {
 					uni.showToast({
-						title: '保存失败',
+						title: this.$t('saveFailed'),
 						icon: 'none'
 					})
 				}
@@ -183,8 +176,8 @@
 				uni.setClipboardData({
 					data: text,
 					success: () => uni.showToast({
-						title: '复制成功',
-						icon: 'success'
+						title: this.$t('copySuccess'),
+						icon: 'none'
 					})
 				})
 				// #endif
@@ -198,12 +191,12 @@
 				try {
 					document.execCommand('copy')
 					uni.showToast({
-						title: '复制成功',
-						icon: 'success'
+						title: this.$t('copySuccess'),
+						icon: 'none'
 					})
 				} catch (err) {
 					uni.showToast({
-						title: '复制失败',
+						title: this.$t('copyFailure'),
 						icon: 'none'
 					})
 				}

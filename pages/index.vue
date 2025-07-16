@@ -6,8 +6,8 @@
 			<swiper-item v-for="(page, index) in pages" :key="index">
 				<scroll-view class="page-scroll-wrapper" scroll-y>
 					<HomePage v-if="page.name === 'HomePage'" ref="homePageRef" />
-					<UserPage v-if="page.name === 'UserPage'" ref="userPageRef" />
-					<ProfilePage v-if="page.name === 'ProfilePage'" ref="profilePageRef" />
+					<collectPage v-if="page.name === 'collectPage'" ref="collectPageRef" />
+					<sharePage v-if="page.name === 'sharePage'" ref="sharePageRef" />
 				</scroll-view>
 			</swiper-item>
 		</swiper>
@@ -24,33 +24,20 @@
 </template>
 
 <script>
-	import HomePage from '@/pages/index/index.vue'
-	import UserPage from '@/pages/Bonuses/Bonuses.vue'
-	import ProfilePage from '@/pages/Games/Games.vue'
+	import HomePage from '@/pages/home/home.vue'
+	import collectPage from '@/pages/collect/collect.vue'
+	import sharePage from '@/pages/share/share.vue'
 
 	export default {
 		name: 'BottomTabSwiper',
 		components: {
 			HomePage,
-			UserPage,
-			ProfilePage
+			collectPage,
+			sharePage
 		},
 		data() {
 			return {
 				currentIndex: 0,
-				pages: [{
-						title: '首页',
-						name: 'HomePage'
-					},
-					{
-						title: '收藏',
-						name: 'UserPage'
-					},
-					{
-						title: '分享链接',
-						name: 'ProfilePage'
-					}
-				],
 				underlineStyle: {
 					width: '0px',
 					transform: 'translateX(0)'
@@ -59,6 +46,24 @@
 				nextMargin: '0px'
 			}
 		},
+		computed: {
+			pages() {
+				return [{
+						title: this.$t('home.home'),
+						name: 'HomePage'
+					},
+					{
+						title: this.$t('home.collect'),
+						name: 'collectPage'
+					},
+					{
+						title: this.$t('home.share'),
+						name: 'sharePage'
+					}
+				];
+			}
+		},
+
 		watch: {
 			currentIndex(newVal, oldVal) {
 				// 当从最后一页切换到第一页时，添加特殊处理
@@ -138,8 +143,8 @@
 				const currentPageName = this.pages[this.currentIndex].name
 				const refMap = {
 					HomePage: 'homePageRef',
-					UserPage: 'userPageRef',
-					ProfilePage: 'profilePageRef'
+					collectPage: 'collectPageRef',
+					sharePage: 'sharePageRef'
 				}
 				return this.$refs[refMap[currentPageName]]
 			}

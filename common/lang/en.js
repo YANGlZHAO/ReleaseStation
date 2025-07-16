@@ -1,5 +1,23 @@
 export default {
+	appTitle: "FCPG",
+	collectionIsEmpty: "Collection is empty",
+	buildFailure: "Build Failure",
+	processing: "Processing...",
+	imageDownloaded: "Image downloaded",
+	savedSuccessfully: "Saved successfully",
+	saveFailed: "Save failed",
+	copySuccess: "Copy Success",
+	copyFailure: "Copy Failure",
+	hint: "hint",
 	home: {
-		home: "home",
+	    home: "Home",
+	    collect: "Collect",
+	    share: "Download"
+	},
+	share: {
+		downloadNow: "Download Now",
+		clickToSave: "Click to Save",
+		pleaseGenerateQRCodeFirst: "Please generate a QR code first",
+		AlbumPermissionRequiredSavePictures: "Album permission is required to save pictures",
 	}
 }

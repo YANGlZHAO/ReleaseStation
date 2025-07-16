@@ -6,7 +6,7 @@
 		}
 	},
 	"pages": [{
-			"path": "pages/home",
+			"path": "pages/index",
 			"style": {
 				"navigationBarTitleText": "发布站",
 				"navigationStyle": "custom",
@@ -19,7 +19,7 @@
 			}
 		},
 		{
-			"path": "pages/index/index",
+			"path": "pages/home/home",
 			"style": {
 				"navigationStyle": "custom",
 				"navigationBarTextStyle": "white",
@@ -31,7 +31,7 @@
 			}
 		},
 		{
-			"path": "pages/Bonuses/Bonuses",
+			"path": "pages/collect/collect",
 			"style": {
 				"navigationBarTitleText": "",
 				"navigationStyle": "custom",
@@ -39,7 +39,7 @@
 			}
 		},
 		{
-			"path": "pages/Games/Games",
+			"path": "pages/share/share",
 			"style": {
 				"navigationBarTitleText": "",
 				"navigationStyle": "custom",

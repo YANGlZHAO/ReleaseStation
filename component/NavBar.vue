@@ -11,7 +11,7 @@
 					<div class="top-right">
 						<!-- <button class="btn login-btn" @click="handleLogin">Login</button>
 						<button class="btn register-btn" @click="handleRegister">Register</button> -->
-						<text class="title">发布站</text>
+						<text class="title">{{$t('appTitle')}}</text>
 					</div>
 				</div>
 			</div>
@@ -30,49 +30,6 @@
 		data() {
 			return {
 				activeIndex: null,
-				navList: [{
-						title: "首页",
-						icon: "Poker",
-						url: "/pages/index/index",
-						bgcolor: "#3a579a"
-					},
-					{
-						title: "收藏",
-						icon: "Gift",
-						url: "/pages/Bonuses/Bonuses",
-						bgcolor: "#ff7f00"
-					},
-					{
-						title: "我的",
-						icon: "orange",
-						url: "/pages/Games/Games",
-						bgcolor: "#5bac5c"
-					},
-					// {
-					// 	title: "Forum",
-					// 	icon: "WeChat",
-					// 	url: "/pages/Forum/Forum",
-					// 	bgcolor: "#fdbe00"
-					// },
-					// {
-					// 	title: "Banking",
-					// 	icon: "purse",
-					// 	url: "/pages/Banking/Banking",
-					// 	bgcolor: "#45b9ea"
-					// },
-					// {
-					// 	title: "Tournaments",
-					// 	icon: "Cup",
-					// 	url: "/pages/Tournaments/Tournaments",
-					// 	bgcolor: "#bdd548"
-					// },
-					// {
-					// 	title: "News",
-					// 	icon: "News",
-					// 	url: "/pages/News/News",
-					// 	bgcolor: "#1562b6"
-					// },
-				],
 				bgPosX: 50, // 初始X轴位置
 				bgPosY: 50 // 初始Y轴位置
 			};

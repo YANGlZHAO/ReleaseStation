@@ -2,7 +2,7 @@
 	<view class="page" :style="{ paddingTop: $topSafeHeight + 'px' }">
 		<view class="content">
 			<popularGameVue :list="starredList" />
-			<view v-if="starredList.length == 0" class="empty-tip">Collection is empty</view>
+			<view v-if="starredList.length == 0" class="empty-tip">{{$t('collectionIsEmpty')}}</view>
 		</view>
 	</view>
 </template>
@@ -37,7 +37,7 @@
 		flex-direction: column;
 		background-color: #000;
 		width: 100vw;
-		height: 100vh;
+		height: calc(100vh - 2rem);
 	}
 
 	.content {

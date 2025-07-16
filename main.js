@@ -28,8 +28,25 @@ Vue.prototype.$topSafeHeight = topSafeHeight
 Vue.prototype.$bottomSafeHeight = bottomSafeHeight
 
 
+
+//多语言引入
+import VueI18n from 'vue-i18n'
+import po from '@/common/lang/po.js'
+import en from '@/common/lang/en.js'
+Vue.use(VueI18n)
+const i18n = new VueI18n({
+	// locale: uni.getStorageSync('lang') ? uni.getStorageSync('lang') : 'po',
+	locale: 'po',
+	messages: {
+		'en': en,
+		'po': po
+	}
+})
+
+
 App.mpType = 'app'
 const app = new Vue({
+	i18n,
 	...App
 })
 app.$mount()
