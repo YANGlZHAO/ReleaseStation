@@ -1,6 +1,10 @@
 <template>
 	<view class="bottom-tab-swiper">
-		<!-- 内容区域 -->
+		<!-- #ifdef H5 -->
+		<view v-if="showLoading" class="loading-page">
+			<image class="splash" src="/static/launch/splash/splash.png"></image>
+		</view>
+		<!-- #endif -->
 		<swiper class="swiper-container" :current="currentIndex" @change="onSwiperChange" :circular="false"
 			:disable-touch="true" :previous-margin="previousMargin" :next-margin="nextMargin">
 			<swiper-item v-for="(page, index) in pages" :key="index">
@@ -11,8 +15,6 @@
 				</scroll-view>
 			</swiper-item>
 		</swiper>
-
-		<!-- 底部导航栏 -->
 		<view class="tab-bar" ref="tabBar" :style="{ paddingBottom: $bottomSafeHeight + 'px' }">
 			<view class="tab-item" v-for="(page, index) in pages" :key="index"
 				:class="{ active: currentIndex === index }" @click="goToPage(index)" ref="tabItems">
@@ -43,7 +45,8 @@
 					transform: 'translateX(0)'
 				},
 				previousMargin: '0px',
-				nextMargin: '0px'
+				nextMargin: '0px',
+				showLoading: true,
 			}
 		},
 		computed: {
@@ -60,13 +63,11 @@
 						title: this.$t('home.share'),
 						name: 'sharePage'
 					}
-				];
+				]
 			}
 		},
-
 		watch: {
 			currentIndex(newVal, oldVal) {
-				// 当从最后一页切换到第一页时，添加特殊处理
 				if (oldVal === this.pages.length - 1 && newVal === 0) {
 					this.previousMargin = '100%';
 					this.nextMargin = '0px';
@@ -79,19 +80,29 @@
 				}
 
 				this.updateUnderline()
-				// 延迟调用 open，确保 swiper 切换完成
 				setTimeout(() => {
 					this.notifyCurrentPage()
 				}, 100)
 			}
 		},
 		mounted() {
+			// #ifdef H5
+			setTimeout(() => {
+				this.showLoading = false
+				this.updateUnderline()
+				this.notifyCurrentPage()
+			}, 2000)
+			// #endif
+
+			// #ifndef H5
+			this.showLoading = false
 			this.updateUnderline()
 			this.notifyCurrentPage()
+			// #endif
 		},
+
 		methods: {
 			goToPage(index) {
-				// 当从最后一页切换到第一页时，添加特殊处理
 				if (this.currentIndex === this.pages.length - 1 && index === 0) {
 					this.previousMargin = '100%';
 					this.nextMargin = '0px';
@@ -181,20 +192,13 @@
 		right: 0;
 		height: 3rem;
 		background: rgba(255, 255, 255, 0.6);
-		/* 半透明白色背景 */
 		backdrop-filter: blur(12px);
-		/* 更自然的磨砂强度 */
 		-webkit-backdrop-filter: blur(12px);
 		border-top: 1px solid rgba(255, 255, 255, 0.3);
-		/* 柔和边框 */
 		box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.08);
-		/* 顶部轻微阴影 */
 		color: #000;
-		/* 白色背景下用深色文字更清晰 */
 		z-index: 9999;
 	}
-
-
 
 	.tab-item {
 		flex: 1;
@@ -217,5 +221,26 @@
 		background-color: #409eff;
 		transition: all 0.3s ease;
 		will-change: transform, width;
+	}
+
+	/* loading页样式 */
+	.loading-page {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.5rem;
+		background-color: #000;
+		color: #fff;
+		z-index: 10000;
+	}
+
+	.splash {
+		width: 100vw;
+		height: 100vh;
 	}
 </style>

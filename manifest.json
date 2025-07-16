@@ -1,7 +1,7 @@
 {
-    "name" : "FC发布站",
+    "name" : "FCPG",
     "appid" : "__UNI__2BD90B9",
-    "description" : "FC站点发布站",
+    "description" : "FCPG",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
@@ -33,7 +33,7 @@
         },
         "distribute" : {
             "android" : {
-                "name" : "FC发布站",
+                "name" : "FCPG",
                 "package" : "com.tsx.fcStation",
                 "fullscreen" : true,
                 "permissions" : [
@@ -60,11 +60,11 @@
                 "dSYMs" : false,
                 "permissions" : {
                     "PhotoLibrary" : {
-                        "description" : "需要访问相册以保存图片"
+                        "description" : "Precisa acessar o álbum de fotos para salvar a imagem"
                     }
                 },
                 "privacyDescription" : {
-                    "NSPhotoLibraryAddUsageDescription" : "App需要保存二维码到您的相册"
+                    "NSPhotoLibraryAddUsageDescription" : "O aplicativo precisa salvar o código QR no seu álbum de fotos"
                 }
             },
             "sdkConfigs" : {},
@@ -160,6 +160,6 @@
         "@dcloudio/vue-cli-plugin-uni" : "^2.0.2-4060620250520001"
     },
     "h5" : {
-        "title" : "发布站"
+        "title" : "FCPG"
     }
 }

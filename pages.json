@@ -8,7 +8,7 @@
 	"pages": [{
 			"path": "pages/index",
 			"style": {
-				"navigationBarTitleText": "发布站",
+				"navigationBarTitleText": "FCPG",
 				"navigationStyle": "custom",
 				"navigationBarTextStyle": "white",
 				"app-plus": {
