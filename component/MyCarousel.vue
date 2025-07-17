@@ -24,7 +24,7 @@
 				// 获取屏幕宽度（减去边距）
 				const screenWidth = uni.getSystemInfoSync().windowWidth - 20; // 假设左右各 1rem（16px*2）
 				// 假设图片原始宽高比是 3:1（根据你的图片比例调整）
-				const aspectRatio = 3 / 1; // 宽/高
+				const aspectRatio = 1020 / 300; // 宽/高
 				this.swiperHeight = screenWidth / aspectRatio + 'px';
 			}
 		}

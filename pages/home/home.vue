@@ -31,6 +31,36 @@
 				data: [{
 					conpany: 'FC',
 					gameList: [{
+							name: 'heinekenccc',
+							image: '/static/APP/28.jpg',
+							isStarred: false,
+							url: 'https://heinekenccc.bet'
+						},
+						{
+							name: 'fifacwc777',
+							image: '/static/APP/27.jpg',
+							isStarred: false,
+							url: 'https://fifacwc777.bet'
+						},
+						{
+							name: 'lindagarota',
+							image: '/static/APP/26.jpg',
+							isStarred: false,
+							url: 'https://lindagarota.bet'
+						},
+						{
+							name: 'labubu777',
+							image: '/static/APP/25.jpg',
+							isStarred: false,
+							url: 'https://labubu777.bet'
+						},
+						{
+							name: 'airpods',
+							image: '/static/APP/24.jpg',
+							isStarred: false,
+							url: 'https://airpods.bet'
+						},
+						{
 							name: 'pgvip777',
 							image: '/static/APP/23.png',
 							isStarred: false,
