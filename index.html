@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <script>
-      var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
-        CSS.supports('top: constant(a)'))
-      document.write(
-        '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
-        (coverSupport ? ', viewport-fit=cover' : '') + '" />')
-    </script>
-    <title></title>
-    <!--preload-links-->
-    <!--app-context-->
-  </head>
-  <body>
-    <div id="app"><!--app-html--></div>
-    <script type="module" src="/main.js"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8">
+		<title>FCPG</title>
+		<link rel="icon" href="favicon.ico">
+
+		<!-- Google Analytics（必须放在占位符前） -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-EHF4PR0Y4N"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+			gtag('config', 'G-EHF4PR0Y4N');
+		</script>
+
+		<!-- Viewport 配置（直接插入以提高性能） -->
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+		<!-- UniApp 占位符（必须保留） -->
+		<!--preload-links-->
+		<!--app-context-->
+	</head>
+
+	<body>
+		<!-- 应用挂载点 -->
+		<div id="app"><!--app-html--></div>
+
+		<!-- 主脚本（UniApp会自动替换为编译后的文件） -->
+		<script type="module" src="/main.js"></script>
+	</body>
 </html>

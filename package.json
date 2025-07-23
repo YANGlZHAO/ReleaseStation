@@ -8,7 +8,12 @@
     "build:%PLATFORM%": "cross-env NODE_ENV=production UNI_PLATFORM=%PLATFORM% vue-cli-service uni-build",
     "serve": "npm run dev:h5",
     "build": "npm run build:h5",
-    "build:app-plus": "vue-cli-service uni-build --platform app-plus && node renameApk.js"
+    "build:app-plus": "vue-cli-service uni-build --platform app-plus && node renameApk.js",
+    "dev:h5": "cross-env NODE_ENV=development UNI_PLATFORM=h5 vue-cli-service uni-build --watch",
+    "build:h5": "vue-cli-service uni-build --platform h5"
+  },
+  "overrides": {
+    "@achrinza/node-ipc": "10.1.11"
   },
   "dependencies": {
     "@dcloudio/uni-ui": "^1.5.8",
@@ -20,12 +25,15 @@
   },
   "devDependencies": {
     "@dcloudio/types": "*",
-    "@dcloudio/uni-app-plus": "2.0.2-4060620250520001",
-    "@dcloudio/uni-cli-shared": "2.0.2-4060620250520001",
-    "@dcloudio/uni-h5": "2.0.2-4060620250520001",
-    "@dcloudio/uni-mp-vue": "2.0.2-4060620250520001",
-    "@dcloudio/uni-template-compiler": "2.0.2-4060620250520001",
-    "@dcloudio/vue-cli-plugin-uni": "2.0.2-4060620250520001",
+    "@dcloudio/uni-app": "2.0.2-4070520250711001",
+    "@dcloudio/uni-app-plus": "2.0.2-4070520250711001",
+    "@dcloudio/uni-cli-i18n": "2.0.2-4070520250711001",
+    "@dcloudio/uni-cli-shared": "^2.0.2-4070520250711001",
+    "@dcloudio/uni-h5": "2.0.2-4070520250711001",
+    "@dcloudio/uni-mp-vue": "2.0.2-4070520250711001",
+    "@dcloudio/uni-template-compiler": "2.0.2-4070520250711001",
+    "@dcloudio/vue-cli-plugin-uni": "2.0.2-4070520250711001",
+    "@dcloudio/webpack-uni-pages-loader": "2.0.2-4070520250711001",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "autoprefixer": "^10.4.21",

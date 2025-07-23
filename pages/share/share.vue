@@ -48,7 +48,7 @@
 						this.setDownloadUrl()
 					}
 				})
-				
+
 				this.generateQRCode(this.qrCodeUrl, 'qrCodeUrl')
 			},
 			setDownloadUrl() {
@@ -57,11 +57,12 @@
 				this.platform = systemInfo.platform
 				this.downloadUrl = this.platform === 'android' ? this.apkDownLoadUrl : this.iosUrl
 				// #endif
-			
+
 				// #ifdef H5
 				const ua = navigator.userAgent.toLowerCase()
-			
-				if (ua.includes('iphone') || ua.includes('ipad') || (ua.includes('macintosh') && 'ontouchend' in document)) {
+
+				if (ua.includes('iphone') || ua.includes('ipad') || (ua.includes('macintosh') && 'ontouchend' in
+					document)) {
 					this.downloadUrl = this.iosUrl
 				} else if (ua.includes('android')) {
 					this.downloadUrl = this.apkDownLoadUrl
@@ -163,13 +164,26 @@
 				}
 			},
 			openLink() {
-				// #ifdef APP-PLUS
-				plus.runtime.openURL(this.downloadUrl)
-				// #endif
-
-				// #ifdef H5
-				window.open(this.downloadUrl, '_blank')
-				// #endif
+				const platform = "null"
+			    // #ifdef APP-PLUS
+			    plus.runtime.openURL(this.downloadUrl);
+			    platform = "APP";
+			    // #endif
+			
+			    // #ifdef H5
+			    window.open(this.downloadUrl, '_blank');
+			    platform = "H5";
+			    // #endif
+			
+			    // 发送 GA4 事件
+			    if (typeof gtag !== 'undefined') {
+			        gtag('event', 'clickDownload', {
+			            'event_category': 'download_actions',
+			            'event_label': 'download_link_click',
+			            'platform': platform,
+			            'value': 1
+			        });
+			    }
 			},
 			copyToClipboard(text) {
 				// #ifdef APP-PLUS
