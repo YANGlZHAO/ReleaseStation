@@ -19,5 +19,8 @@ export default {
 		clickToSave: "Clique para Salvar",
 		pleaseGenerateQRCodeFirst: "Por favor, gere um código QR primeiro",
 		AlbumPermissionRequiredSavePictures: "É necessária permissão do álbum para salvar fotos",
+	},
+	information: {
+		DontShowAgainToday: "Não mostrar novamente hoje",
 	}
 }

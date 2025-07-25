@@ -1,104 +1,86 @@
 <template>
-	<view class="container">
-		<web-view :src="safeUrl" ref="webView" @load="handlePageLoad"></web-view>
-	</view>
+  <view class="container">
+    <web-view
+      :src="safeUrl"
+      ref="webView"
+      @load="handlePageLoad"
+    ></web-view>
+  </view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				safeUrl: '',
-				canGoBack: false,
-				initialUrl: '',
-				currentUrl: '',
-				backButtonListener: null,
-				isApp: false
-			};
-		},
-		onLoad(options) {
-			this.safeUrl = this.processUrl(options.url);
-			this.initialUrl = this.safeUrl;
-			this.isApp = this.checkIsApp();
-			if (this.isApp) {
-				this.initBackHandler();
-			}
-		},
-		onUnload() {
-			if (this.backButtonListener) {
-				plus.key.removeEventListener('backbutton', this.backButtonListener);
-			}
-			uni.$off('webviewBack', this.handleBackPress);
-		},
-		methods: {
-			checkIsApp() {
-				const systemInfo = uni.getSystemInfoSync();
-				return systemInfo.platform === 'android' || systemInfo.platform === 'ios';
-			},
+export default {
+  data() {
+    return {
+      safeUrl: '',
+      initialUrl: '',
+      isApp: false,
+      urlCheckInterval: null,
+      currentUrl: '',
+      canGoBack: false,
+    };
+  },
+  onLoad(options) {
+    this.safeUrl = this.processUrl(options.url);
+    this.initialUrl = this.safeUrl;
+    this.isApp = this.checkIsApp();
+  },
+  onUnload() {
+    if (this.urlCheckInterval) {
+      clearInterval(this.urlCheckInterval);
+      this.urlCheckInterval = null;
+    }
+  },
+  methods: {
+    checkIsApp() {
+      const info = uni.getSystemInfoSync();
+      return info.platform === 'android' || info.platform === 'ios';
+    },
+    processUrl(url) {
+      try {
+        let decoded = decodeURIComponent(url || '');
+        if (!/^https?:\/\//i.test(decoded)) {
+          decoded = 'https://' + decoded;
+        }
+        return decoded;
+      } catch (e) {
+        uni.navigateBack();
+        return '';
+      }
+    },
+    handlePageLoad() {
+      // App 端可以用 evalJS 监控webview地址变更，更新 canGoBack
+      if (this.isApp && this.$refs.webView && typeof this.$refs.webView.evalJS === 'function') {
+        // 初始化 currentUrl 和 canGoBack
+        setTimeout(() => {
+          this.$refs.webView.evalJS('window.location.href', (url) => {
+            this.currentUrl = url;
+            this.canGoBack = url !== this.initialUrl;
+          });
+        }, 300);
 
-			processUrl(url) {
-				try {
-					let decoded = decodeURIComponent(url || '');
-					if (!/^https?:\/\//i.test(decoded)) {
-						decoded = 'https://' + decoded;
-					}
-					return decoded;
-				} catch {
-					uni.navigateBack();
-					return '';
-				}
-			},
-
-			initBackHandler() {
-				this.backButtonListener = () => this.handleBackPress();
-				plus.key.addEventListener('backbutton', this.backButtonListener);
-				uni.$on('webviewBack', this.handleBackPress);
-			},
-
-			handleBackPress() {
-				if (this.canGoBack) {
-					this.$refs.webView.evalJS('history.back()');
-					setTimeout(() => {
-						this.$refs.webView.evalJS('window.location.href', (url) => {
-							this.currentUrl = url;
-							this.canGoBack = url !== this.initialUrl;
-							
-						});
-					}, 300);
-					return;
-				}
-				uni.navigateBack();
-			},
-
-			handlePageLoad() {
-				setTimeout(() => {
-					this.$refs.webView.evalJS('window.location.href', (url) => {
-						this.currentUrl = url;
-						this.canGoBack = url !== this.initialUrl;
-						
-					});
-				}, 300);
-
-				this.urlCheckInterval = setInterval(() => {
-					this.$refs.webView.evalJS('window.location.href', (url) => {
-						if (url !== this.currentUrl) {
-							this.currentUrl = url;
-							this.canGoBack = true;
-						}
-					});
-				}, 1000);
-			},
-		},
-		beforeDestroy() {
-			if (this.urlCheckInterval) {
-				clearInterval(this.urlCheckInterval);
-			}
-		}
-	};
+        // 轮询检测 URL 变化（可选）
+        this.urlCheckInterval = setInterval(() => {
+          this.$refs.webView.evalJS('window.location.href', (url) => {
+            if (url !== this.currentUrl) {
+              this.currentUrl = url;
+              this.canGoBack = true;
+            }
+          });
+        }, 1000);
+      }
+    },
+    handleBackPress() {
+      // 返回处理：
+      // 直接调用 uni.navigateBack，交给系统（浏览器或App）处理返回逻辑
+      uni.navigateBack();
+    }
+  }
+};
 </script>
 
 <style>
-	.container {
-		height: 100vh;
-	}
+.container {
+  height: 100vh;
+}
 </style>

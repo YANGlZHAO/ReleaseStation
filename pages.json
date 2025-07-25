@@ -59,10 +59,16 @@
 			}
 		},
 		{
-			"path" : "component/MyCarousel",
-			"style" : 
-			{
-				"navigationBarTitleText" : ""
+			"path": "component/MyCarousel",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "component/informationPopup",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "white"
 			}
 		}
 	],
@@ -71,6 +77,12 @@
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"easycom": {
+	  "autoscan": true,
+	  "custom": {
+	    "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	  }
 	},
 	"uniIdRouter": {}
 }

@@ -19,5 +19,8 @@ export default {
 		clickToSave: "Click to Save",
 		pleaseGenerateQRCodeFirst: "Please generate a QR code first",
 		AlbumPermissionRequiredSavePictures: "Album permission is required to save pictures",
+	},
+	information: {
+		DontShowAgainToday: "Don't show again today",
 	}
 }

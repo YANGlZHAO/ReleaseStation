@@ -22,6 +22,7 @@
 			</view>
 			<view class="tab-underline" :style="underlineStyle"></view>
 		</view>
+		<!-- <informationPopup ref="informationPopup" @todayAgainPopup="todayAgainPopup"></informationPopup> -->
 	</view>
 </template>
 
@@ -29,13 +30,18 @@
 	import HomePage from '@/pages/home/home.vue'
 	import collectPage from '@/pages/collect/collect.vue'
 	import sharePage from '@/pages/share/share.vue'
+	import informationPopup from "@/component/informationPopup.vue"
+	import {
+		suporteGetList,
+	} from "@/api/information.js"
 
 	export default {
 		name: 'BottomTabSwiper',
 		components: {
 			HomePage,
 			collectPage,
-			sharePage
+			sharePage,
+			informationPopup
 		},
 		data() {
 			return {
@@ -47,6 +53,10 @@
 				previousMargin: '0px',
 				nextMargin: '0px',
 				showLoading: true,
+				getInformationDataAll: [],
+				informationList: [],
+				isInformationPopup: false,
+				isTodayAgainPopup: true,
 			}
 		},
 		computed: {
@@ -85,12 +95,14 @@
 				}, 100)
 			}
 		},
+
 		mounted() {
 			// #ifdef H5
 			setTimeout(() => {
 				this.showLoading = false
 				this.updateUnderline()
 				this.notifyCurrentPage()
+				this.getSuporteData()
 			}, 2000)
 			// #endif
 
@@ -98,6 +110,7 @@
 			this.showLoading = false
 			this.updateUnderline()
 			this.notifyCurrentPage()
+			this.getSuporteData()
 			// #endif
 		},
 
@@ -158,6 +171,53 @@
 					sharePage: 'sharePageRef'
 				}
 				return this.$refs[refMap[currentPageName]]
+			},
+			getSuporteData() {
+				this.getInformationDataAll = []
+				this.informationList = []
+				try {
+					let requestSuporteListData = {
+						token: '',
+					}
+					suporteGetList(requestSuporteListData).then(data => {
+						if (data.meta.code == 0) {
+							data.data.rows.forEach((value, index) => {
+								if (value.type == 1) {
+									this.getInformationDataAll.push(value)
+								}
+							});
+							this.informationList = []
+							this.getInformationDataAll.forEach((item, index) => {
+								if (item.is_popup == 1) {
+									this.informationList.push(item)
+								}
+							})
+							if (this.informationList.length > 0) {
+								this.isInformationPopup = true
+								this.openInformationPopup()
+							} else {
+								this.isInformationPopup = false
+							}
+							uni.setStorageSync('getInformationDataAll', this.getInformationDataAll)
+						}
+					})
+				} catch (e) {
+			
+				}
+			},
+			openInformationPopup() {
+				var date = new Date()
+				var year = date.getFullYear()
+				var month = date.getMonth() + 1
+				var day = date.getDate()
+				if (day != uni.getStorageSync('nowDate').day || month != uni.getStorageSync('nowDate').month ||
+					year != uni.getStorageSync('nowDate').year) {
+					this.$refs.informationPopup.open(this.informationList)
+					this.$refs.informationPopup.isChecked = false
+				}
+			},
+			todayAgainPopup() {
+				
 			}
 		}
 	}

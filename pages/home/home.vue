@@ -13,6 +13,7 @@
 	import FloatButtonVue from '@/component/FloatButton.vue'
 	import NavBarVue from '@/component/NavBar.vue'
 	import MyCarousel from "@/component/MyCarousel.vue";
+	
 	import {
 		getFcSwiperList,
 		getFcPGList
@@ -23,14 +24,17 @@
 			popularGameVue,
 			FloatButtonVue,
 			NavBarVue,
-			MyCarousel
+			MyCarousel,
+			
 		},
 		data() {
 			return {
 				imageList: [],
-				data: []
+				data: [],
+				
 			}
 		},
+
 		mounted() {
 			if (typeof plus !== 'undefined') {
 				plus.navigator.setFullscreen(true)
@@ -39,6 +43,7 @@
 					plus.navigator.setFullscreen(true)
 				})
 			}
+			
 		},
 		methods: {
 			open() {
@@ -49,7 +54,8 @@
 				getFcSwiperList().then(res => {
 					this.imageList = res.data;
 				});
-			}
+			},
+			
 		}
 	}
 </script>

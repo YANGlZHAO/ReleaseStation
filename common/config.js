@@ -3,18 +3,18 @@ const ENVIRONMENT = {
 	DEV_176: 'http://192.168.1.176:9080', //local
 	// #ifndef APP-PLUS
 	DEV_OUTSIDE: 'https://slot55xx2.ccfly.cc', //外测-h5端不需要地址
-	STABLE: 'prod-api/', //正式-h5端不需要地址
+	STABLE: 'https://tucanoccc.bet', //正式-h5端不需要地址
 	// #endif
 	// #ifdef APP-PLUS
 	DEV_OUTSIDE: 'https://slot55xx2.ccfly.cc', //外测
-	STABLE: 'prod-api/', //正式-app端需要地址 https://www.365bets.top/prod-api/  prod-api/
+	STABLE: 'https://tucanoccc.bet', //正式-app端需要地址 https://www.365bets.top/prod-api/  prod-api/
 	// #endif
 };
 
 module.exports = {
 	ENVIRONMENT,
 	// 当前环境
-	CURRENT_ENVIRONMENT: ENVIRONMENT.DEV_OUTSIDE,
+	CURRENT_ENVIRONMENT: ENVIRONMENT.STABLE,
 	// //是否开发模式
 	// IS_DEV: true,
 	// // 开发环境地址

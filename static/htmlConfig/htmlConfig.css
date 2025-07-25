@@ -1,0 +1,23 @@
+/* 线条颜色和左右背景色
+背景色
+侧边栏菜单按钮色有版本跟背景色相同
+主题色
+tab背景色
+
+文字默认颜色
+文字默认颜色暗色有版本跟文字默认颜色相同
+文字默认颜色亮色有版本跟文字默认颜色相同
+主题色按钮中的文字颜色 */
+
+html {
+	--theme-color-line: #293548;
+	--theme-bg-color: #111923;
+	--theme-side-menu-btn-color: #182434;
+	--theme-primary-color: #FEF0B3;
+	--theme-main-bg-color: #151D29;
+	
+	--theme-text-color: #ADB6C4;
+	--theme-text-color-lighten: #55657E;
+	--theme-btm-def-color: #7D8BA1;
+	--theme-primary-font-color: #681E01;
+}
