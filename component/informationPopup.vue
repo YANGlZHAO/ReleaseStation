@@ -3,7 +3,7 @@
 		<view class="popup-content">
 			<view class="Modal">
 				<view class="exitBtn" @click="close">
-					<u-icon name="close" color="#fff" size=".2rem"></u-icon>
+					<u-icon name="close" color="#fff" size="0.6rem"></u-icon>
 				</view>
 				<view class="totalContent">
 					<scroll-view class="leftContent" scroll-y="true">
@@ -209,12 +209,12 @@
 					z-index: 1002;
 					cursor: pointer;
 					position: absolute;
-					right: 3.3rem;
+					right: 45%;
 					top: auto;
-					bottom: -1.6rem;
+					bottom: -5rem;
 					border: .05rem solid #fff;
-					width: .5rem;
-					height: .5rem;
+					width: 1.5rem;
+					height: 1.5rem;
 				}
 
 				.totalContent {
@@ -345,6 +345,7 @@
 						background-color: rgba(0, 0, 0, 0.2);
 						border-radius: 0.2rem;
 						width: 10rem;
+						height: 1rem;
 						margin: 0 auto;
 						padding: 0.2rem;
 						color: var(--theme-text-color-darken);
