@@ -7,14 +7,15 @@ export function initRem() {
 
 	function setRem() {
 		let width = docEl.clientWidth
-		if (width > 375) width = 375 // 设计稿最大宽度限制
-		const rem = width / 20 // 设计稿等比换算
+		if (width > 780) width = 780 // 设计稿最大宽度限制
+		const rem = width / 24 // 设计稿等比换算
 		docEl.style.fontSize = rem + 'px'
 	}
 
 	setRem()
 
 	window.addEventListener('resize', setRem)
+	
 	window.addEventListener('pageshow', e => {
 		if (e.persisted) setRem()
 	})

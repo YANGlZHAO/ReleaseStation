@@ -17,5 +17,5 @@ setRemBase();
 let resizeTimer;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(setRemBase, 0);
+  resizeTimer = setTimeout(setRemBase, 100);
 });

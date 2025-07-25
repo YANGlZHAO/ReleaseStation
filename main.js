@@ -2,7 +2,7 @@ import App from './App'
 
 import {
 	initRem
-} from './utils/rem'
+} from './utils/rem.js'
 initRem()
 
 // #ifndef VUE3

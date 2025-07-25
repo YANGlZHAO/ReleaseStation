@@ -11,7 +11,7 @@
 							@click="itemClick(index)"
 							:class="currentIndex == index ? 'leftItem leftItemSelected' : 'leftItem'">
 							<view class="leftEmailIcon">
-								<image src="@/static/information.png" style="width: 0.35rem; height: 0.35rem;">
+								<image src="@/static/information.png" style="width: 1.5rem; height: 1.5rem;">
 								</image>
 							</view>
 							<span class="leftTitle">{{item.title}}</span>
@@ -189,10 +189,10 @@
 				left: 50%;
 				transform: translate(-50%, -50%);
 				width: 20rem;
-				height: 4.2rem;
+				height: 15rem;
 				background-color: var(--theme-main-bg-color);
 				border: thin solid var(--theme-color-line);
-				border-radius: 0.2rem;
+				border-radius: 1rem;
 				z-index: 1002;
 				padding: 0;
 				font-size: 0.22rem;
@@ -220,10 +220,10 @@
 				.totalContent {
 					display: flex;
 					flex-direction: row;
-					height: 4.2rem;
+					height: 15rem;
 
 					.leftContent {
-						width: 2rem;
+						width: 6rem;
 						display: flex;
 						flex-direction: column;
 						border-right: 1px solid var(--theme-color-line);
@@ -234,18 +234,20 @@
 							margin: 0;
 							padding: .15rem;
 							align-items: center;
-							width: 1.3rem;
+							width: 5.5rem;
 							cursor: pointer;
 
 							.leftEmailIcon {
 								align-items: center;
 								display: flex;
 								position: relative;
+								width: 1.5rem;
+								height: 1.5rem;
 							}
 
 							.leftTitle {
-								font-size: .18rem;
-								line-height: .27rem;
+								font-size: 0.6rem;
+								line-height: 1rem;
 								margin-left: .05rem;
 								white-space: nowrap;
 								text-overflow: ellipsis;
@@ -268,22 +270,20 @@
 						.title {
 							margin: 0.2rem 0.5rem 0 0.5rem;
 							overflow: hidden;
-
-							// background-color: red;
+							
 							.title-text {
 								color: var(--theme-text-color);
 								font-weight: bold;
 								display: inline-block;
 								width: 100%;
 								height: auto;
-								font-size: 0.26rem;
+								font-size: 0.5rem;
 								word-break: break-all;
 								text-overflow: ellipsis;
 								word-wrap: break-word;
 								white-space: pre-wrap;
 								text-align: center;
 								line-height: 1.38;
-
 							}
 						}
 
@@ -294,16 +294,13 @@
 							display: flex;
 
 							.scroll-Y {
-								width: 5rem;
+								width: 100%;
 								word-wrap: break-word;
-								/* 强制长单词或 URL 地址换行 */
 								overflow-wrap: break-word;
-
-								/* 当内容超出容器宽度时自动换行 */
-								// background-color: #fff;
+								
 								::v-deep ::-webkit-scrollbar {
-									width: 0.1rem !important;
-									height: 0.05rem !important;
+									width: 0.2rem !important;
+									height: 0.1rem !important;
 									background: var(--theme-btm-bg-color) !important;
 									-webkit-appearance: auto !important;
 									overflow: auto !important;
@@ -311,8 +308,8 @@
 								}
 
 								::v-deep ::-webkit-scrollbar-thumb {
-									border-radius: 0.1rem !important;
-									box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2) !important;
+									border-radius: 0.2rem !important;
+									box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2) !important;
 									background: var(--theme-color-line) !important;
 								}
 
@@ -341,23 +338,23 @@
 				}
 
 				.bottom-btn {
-					margin-top: 0.2rem;
+					margin-top: 0.8rem;
 					align-items: center;
 
 					.checkboxGroup {
 						background-color: rgba(0, 0, 0, 0.2);
 						border-radius: 0.2rem;
-						width: 3.5rem;
+						width: 10rem;
 						margin: 0 auto;
-						padding: 0.1rem;
+						padding: 0.2rem;
 						color: var(--theme-text-color-darken);
-						font-size: 0.2rem;
+						font-size: 0.6rem;
 						text-align: center;
 
 						.checkbox {
 							::v-deep .uni-checkbox-input {
-								width: .32rem;
-								height: .32rem;
+								width: .6rem;
+								height: .6rem;
 							}
 						}
 					}
