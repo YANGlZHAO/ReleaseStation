@@ -22,7 +22,10 @@
 			</view>
 			<view class="tab-underline" :style="underlineStyle"></view>
 		</view>
-		<!-- <informationPopup ref="informationPopup" @todayAgainPopup="todayAgainPopup"></informationPopup> -->
+
+		<view>
+			<informationPopup ref="informationPopup" @todayAgainPopup="todayAgainPopup"></informationPopup>
+		</view>
 	</view>
 </template>
 
@@ -202,7 +205,7 @@
 						}
 					})
 				} catch (e) {
-			
+
 				}
 			},
 			openInformationPopup() {
@@ -217,7 +220,7 @@
 				}
 			},
 			todayAgainPopup() {
-				
+
 			}
 		}
 	}
