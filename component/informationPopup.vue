@@ -270,7 +270,7 @@
 						.title {
 							margin: 0.2rem 0.5rem 0 0.5rem;
 							overflow: hidden;
-							
+
 							.title-text {
 								color: var(--theme-text-color);
 								font-weight: bold;
@@ -297,7 +297,7 @@
 								width: 100%;
 								word-wrap: break-word;
 								overflow-wrap: break-word;
-								
+
 								::v-deep ::-webkit-scrollbar {
 									width: 0.2rem !important;
 									height: 0.1rem !important;

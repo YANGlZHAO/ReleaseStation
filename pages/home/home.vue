@@ -2,7 +2,7 @@
 	<view class="page">
 		<NavBarVue></NavBarVue>
 		<MyCarousel :images="imageList" />
-		<popularGameVue :list="data" />
+		<popularGameVue :list="data" :imageList="applicationJumpLinkList" />
 	</view>
 </template>
 
@@ -13,10 +13,11 @@
 	import FloatButtonVue from '@/component/FloatButton.vue'
 	import NavBarVue from '@/component/NavBar.vue'
 	import MyCarousel from "@/component/MyCarousel.vue";
-	
+
 	import {
 		getFcSwiperList,
-		getFcPGList
+		getFcPGList,
+		applicationJumpLink
 	} from '@/api/jsonbin.js';
 	export default {
 		name: "HomePage",
@@ -25,13 +26,13 @@
 			FloatButtonVue,
 			NavBarVue,
 			MyCarousel,
-			
+
 		},
 		data() {
 			return {
 				imageList: [],
 				data: [],
-				
+				applicationJumpLinkList: []
 			}
 		},
 
@@ -43,19 +44,24 @@
 					plus.navigator.setFullscreen(true)
 				})
 			}
-			
+
 		},
 		methods: {
-			open() {
-				getFcPGList().then(res => {
-					this.data = res.data;
-				});
+			async open() {
+				try {
+					const swiperRes = await getFcSwiperList();
+					this.imageList = swiperRes.data;
 
-				getFcSwiperList().then(res => {
-					this.imageList = res.data;
-				});
-			},
-			
+					const jumpLinkRes = await applicationJumpLink();
+					this.applicationJumpLinkList = jumpLinkRes.data;
+					
+					const fcPGRes = await getFcPGList();
+					this.data = fcPGRes.data;
+				} catch (err) {
+					console.error("err：", err);
+				}
+			}
+
 		}
 	}
 </script>

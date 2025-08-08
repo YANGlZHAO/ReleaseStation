@@ -1,26 +1,20 @@
 <template>
 	<scroll-view class="game-wrapper" scroll-y :scroll-top="scrollTop" ref="scrollView" @scroll="onScroll">
-		<div class="game-container" v-for="(companyGroup, cIndex) in localList" :key="cIndex">
-			<div class="companyBox">
-				<!-- <div class="company-title">{{ companyGroup.conpany }}</div> -->
-				<image class="svgIcon" style="margin-right: 1rem;" src="@/static/APP/img_logo.png" @click="openExternalLink(item.url)" />
-				<div class="svgIconList" v-if="companyGroup.conpany == 'FC'">
-					<image class="svgIcon" v-for="(item, i) in imageList" :key="i" :src="item.img"
-						@click="openExternalLink(item.url)" />
-				</div>
-			</div>
-			<div class="game-grid">
-				<div class="game-card" v-for="(game, index) in companyGroup.gameList" :key="index"
-					@click="goToWebView(game.url)">
-					<image class="game-image" :src="game.image" mode="aspectFit"></image>
-					<div class="game-title">{{ game.name }}</div>
-					<image class="star-icon" :src="game.isStarred ? '/static/star-on.png' : '/static/star-off.png'"
-						mode="widthFix" @click.stop="toggleStar(cIndex, index)"></image>
-				</div>
+		<div class="companyBox" v-if="imageList.length > 0">
+			<image class="svgIcon" style="margin-right: 1rem;" src="@/static/APP/img_logo.png" />
+			<div class="svgIconList">
+				<image class="svgIcon" v-for="(item, i) in imageList" :key="i" :src="item.img"
+					@click="openExternalLink(item.url)" />
 			</div>
 		</div>
-		<div class="back-to-top" v-if="showBackToTop" @click="scrollToTop">
-			↑
+
+		<div class="game-grid">
+			<div class="game-card" v-for="(game, index) in localList" :key="index" @click="goToWebView(game.url)">
+				<image class="game-image" :src="game.image" mode="aspectFit"></image>
+				<div class="game-title">{{ game.name }}</div>
+				<image class="star-icon" :src="game.isStarred ? '/static/star-on.png' : '/static/star-off.png'"
+					mode="widthFix" @click.stop="toggleStar(index)"></image>
+			</div>
 		</div>
 	</scroll-view>
 </template>
@@ -33,35 +27,17 @@
 		props: {
 			list: {
 				type: Array,
-				required: true
+				default: () => []
+			},
+			imageList: {
+				type: Array,
+				default: () => []
 			}
 		},
 		data() {
 			return {
 				localList: [],
-				imageList: [{
-						img: require('@/static/svg/telegram.svg'),
-						url: 'https://t.me/FCPG_GRUPO01',
-					},
-					{
-						img: require('@/static/svg/telegram-flat.svg'),
-						url: 'https://t.me/FCPG_GRUPO',
-					},
-					{
-						img: require('@/static/svg/whatsapp.svg'),
-						url: 'https://chat.whatsapp.com/IlmHXDdFZcgCmKvnnQZ7j4',
-					},
-					{
-						img: require('@/static/svg/whatsapp-flat.svg'),
-						url: 'https://wa.me/85268462577',
-					},
-					{
-						img: require('@/static/svg/instagram.svg'),
-						url: 'https://www.instagram.com/fc_grupo777/',
-					},
-				],
 				scrollTop: 0,
-				showBackToTop: false
 			}
 		},
 		watch: {
@@ -81,26 +57,17 @@
 					url: `/pages/webview/webview?url=${encodeURIComponent(url)}`
 				})
 			},
-			toggleStar(companyIndex, gameIndex) {
-				const group = this.localList[companyIndex]
-				const game = group.gameList[gameIndex]
+			toggleStar(index) {
+				const game = this.localList[index]
 				game.isStarred = !game.isStarred
 
 				let starredList = uni.getStorageSync(STARRED_LIST_KEY) || []
 
-				let companyEntry = starredList.find(item => item.conpany === group.conpany)
-
 				if (game.isStarred) {
-					if (!companyEntry) {
-						companyEntry = {
-							conpany: group.conpany,
-							gameList: []
-						}
-						starredList.push(companyEntry)
-					}
-					const exists = companyEntry.gameList.some(item => item.url === game.url)
+					const exists = starredList.some(item => item.url === game.url)
 					if (!exists) {
-						companyEntry.gameList.push({
+						starredList.push({
+							conpany: game.conpany,
 							name: game.name,
 							image: game.image,
 							url: game.url,
@@ -108,59 +75,47 @@
 						})
 					}
 				} else {
-					if (companyEntry) {
-						companyEntry.gameList = companyEntry.gameList.filter(item => item.url !== game.url)
-						if (companyEntry.gameList.length === 0) {
-							starredList = starredList.filter(item => item.conpany !== group.conpany)
-						}
-					}
+					starredList = starredList.filter(item => item.url !== game.url)
 				}
+
 				uni.setStorageSync(STARRED_LIST_KEY, starredList)
 			},
 			loadStarStatus() {
 				const starredList = uni.getStorageSync(STARRED_LIST_KEY) || []
 				const starredMap = new Map()
 
-				starredList.forEach(group => {
-					if (group && Array.isArray(group.gameList)) {
-						group.gameList.forEach(game => {
-							if (game && game.url) {
-								starredMap.set(game.url, true)
-							}
-						})
+				starredList.forEach(game => {
+					if (game && game.url) {
+						starredMap.set(game.url, true)
 					}
 				})
 
 				if (!Array.isArray(this.localList)) return
 
-				this.localList.forEach(group => {
-					if (group && Array.isArray(group.gameList)) {
-						group.gameList.forEach(game => {
-							if (game && game.url) {
-								game.isStarred = starredMap.has(game.url)
-							}
-						})
+				this.localList.forEach(game => {
+					if (game && game.url) {
+						game.isStarred = starredMap.has(game.url)
 					}
 				})
 			},
 			scrollToTop() {
-				this.scrollTop = 0;
+				this.scrollTop = 0
 				this.$nextTick(() => {
-					this.scrollTop = 0.01;
-				});
+					this.scrollTop = 0.01
+				})
 			},
 			onScroll(e) {
-				this.showBackToTop = e.detail.scrollTop > 300;
+
 			},
 			openExternalLink(url) {
 				// #ifdef APP-PLUS
 				if (typeof plus !== 'undefined' && plus.runtime) {
-					plus.runtime.openURL(url);
+					plus.runtime.openURL(url)
 				}
 				// #endif
 
 				// #ifdef H5
-				window.open(url, '_blank');
+				window.open(url, '_blank')
 				// #endif
 			}
 		}
@@ -170,46 +125,12 @@
 <style scoped>
 	.game-wrapper {
 		background-color: #000;
-		/* height: calc(100vh - 4rem); */
 	}
-
-	.back-to-top {
-		position: fixed;
-		right: 1rem;
-		bottom: 4rem;
-		width: 2.5rem;
-		height: 2.5rem;
-		background-color: rgba(255, 255, 255, 0.9);
-		color: #000;
-		font-weight: bold;
-		border-radius: 50%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 1.2rem;
-		z-index: 999;
-		cursor: pointer;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-	}
-
 
 	.companyBox {
 		display: flex;
 		align-items: center;
 		margin: 1rem;
-	}
-
-	.game-container {
-		background-color: #000;
-		margin-bottom: 0.5rem;
-	}
-
-	.company-title {
-		line-height: 1;
-		font-size: 1.8rem;
-		font-weight: bold;
-		color: #ffffff;
-		padding: 0 1rem;
 	}
 
 	.svgIconList {
@@ -230,7 +151,6 @@
 		padding: 0 10px 10px;
 		box-sizing: border-box;
 	}
-
 
 	.game-card {
 		background-color: #1f1f1f;
@@ -257,13 +177,11 @@
 		object-fit: contain;
 	}
 
-
 	.game-title {
 		color: #fff;
 		font-size: 0.6rem;
 		margin: 5px 0;
 	}
-
 
 	.star-icon {
 		position: absolute;

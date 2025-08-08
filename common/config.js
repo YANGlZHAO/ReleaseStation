@@ -1,6 +1,7 @@
 const ENVIRONMENT = {
 	DEV_136: 'http://192.168.1.136:9080', //test
 	DEV_176: 'http://192.168.1.176:9080', //local
+	DEV_74: 'http://192.168.1.74:8080', //cj
 	// #ifndef APP-PLUS
 	DEV_OUTSIDE: 'https://slot55xx2.ccfly.cc', //外测-h5端不需要地址
 	STABLE: 'https://tucanoccc.bet', //正式-h5端不需要地址

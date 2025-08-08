@@ -105,7 +105,7 @@
 				this.showLoading = false
 				this.updateUnderline()
 				this.notifyCurrentPage()
-				this.getSuporteData()
+				// this.getSuporteData()
 			}, 2000)
 			// #endif
 
@@ -113,7 +113,7 @@
 			this.showLoading = false
 			this.updateUnderline()
 			this.notifyCurrentPage()
-			this.getSuporteData()
+			// this.getSuporteData()
 			// #endif
 		},
 
