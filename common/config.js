@@ -15,7 +15,7 @@ const ENVIRONMENT = {
 module.exports = {
 	ENVIRONMENT,
 	// 当前环境
-	CURRENT_ENVIRONMENT: ENVIRONMENT.STABLE,
+	CURRENT_ENVIRONMENT: ENVIRONMENT.DEV_OUTSIDE,
 	// //是否开发模式
 	// IS_DEV: true,
 	// // 开发环境地址
