@@ -19,6 +19,12 @@
 		getFcPGList,
 		applicationJumpLink
 	} from '@/api/jsonbin.js';
+	
+	import {
+		getClientGetPackageInfo
+	} from '@/api/home.js';
+	
+	
 	export default {
 		name: "HomePage",
 		components: {
@@ -26,7 +32,6 @@
 			FloatButtonVue,
 			NavBarVue,
 			MyCarousel,
-
 		},
 		data() {
 			return {
@@ -55,11 +60,30 @@
 					const jumpLinkRes = await applicationJumpLink();
 					this.applicationJumpLinkList = jumpLinkRes.data;
 					
-					const fcPGRes = await getFcPGList();
-					this.data = fcPGRes.data;
+					// const fcPGRes = await getFcPGList();
+					// this.data = this.transformData(fcPGRes.data);
+					
+					
+					getClientGetPackageInfo().then(data => {
+						if (data.code == 0) {
+							this.data = this.transformData(data.list);
+						}
+					})
+					
 				} catch (err) {
 					console.error("err：", err);
 				}
+			},
+			
+			transformData(data) {
+			  return data.map(item => {
+			    const { imageUrl, ...rest } = item;
+			    return {
+			      ...rest,
+			      image: imageUrl,
+			      isStarred: false
+			    };
+			  });
 			}
 
 		}

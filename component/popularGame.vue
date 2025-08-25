@@ -10,7 +10,7 @@
 
 		<div class="game-grid">
 			<div class="game-card" v-for="(game, index) in localList" :key="index" @click="goToWebView(game.url)">
-				<image class="game-image" :src="game.image" mode="aspectFit"></image>
+				<image class="game-image" :src="devUrl + '/api/' + game.image" mode="aspectFit"></image>
 				<div class="game-title">{{ game.name }}</div>
 				<image class="star-icon" :src="game.isStarred ? '/static/star-on.png' : '/static/star-off.png'"
 					mode="widthFix" @click.stop="toggleStar(index)"></image>
@@ -21,6 +21,8 @@
 
 <script>
 	const STARRED_LIST_KEY = 'starredGameList'
+	
+	import setting from "@/common/config.js";
 
 	export default {
 		name: 'GameCardGrid',
@@ -38,6 +40,7 @@
 			return {
 				localList: [],
 				scrollTop: 0,
+				devUrl: setting.CURRENT_ENVIRONMENT,
 			}
 		},
 		watch: {

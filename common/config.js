@@ -1,7 +1,7 @@
 const ENVIRONMENT = {
 	DEV_136: 'http://192.168.1.136:9080', //test
 	DEV_176: 'http://192.168.1.176:9080', //local
-	DEV_74: 'http://192.168.1.74:8080', //cj
+	DEV_74: 'http://192.168.1.74:8083', //cj
 	DEV_118: 'http://192.168.1.118:8083', //xp
 	// #ifndef APP-PLUS
 	DEV_OUTSIDE: 'https://slot55xx2.ccfly.cc', //外测-h5端不需要地址
@@ -16,7 +16,7 @@ const ENVIRONMENT = {
 module.exports = {
 	ENVIRONMENT,
 	// 当前环境
-	CURRENT_ENVIRONMENT: ENVIRONMENT.DEV_OUTSIDE,
+	CURRENT_ENVIRONMENT: ENVIRONMENT.DEV_74,
 	// //是否开发模式
 	// IS_DEV: true,
 	// // 开发环境地址
